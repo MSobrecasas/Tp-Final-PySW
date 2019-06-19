@@ -10,4 +10,5 @@ export class Pagos {
         this.fecha= fecha;
         this.estadoPago= estadoPago;
     }
+    
 }
