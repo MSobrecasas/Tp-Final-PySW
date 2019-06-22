@@ -55,6 +55,7 @@ export class PagosComponent implements OnInit {
       .subscribe(
         result => {
           console.log("agregado correctamente.");
+          this.obtenerPagos();
         },
         error => {
           alert("Error al agregar.");
@@ -92,7 +93,7 @@ export class PagosComponent implements OnInit {
     this.pagosService.borrarPagos(id).subscribe(
       result => {
         console.log("borrado correctamente.")
-        //actualizo la tabla de mensajes
+        //actualizo la tabla de pagos
         this.obtenerPagos();
         return true;
       },
