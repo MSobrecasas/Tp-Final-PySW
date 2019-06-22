@@ -15,10 +15,11 @@ export class Usuario {
     tipoUsuario: string;
     escribano: Escribano;
     estado: boolean;
+    dni: string;
 
     Usuario(id?: number, nombre?: string, apellido?: string, fechaNac?: Date, direccion?: string,
         telefono?: string, email?: string, foto?: string, username?: string, password?: String,
-        tipoUsuario?: string, escribano?: Escribano, estado?: boolean) {
+        tipoUsuario?: string, escribano?: Escribano, estado?: boolean, dni?: string) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,5 +33,6 @@ export class Usuario {
         this.tipoUsuario = tipoUsuario;
         this.escribano = escribano;
         this.estado = estado;
+        this.dni = dni;
     }
 }

@@ -15,13 +15,13 @@ export class PagosService {
     return this._http.get(this.link);
   }
 
-  public newNovedades(novedades) {
+  public newPago(pago) {
     const httpOption = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     }
-    let body = JSON.stringify(novedades);
+    let body = JSON.stringify(pago);
     return this._http.post(this.link + 'new', body,
       httpOption);
   }
