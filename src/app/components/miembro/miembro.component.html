@@ -1,0 +1,143 @@
+<div class="container d-sm-inline">
+  <div class="row justify-content-xl-center">
+    <div class="col-xl-6 d-xl-inline">
+      <div class="col-xl-10 col-sm-10 offset-sm-1 justify-content-center">
+        <form method="POST">
+          <legend class="tForm">Busque un Miembro</legend>
+          <div class="dropdown-divider"></div>
+          <div class="form-group row">
+            <label for="idApellido" class="col-sm-4 col-form-label">Apellido</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="idApellido" placeholder="Apellido de Miembro">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="nombre" placeholder="Nombre del Miembro">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="staticEmail" placeholder="email@example.com">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" id="fecnac">
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <div class="row">
+              <legend class="col-form-label col-sm-4 pt-0">Recibe Email</legend>
+              <div class="col-sm-8">
+                <div class="form-check custom-control-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                    checked>
+                  <label class="form-check-label" for="gridRadios1">
+                    Si
+                  </label>
+                </div>
+                <div class="form-check custom-control-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                  <label class="form-check-label" for="gridRadios2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <label for="pais" class="col-sm-4 col-form-label">País</label>
+            <div class="col-sm-8">
+              <select class="form-control" id="pais">
+                <option>Argentina</option>
+                <option>Peru</option>
+                <option>Chile</option>
+                <option>Brasil</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="btn">
+              <button type="button" class="btn btn-info mx-2"><i class="fas far fa-eye"></i>
+                Buscar</button>
+              <button type="button" class="btn btn-success mx-2"><i class="fas fa-eraser"></i>
+                Limpiar</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="col-xl-3 d-xl-inline ddaside d-sm-none" style="margin-left: 5px;">
+      <div style="margin-top: 20px;">
+        <h5>Articulos</h5>
+        <div class="form-group">
+          <input class="col-xl-12 d-block" placeholder="busqueda interna">
+        </div>
+        <button class="btn btn-sm btn-info"><span style="margin-right: 5px;"><i
+              class="fas fa-check"></i></span>OK</button>
+      </div>
+      <div style="margin-top: 20px;">
+        <a>Enlaces Relacionados</a>
+        <ul>
+          <li>
+            <a href="#">Sitio uno</a>
+          </li>
+          <li>
+            <a href="#">Sitio dos</a>
+          </li>
+          <li>
+            <a href="#">Sitio tres</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container d-sm-inline">
+  <div class="col-xl-7 offset-xl-1">
+    <table class="table table-striped bg-light">
+      <thead>
+        <tr>
+          <th>Apellido</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Fecha Nac.</th>
+          <th>Recibe Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>Doe</td>
+          <td>john@example.com</td>
+          <td>22-10-1997</td>
+          <td>Si</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@example.com</td>
+          <td>22-10-1997</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td>July</td>
+          <td>Dooley</td>
+          <td>july@example.com</td>
+          <td>22-10-1997</td>
+          <td>Si</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="map">
+
+</div>

@@ -1,30 +1,166 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">Logo</a>
-  
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 1</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link 2</a>
-      </li>
-  
-      <!-- Dropdown -->
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
+<div class="cyan-skin">
+    <div id="mySidenav" class="sidenav justify-content-center">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <ul class="list-group bg-transparent">
+            <!-- Logo -->
+            <li>
+                <div class="social">
+                    <a href="#" class="d-inline m-2" style="font-size: 4em"><i class="fas fa-feather-alt"> </i></a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!--Social-->
+            <li>
+                <div class="social">
+                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-pinterest"> </i></a>
+                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-facebook-f"> </i></a>
+                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-google-plus-g"> </i></a>
+                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-twitter"> </i></a>
+                </div>
+            </li>
+
+            <!--/Social-->
+            <!--Search Form-->
+            <form class="search-form" role="search">
+                <div class="form-group md-form mt-0 pt-1 waves-light">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
+            <!--/.Search Form-->
+            <!-- Side navigation links -->
+            <li class="list-group bg-transparent">
+                <ul class="list-group-item bg-transparent">
+                    <li class="list-group bg-transparent">
+                        <a id="inicio"class="nav-link" [routerLink]="['contents']">Inicio</a>
+                    </li>
+                    <li class="list-group bg-transparent">
+                        <a class="nav-link" [routerLink]="['slide']">Slide</a>
+                    </li>
+
+                   
+                    <li class="list-group bg-transparent">
+                        <a href="#demo" data-toggle="collapse" class="">
+                            <i class="fas fa-chevron-right"></i>Empresa</a>
+                        <div id="demo" class="collapse">
+                            <ul class="list-unstyled">
+                                <li><a [routerLink]="['escribanos']">Escribanos</a>
+                                </li>
+                                <li><a [routerLink]="['pagos']">Pagos</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="list-group bg-transparent">
+                        <a href="#demo2" data-toggle="collapse" class="">
+                            <i class="fas fa-chevron-right"></i> Submit blog</a>
+                        <div id="demo2" class="collapse">
+                            <ul class="list-unstyled">
+                                <li><a href="#" class="">Submit listing</a>
+                                </li>
+                                <li><a href="#" class="">Registration form</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navColg"
+    style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav">
+    <div>
+        <div class="">
+            <span style="font-size:30px;cursor:pointer" style="font-size: 2em; color: white" (click)="openNav()">
+                <i class="fas fa-angle-double-right mx-2"></i></span>
+            <a id="logo" class="navbar-brand">Colegio de Escribano</a>
         </div>
-      </li>
-    </ul>
-    <form class="form-inline" action="/action_page.php">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-success" type="submit">Search</button>
-    </form>
-  </nav>
+    </div>
+    <div class="nav navbar-nav ml-auto" id="opciones">
+        <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-envelope" style="font-size: 1.7em"></i>
+                    <span class="d-sm-none d-xl-inline-block">Contacto</span></a>
+            </li>
+            <li class="nav-item dropleft">
+                <a class="nav-link d-xl-none pl-2" [routerLink]="['login']">
+                    <i class="fas fa-user" style="font-size: 1.7em"></i></a>
+                <a class="nav-link dropdown-toggle d-sm-none d-xl-block" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false"><i class="fas fa-user" style="font-size: 1.7em"></i>Login</a>
+                <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
+                    <app-login-user></app-login-user>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top"
+    style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div>
+        <div class="float-left">
+            <span class="navbar-brand" style="font-size: 2em; color: white">
+                <i class="fas fa-feather-alt"></i>
+            </span>
+            <a id="logo" class="navbar-brand">Colegio de Escribano</a>
+        </div>
+        <div class="">
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
+                    <li class="nav-item">
+                        <a class="nav-link">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">|</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="opciones">
+        <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['contents']">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['registro']">Registro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['slide']">Slide</a>
+            </li>
+            <li>
+                <a class="nav-link" [routerLink]="['evaluacion']">Evaluacion</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Web Service</a>
+                <div class="dropdown-menu" style="background: rgb(29, 98, 129)">
+                    <a class="dpmitem" [routerLink]="['clima']">Clima</a>
+                    <a class="dpmitem" [routerLink]="['moneda']">Moneda</a>
+                    <a class="dpmitem" [routerLink]="['nba']">NBA Teams</a>
+                    <a class="dpmitem" [routerLink]="['systranNLP']">Systran</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">Administracion</a>
+                <div class="dropdown-menu" style="background: rgb(29, 98, 129)">
+                    <a class="dpmitem" [routerLink]="['miembro']">Miembros</a>
+                    <a class="dpmitem" [routerLink]="['punto1']">Punto 1</a>
+                    <a class="dpmitem" [routerLink]="['punto2']">Punto 2</a>
+                    <a class="dpmitem" [routerLink]="['punto3']">Punto 3</a>
+                    <a class="dpmitem" [routerLink]="['punto4']">Punto 4</a>
+                    <a class="dpmitem" [routerLink]="['punto5']">Punto 5</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav> -->

@@ -1,0 +1,20 @@
+.ddaside{
+  text-align: justify;
+  background: #f5f5f5;
+  margin: 10px;
+  border-radius: 0.25rem;
+}
+.centro{
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1.2px;
+  color: rgb(0, 0, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+#bgimage{
+  width: 100%;
+  opacity: 0.7;
+}
