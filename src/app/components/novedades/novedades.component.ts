@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NovedadesService } from 'src/app/services/novedades.service';
 import { Novedades } from 'src/app/models/novedades';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 class ValueAndText {
   constructor(public Value: string, public Text: string) { }
 }
@@ -18,27 +20,45 @@ export class NovedadesComponent implements OnInit {
 
   novedades: Novedades;
   listaNovedades: Array<Novedades>;
+  usuario: Usuario;
+  usuarioMod: Usuario;
+  usuarios: Array<Usuario>;
   novedadesMod: Novedades;
-  constructor(private novedadesService: NovedadesService) {
+
+  constructor(private novedadesService: NovedadesService,
+    private usuarioService: UsuarioService) {
+    this.usuario = new Usuario();
+    this.usuarioMod = new Usuario();
+    this.usuarios = new Array<Usuario>();
     this.novedades = new Novedades();
     this.novedadesMod = new Novedades();
     this.listaNovedades = new Array<Novedades>();
+    this.obtenerNovedades();
+    this.obtenerUsuarios();
   }
   
   ngOnInit() {
   }
-
-  public obtenerNovedades() {
-    this.novedadesService.getsListaNovedades()
+  public obtenerUsuarios() {
+    this.usuarioService.getUsuarios()
       .subscribe(
         results => {
-          this.novedades = results['novedades'];
-          console.log(this.novedades);
+          console.log(results);
         }
       );
 
   }
-  public nuevoUsuario() {
+  public obtenerNovedades() {
+    this.novedadesService.getsListaNovedades()
+      .subscribe(
+        results => {
+          console.log(results);
+        }
+      );
+
+  }
+  public nuevoNovedades() {
+    this.novedades.fecha = new Date;
     this.novedadesService.newNovedades(this.novedades)
       .subscribe(
         result => {

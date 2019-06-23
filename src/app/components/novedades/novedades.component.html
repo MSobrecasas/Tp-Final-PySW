@@ -1,7 +1,28 @@
 <div>
-  
-</div>
+    <form method="POST">
+        <legend class="tForm">Agregar Novedad</legend>
+        <div class="dropdown-divider"></div>
+        <div class="form-group row">
+            <label for="usuario" class="col-sm-4 col-form-label">Usuario</label>
+            <div class="col-sm-8">
+              <select [(ngModel)]="novedades.usuario" name="usuario">
+                <option *ngFor="let item of usuarios" [ngValue]="item">
+                    {{item.apellido}},{{item.nombre}}</option>
+            </select> 
+            </div>
+          </div>
+        <div class="form-group row">
+          <label for="detalle" class="col-sm-4 col-form-label">Descripcion</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="detalle" name="detalle" [(ngModel)]="novedades.descripcion">
+          </div>
+        </div>
+        <div class="form-group row">
+          <button class="col-12 btn btn-info">Agregar</button>
+        </div>
+      </form>
 
+</div>
 <div>
   <table id="tabla" class="table table-striped">
     <thead>
