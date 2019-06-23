@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +28,6 @@ import { AltaEscribaniaComponent } from './components/alta-escribania/alta-escri
 import { NovedadesComponent } from './components/novedades/novedades.component';
 import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 import { EscribaniasComponent } from './components/escribanias/escribanias.component';
-<<<<<<< HEAD
 import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
 
 @NgModule({
@@ -54,51 +54,15 @@ import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component
     ModificarPerfilComponent,
     EscribaniasComponent,
     AltaPagosComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-=======
-import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    IndexComponent,
-    ImageComponent,
-    MiembrosComponent,
-    RegistroComponent,
-    AboutComponent,
-    HomeComponent,
-    RegistroComponent,
-    MiembroComponent,
-    SlideComponent,
-    NavColegComponent,
-    LoginUserComponent,
-    PagosComponent,
-    EscribanosComponent,
-    ContentsComponent,
-    AltaEscribaniaComponent,
-    NovedadesComponent,
-    ModificarPerfilComponent,
-    EscribaniasComponent,
-    AltaPagosComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
->>>>>>> 8a454fca8c931d65548d4a8b2765abd09c041093

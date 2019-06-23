@@ -10,6 +10,7 @@ import { ContentsComponent } from './components/contents/contents.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { PagosComponent } from './components/pagos/pagos.component';
 import { EscribanosComponent } from './components/escribanos/escribanos.component';
+import { AltaPagosComponent} from './components/alta-pagos/alta-pagos.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'login', component: LoginUserComponent },
   { path: 'pagos', component: PagosComponent },
   { path: 'escribanos', component: EscribanosComponent },
+  { path: 'altaPagos', component: AltaPagosComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'index' },
 ];
 
