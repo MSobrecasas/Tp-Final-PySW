@@ -9,7 +9,7 @@ import { Usuario } from '../models/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  link: string = 'http://localhost/colegioEscribanosProject/public/index.php/usuarios/';
+  link: string = 'http://localhost/colegioEscribanosProject/public/index.php/usuario/';
 
   constructor(private _http: HttpClient) { }
 

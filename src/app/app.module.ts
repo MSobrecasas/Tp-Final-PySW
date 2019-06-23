@@ -19,6 +19,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { PagosComponent } from './components/pagos/pagos.component';
 import { EscribanosComponent } from './components/escribanos/escribanos.component';
 import { ContentsComponent } from './components/contents/contents.component';
+import {DataTableModule} from "angular-6-datatable";
 
 
 
@@ -60,7 +61,8 @@ import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    DataTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

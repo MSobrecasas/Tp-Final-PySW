@@ -24,5 +24,86 @@
         <button class="col-12 btn btn-info" (click)="nuevoEscribania()">Enviar</button>
       </div>
     </form>
-  
+
+    <table class="table table-striped" [mfData]="escribanias" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead>
+        <tr>
+          <th>
+            <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="direccion">Direccion</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="estado">Activa</mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mf.data">
+          <td>{{item.nombre}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.estado}} </td>
+          <td>
+            <button type="button " class="btn btn-default">Del</button>
+            <button class="btn btn-default" (click)="elegirEscribania(item)" data-toggle="modal" data-target="#myModalMod">Modificar</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  <!-- The Modal -->
+<div class="modal" id="myModalMod">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar Mensaje</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+   
+      <legend class="tForm">Registrar Escribania</legend>
+      <div class="dropdown-divider"></div>
+      <div class="form-group row">
+        <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="nombreEscribania" name="nombre" [(ngModel)]="escribania.nombre">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="direccionEscr" value="" name="direccion" [(ngModel)]="escribania.direccion">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
+        <div class="col-sm-8">
+          <input type="number" class="form-control" id="telefonoEscr" value="NULL" name="telefono" [(ngModel)]="escribania.telefono">
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="actualizarEscribania()">Guardar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
   </div>
