@@ -1,0 +1,25 @@
+<div>
+  <table id="tabla" class="table table-striped">
+    <thead>
+      <tr class="">
+        <th style="width: 100%"  class="justify-content-center">
+          Novedades
+        </th>
+        <th style="width: 0%">
+
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of titleArray">
+        <td>
+          <div class="table-primary justify-content-start py-2">
+              Novedades de: {{item.Value}}
+          </div>
+          {{item.Text}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div>

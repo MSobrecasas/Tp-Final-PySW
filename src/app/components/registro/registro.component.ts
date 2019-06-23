@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
+import { Escribania } from 'src/app/models/escribania';
 
 @Component({
   selector: 'app-registro',
@@ -9,9 +10,10 @@ import { Usuario } from 'src/app/models/usuario';
 })
 export class RegistroComponent implements OnInit {
   usuario: Usuario;
+  usuarioMod: Usuario;
   usuarios: Array<Usuario>;
-
   id: number;
+
   nombre: string;
   apellido: string;
   fechaNac: Date;
@@ -28,6 +30,7 @@ export class RegistroComponent implements OnInit {
   bandRepetido: boolean;
 
   constructor(private usuarioService: UsuarioService) {
+    this.usuarioMod = new Usuario();
     this.usuario = new Usuario();
     this.usuarios = new Array<Usuario>();
     this.obtenerUsuarios();
@@ -152,5 +155,8 @@ export class RegistroComponent implements OnInit {
         console.log(error);
         return false;
       });
+  }
+  consola(dato: HTMLSelectElement) {
+    console.log(dato.value);
   }
 }
