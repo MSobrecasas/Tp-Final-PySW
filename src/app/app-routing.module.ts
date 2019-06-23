@@ -10,6 +10,11 @@ import { ContentsComponent } from './components/contents/contents.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { PagosComponent } from './components/pagos/pagos.component';
 import { EscribanosComponent } from './components/escribanos/escribanos.component';
+import { AltaEscribaniaComponent} from './components/alta-escribania/alta-escribania.component';
+import {AltaPagosComponent} from './components/alta-pagos/alta-pagos.component';
+import {NovedadesComponent} from './components/novedades/novedades.component';
+import {EscribaniasComponent} from './components/escribanias/escribanias.component';
+import {ModificarPerfilComponent} from './components/modificar-perfil/modificar-perfil.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent },
@@ -23,6 +28,11 @@ const routes: Routes = [
   { path: 'login', component: LoginUserComponent },
   { path: 'pagos', component: PagosComponent },
   { path: 'escribanos', component: EscribanosComponent },
+  {path:'altaEscribania', component: AltaEscribaniaComponent},
+  {path:'altaPagos', component: AltaPagosComponent},
+  {path:'novedades', component: NovedadesComponent},
+  {path:'escribania', component: EscribaniasComponent},
+  {path:'modificarPerfil', component: ModificarPerfilComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'index' },
 ];
 
