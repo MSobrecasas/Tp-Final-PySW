@@ -23,6 +23,11 @@ import { ContentsComponent } from './components/contents/contents.component';
 
 
 import {HttpClientModule} from '@angular/common/http';
+import { AltaEscribaniaComponent } from './components/alta-escribania/alta-escribania.component';
+import { NovedadesComponent } from './components/novedades/novedades.component';
+import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
+import { EscribaniasComponent } from './components/escribanias/escribanias.component';
+import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,11 @@ import {HttpClientModule} from '@angular/common/http';
     PagosComponent,
     EscribanosComponent,
     ContentsComponent,
+    AltaEscribaniaComponent,
+    NovedadesComponent,
+    ModificarPerfilComponent,
+    EscribaniasComponent,
+    AltaPagosComponent,
   ],
   imports: [
     BrowserModule,
