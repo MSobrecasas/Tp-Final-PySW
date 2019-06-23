@@ -66,7 +66,7 @@ export class AltaPagosComponent implements OnInit {
     this.pagos.fecha = new Date();
     this.pagos.detalle = this.detalleN;
     this.pagos.escribano = this.escribanoN;
-    this.pagos.fechaPago = null;
+    this.pagos.fechaPago = new Date();
     this.pagosService.newPago(this.pagos)
       .subscribe(
         result => {
