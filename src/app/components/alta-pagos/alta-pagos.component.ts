@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PagosService } from 'src/app/services/pagos.service';
 import { Pagos } from 'src/app/models/pagos';
 import { Escribano } from 'src/app/models/escribano';
+import { EscribanoService } from 'src/app/services/escribano.service';
 
 @Component({
   selector: 'app-alta-pagos',
@@ -9,28 +10,43 @@ import { Escribano } from 'src/app/models/escribano';
   styleUrls: ['./alta-pagos.component.css']
 })
 export class AltaPagosComponent implements OnInit {
-  
+
   pagos: Pagos;
   listaPagos: Array<Pagos>;
   escribano: Escribano;
   escribanos: Array<Escribano>;
   //variables para asignar
   id: number;
-  importe: number;
-  fecha: Date;
-  estadoPago: boolean;
-  fechaPago: string;
-  detalle: string;
+  importeN: number;
+  fechaN: Date;
+  estadoPagoN: boolean;
+  fechaPagoN: string;
+  detalleN: string;
   escribanoN: Escribano;
 
 
-  constructor(private pagosService: PagosService) {
+
+  constructor(private pagosService: PagosService, private escribanoService: EscribanoService) {
     this.pagos = new Pagos;
     this.listaPagos = new Array<Pagos>();
+    this.escribanos = new Array<Escribano>();
+    this.escribanoN = new Escribano;
     this.obtenerPagos();
+    this.obtenerEscribanos();
   }
 
   ngOnInit() {
+  }
+
+  public obtenerEscribanos() {
+    this.escribanoService.getEscribanos()
+      .subscribe(
+        results => {
+          this.escribanos = results['escribanos'];
+          console.log(this.escribanos);
+        }
+      );
+
   }
   public obtenerPagos() {
     this.pagosService.getsListaPagos()
@@ -46,9 +62,9 @@ export class AltaPagosComponent implements OnInit {
 
   public nuevoPago() {
     this.pagos.estadoPago = false;
-    this.pagos.importe = this.importe;
+    this.pagos.importe = this.importeN;
     this.pagos.fecha = new Date();
-    this.pagos.detalle = this.detalle;
+    this.pagos.detalle = this.detalleN;
     this.pagos.escribano = this.escribanoN;
     this.pagos.fechaPago = null;
     this.pagosService.newPago(this.pagos)

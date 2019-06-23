@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PagosService } from 'src/app/services/pagos.service';
 import { Pagos } from 'src/app/models/pagos';
 import { Escribano } from 'src/app/models/escribano';
+import { EscribanoService } from 'src/app/services/escribano.service';
 
 @Component({
   selector: 'app-pagos',
@@ -24,10 +25,13 @@ export class PagosComponent implements OnInit {
   escribanoN: Escribano;
 
 
-  constructor(private pagosService: PagosService) {
+  constructor(private pagosService: PagosService, private escribanoService: EscribanoService) {
     this.pagos = new Pagos;
+    this.escribanoN = new Escribano;
     this.listaPagos = new Array<Pagos>();
+    this.escribanos = new Array<Escribano>();
     this.obtenerPagos();
+    this.obtenerEscribanos();
   }
 
   ngOnInit() {
@@ -42,7 +46,16 @@ export class PagosComponent implements OnInit {
       );
 
   }
+  public obtenerEscribanos() {
+    this.escribanoService.getEscribanos()
+      .subscribe(
+        results => {
+          this.escribanos = results['escribanos'];
+          console.log(this.escribanos);
+        }
+      );
 
+  }
 
   public nuevoPago() {
     this.pagos.estadoPago = false;
