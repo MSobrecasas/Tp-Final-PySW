@@ -34,7 +34,8 @@ export class AltaEscribaniaComponent implements OnInit {
       }
     )
   }
-  public nuevoescribania() {
+  public nuevoEscribania() {
+    this.escribaniaMod.estado = true;
     this.escribania = this.escribaniaMod;
     this.escribaniaService.newEscribania(this.escribania)
       .subscribe(
