@@ -3,6 +3,7 @@ import { NovedadesService } from 'src/app/services/novedades.service';
 import { Novedades } from 'src/app/models/novedades';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { LoginService } from 'src/app/services/login.service';
 class ValueAndText {
   constructor(public Value: string, public Text: string) { }
 }
@@ -26,7 +27,7 @@ export class NovedadesComponent implements OnInit {
   novedadesMod: Novedades;
 
   constructor(private novedadesService: NovedadesService,
-    private usuarioService: UsuarioService) {
+    private usuarioService: UsuarioService, public loginService: LoginService) {
     this.usuario = new Usuario();
     this.usuarioMod = new Usuario();
     this.usuarios = new Array<Usuario>();

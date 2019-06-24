@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'">
     <form method="POST">
         <legend class="tForm">Agregar Novedad</legend>
         <div class="dropdown-divider"></div>

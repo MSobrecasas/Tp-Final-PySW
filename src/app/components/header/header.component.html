@@ -31,42 +31,46 @@
             <li class="list-group bg-transparent">
                 <ul class="list-group-item bg-transparent">
                     <li class="list-group bg-transparent">
-                        <a id="inicio" class="nav-link" [routerLink]="['contents']">Inicio</a>
+                        <a class="nav-link" [routerLink]="['contents']">Inicio</a>
                     </li>
                     <li class="list-group bg-transparent">
                         <a class="nav-link" [routerLink]="['slide']">Slide</a>
                     </li>
-
-
+                    <li class="list-group bg-transparent">
+                        <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
+                        class="nav-link" [routerLink]="['modificarPerfil']">Modificar Perfil</a>
+                    </li>
+                    <li class="list-group bg-transparent">
+                        <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
+                        class="nav-link" [routerLink]="['pagos']">Historial de Pagos</a>
+                    </li>
+                    <li class="list-group bg-transparent">
+                        <a class="nav-link" [routerLink]="['escribania']">Escribanias</a>
+                    </li>
+                    <li *ngIf="loginService.userLoggedIn"
+                    class="list-group bg-transparent">
+                        <a class="nav-link" [routerLink]="['novedades']">Novedades</a>
+                    </li>
                     <li class="list-group bg-transparent">
                         <a href="#demo" data-toggle="collapse" class="">
-                            <i class="fas fa-chevron-right"></i>Empresa</a>
+                            <i class="fas fa-chevron-right"></i>Administracion</a>
                         <div id="demo" class="collapse">
                             <ul class="list-unstyled">
                                 <li>
-                                    <a [routerLink]="['escribanos']">Escribanos</a>
+                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
+                                    class="nav-link"[routerLink]="['escribanos']">Escribanos</a>
                                 </li>
                                 <li>
-                                    <a [routerLink]="['altaPagos']">Alta Pagos</a>
+                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='gerente'"
+                                    [routerLink]="['altaPagos']">Pagos</a>
                                 </li>
                                 <li>
-                                    <a [routerLink]="['altaEscribania']">Alta Escribania</a>
+                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
+                                    [routerLink]="['escribanos']">Escribanias</a>
                                 </li>
                                 <li>
-                                    <a [routerLink]="['novedades']">Novedaes</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['escribania']">Escribanias</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['modificarPerfil']">Modificar Perfil</a>
-                                </li>
-
-                                <li>
-                                    <a [routerLink]="['altaPagos']">PagosAlta</a>
-                                </li>
-                                <li>
-                                    <a [routerLink]="['registro']">Registro</a>
+                                    <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrador'"
+                                    [routerLink]="['registro']">Usuarios</a>
                                 </li>
                             </ul>
                         </div>
@@ -114,7 +118,7 @@
                 <!-- ACAA PUSE LOI DE LOGIN -->
                 <div>
 
-                    <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']">(Login)</a>
+                    <a *ngIf="!loginService.userLoggedIn" [routerLink]="['login']">(Login)</a>
                     <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
                         {{loginService.userLogged.username}} (logout)
                     </a>

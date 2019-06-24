@@ -1,17 +1,18 @@
 import { Escribano } from './escribano';
+import { Usuario } from './usuario'
 
 export class Pagos {
     id: number;
-    escribano: Escribano;
+    usuario: Usuario;
     importe: number;
     fecha: Date;
     estadoPago: boolean;
     detalle: string;
     fechaPago: Date;
 
-    Pagos(id?: number,escribano?: Escribano, importe?: number, fecha?: Date, estadoPago?: boolean,detalle?: string, fechaPago?: Date) {
+    Pagos(id?: number, usuario?: Usuario, importe?: number, fecha?: Date, estadoPago?: boolean, detalle?: string, fechaPago?: Date) {
         this.id = id;
-        this.escribano = escribano;
+        this.usuario = usuario;
         this.importe = importe;
         this.fecha = fecha;
         this.estadoPago = estadoPago;

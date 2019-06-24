@@ -3,6 +3,8 @@ import { PagosService } from 'src/app/services/pagos.service';
 import { Pagos } from 'src/app/models/pagos';
 import { Escribano } from 'src/app/models/escribano';
 import { EscribanoService } from 'src/app/services/escribano.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-alta-pagos',
@@ -11,42 +13,31 @@ import { EscribanoService } from 'src/app/services/escribano.service';
 })
 export class AltaPagosComponent implements OnInit {
 
+  
   pagos: Pagos;
   listaPagos: Array<Pagos>;
-  escribano: Escribano;
-  escribanos: Array<Escribano>;
+  usuario: Usuario;
+  usuarios: Array<Usuario>;
   //variables para asignar
   id: number;
-  importeN: number;
-  fechaN: Date;
-  estadoPagoN: boolean;
-  fechaPagoN: string;
-  detalleN: string;
-  escribanoN: Escribano;
+  importe: number;
+  fecha: Date;
+  estadoPago: boolean;
+  fechaPago: string;
+  detalle: string;
+  usuarioN: Usuario;
 
 
-
-  constructor(private pagosService: PagosService, private escribanoService: EscribanoService) {
+  constructor(private pagosService: PagosService, private usuarioService:UsuarioService) {
     this.pagos = new Pagos;
+    this.usuarioN = new Usuario;
     this.listaPagos = new Array<Pagos>();
-    this.escribanos = new Array<Escribano>();
-    this.escribanoN = new Escribano;
+    this.usuarios = new Array<Usuario>();
     this.obtenerPagos();
-    this.obtenerEscribanos();
+    this.obtenerUsuarios();
   }
 
   ngOnInit() {
-  }
-
-  public obtenerEscribanos() {
-    this.escribanoService.getEscribanos()
-      .subscribe(
-        results => {
-          this.escribanos = results['escribanos'];
-          console.log(this.escribanos);
-        }
-      );
-
   }
   public obtenerPagos() {
     this.pagosService.getsListaPagos()
@@ -58,15 +49,24 @@ export class AltaPagosComponent implements OnInit {
       );
 
   }
+  public obtenerUsuarios() {
+    this.usuarioService.getUsuarios()
+      .subscribe(
+        results => {
+          this.usuarios = results['usuarios'];
+          console.log(this.usuarios);
+        }
+      );
 
+  }
 
   public nuevoPago() {
     this.pagos.estadoPago = false;
-    this.pagos.importe = this.importeN;
+    this.pagos.importe = this.importe;
     this.pagos.fecha = new Date();
-    this.pagos.detalle = this.detalleN;
-    this.pagos.escribano = this.escribanoN;
-    this.pagos.fechaPago = new Date();
+    this.pagos.detalle = this.detalle;
+    this.pagos.usuario = this.usuario;
+    this.pagos.fechaPago = null;
     this.pagosService.newPago(this.pagos)
       .subscribe(
         result => {
@@ -82,8 +82,8 @@ export class AltaPagosComponent implements OnInit {
     //Creo una copia del pago recibido como parametro para NO modificarlo
     //ya que el parametro esta mostrandose por el binding en el datatable
     this.pagos = Object.assign(this.pagos, pagos);
-    this.pagos.escribano = this.escribanos.find(function (item: Escribano) {
-      return item.id === pagos.escribano.id;
+    this.pagos.usuario = this.usuarios.find(function (item: Usuario) {
+      return item.id === pagos.usuario.id;
     })
   }
 
@@ -120,6 +120,5 @@ export class AltaPagosComponent implements OnInit {
       }
     )
   }
-
 
 }
