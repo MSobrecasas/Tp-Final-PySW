@@ -7,11 +7,10 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  btn;
   constructor(public route: Router) {
-
   }
-
+  
   ngOnInit() {
 
   }
@@ -20,10 +19,15 @@ export class HeaderComponent implements OnInit {
   }
   public openNav() {
     document.getElementById("mySidenav").style.width = "250px";
+    this.btn = document.getElementById('cardv');
+    this.btn.addEventListener("click",
+    (e:Event) => this.closeNav())
   }
 
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+    
   }
 
+  
 }
