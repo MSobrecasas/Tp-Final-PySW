@@ -43,6 +43,7 @@ export class NovedadesComponent implements OnInit {
     this.usuarioService.getUsuarios()
       .subscribe(
         results => {
+          this.usuarios = results['usuarios'];
           console.log(results);
         }
       );
@@ -52,7 +53,8 @@ export class NovedadesComponent implements OnInit {
     this.novedadesService.getsListaNovedades()
       .subscribe(
         results => {
-          console.log(results);
+          this.listaNovedades = results.listaNovedades;
+          console.log(results.listaNovedades);
         }
       );
 

@@ -8,7 +8,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class LoginUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: Router) { }
 
   ngOnInit() {
   }
