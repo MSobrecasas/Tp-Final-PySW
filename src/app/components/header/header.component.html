@@ -112,6 +112,15 @@
                         style="font-size: 1.7em"></i>Login</a>
                 <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
                     <app-login-user></app-login-user>
+                    <!-- ACAA PUSE LOI DE LOGIN -->
+                    <div>
+
+                        <a *ngIf="!loginService.userLoggedIn" [routerLink]="['login']">(Login)</a>
+                        <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
+                            {{loginService.userLogged.username}} (logout)
+                        </a>
+                    </div>
+                    <!-- hasta acaaaaaaaaaaaaaaaaaaaaaaaaa -->
                 </div>
             </li>
         </ul>

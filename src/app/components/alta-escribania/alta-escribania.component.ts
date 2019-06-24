@@ -12,6 +12,7 @@ import { EscribanoService } from 'src/app/services/escribano.service';
 export class AltaEscribaniaComponent implements OnInit {
   escribano: Escribano;
   escribanos: Array<Escribano>;
+  escribanosAsoc: Array<Escribano>;
   //
   escribania: Escribania;
   escribaniaMod: Escribania;
@@ -23,6 +24,7 @@ export class AltaEscribaniaComponent implements OnInit {
     this.escribanias = new Array<Escribania>();
     this.escribanos = new Array<Escribano>();
     this.obtenerEscribania();
+
   }
 
   ngOnInit() {
@@ -84,8 +86,22 @@ export class AltaEscribaniaComponent implements OnInit {
       });
   }
 
-  public borrarEscribania(id: number) {
-    this.escribaniaService.borrarEscribania(id).subscribe(
+  public borrarEscribania(escribania: Escribania) {
+    this.escribania = Object.assign(this.escribania, escribania);
+    this.escribania.estado = false;
+    this.escribaniaService.modificarEscribania(this.escribania).subscribe(
+      data => {
+        console.log("escribania actualizada.")
+        //actualizo la tabla de mensajes
+        this.obtenerEscribania();
+        return true;
+      },
+      error => {
+        console.error("Error al actualizar escribania");
+        console.log(error);
+        return false;
+      });
+   /*  this.escribaniaService.borrarEscribania(id).subscribe(
       result => {
         console.log("borrado correctamente.")
         //actualizo la tabla de escribanias
@@ -97,10 +113,24 @@ export class AltaEscribaniaComponent implements OnInit {
         console.log(error);
         return false;
       }
-    )
+    ) */
   }
 
-   public escribanosEnEscribania(){
+  public escribanosEnEscribania(escribania: Escribania) {
+    this.escribanosAsoc = new Array<Escribano>();
+    this.obtenerEscribanos();
+    this.escribania = Object.assign(this.escribania, escribania);
+    for(var i=0;i<this.escribanos.length; i++){
+      if(this.escribanos[i].escribania != null){
+        if (this.escribania.id == this.escribanos[i].escribania.id) {
+        this.escribanosAsoc.push(this.escribanos[i]);
+      }
+      }
+       
+    }
+    console.log(this.escribanosAsoc);
+   /*  this.escribanos.forEach(function (escribano) {
      
-   }
+    }); */
+  }
 }

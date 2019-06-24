@@ -22,7 +22,7 @@ import { ContentsComponent } from './components/contents/contents.component';
 import {DataTableModule} from "angular-6-datatable";
 
 
-
+import { LoginService } from './services/login.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import { AltaEscribaniaComponent } from './components/alta-escribania/alta-escribania.component';
@@ -64,7 +64,7 @@ import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component
     FormsModule,
     DataTableModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
