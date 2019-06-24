@@ -5,17 +5,18 @@
         <div class="form-group row">
             <label for="username" class="col-sm-4 col-form-label">Nombre de Usuario</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="username" placeholder="">
+                <input type="text" class="form-control" id="username" placeholder="" name="username" [(ngModel)]="userform.username">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputRPassword" placeholder="*********">
+                <input type="password" class="form-control" id="inputRPassword" placeholder="*********" name="password" [(ngModel)]="userform.password" >
             </div>
         </div>
         <div class="form-group row">
-            <button class="col-12 btn btn-info">Enviar</button>
+            <button class="col-12 btn btn-info"  (click)="login()">Enviar</button>
+            <div class="alert-danger">{{msglogin}}</div>
         </div>
         <div class="row justify-content-center">
             <nav class="nav">

@@ -22,7 +22,7 @@ export class RegistroComponent implements OnInit {
   email: string;
   foto: string;
   username: string;
-  password: String;
+  password: string;
   tipoUsuario: string;
   estado: boolean;
   dni: string;

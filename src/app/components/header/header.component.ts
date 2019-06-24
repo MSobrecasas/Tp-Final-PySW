@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(public route: Router) { 
+  constructor(public route: Router,
+    public loginService: LoginService) { 
     
   }
   
@@ -25,4 +27,9 @@ export class HeaderComponent implements OnInit {
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+logout(){
+  //localStorage.removeItem('currentUser');
+  this.loginService.logout();
+  }
 }

@@ -11,13 +11,13 @@ export class Usuario {
     email: string;
     foto: string;
     username: string;
-    password: String;
+    password: string;
     tipoUsuario: string;
     estado: boolean;
     dni: string;
 
     Usuario(id?: number, nombre?: string, apellido?: string, fechaNac?: Date, direccion?: string,
-        telefono?: string, email?: string, foto?: string, username?: string, password?: String,
+        telefono?: string, email?: string, foto?: string, username?: string, password?: string,
         tipoUsuario?: string, estado?: boolean, dni?: string) {
         this.id = id;
         this.nombre = nombre;
