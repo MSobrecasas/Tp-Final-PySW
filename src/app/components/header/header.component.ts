@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,15 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+<<<<<<< HEAD
   btn;
   constructor(public route: Router) {
+=======
+  
+  constructor(public route: Router,
+    public loginService: LoginService) { 
+    
+>>>>>>> 7aa12d722875bc23bd470aa453958e9059009b83
   }
   
   ngOnInit() {
@@ -26,8 +34,17 @@ export class HeaderComponent implements OnInit {
 
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
+<<<<<<< HEAD
     
   }
 
   
+=======
+}
+
+logout(){
+  //localStorage.removeItem('currentUser');
+  this.loginService.logout();
+  }
+>>>>>>> 7aa12d722875bc23bd470aa453958e9059009b83
 }
