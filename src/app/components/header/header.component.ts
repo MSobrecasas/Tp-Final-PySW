@@ -7,16 +7,16 @@ import { RouterLink, Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
-  constructor(public route: Router) { 
-    
+
+  constructor(public route: Router) {
+
   }
-  
+
   ngOnInit() {
-    
+
   }
-  inicio(){
-    
+  inicio() {
+
   }
   public openNav() {
     document.getElementById("mySidenav").style.width = "250px";
@@ -24,5 +24,6 @@ export class HeaderComponent implements OnInit {
 
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-}
+  }
+
 }
