@@ -5,73 +5,78 @@
         <div class="form-group row">
             <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="nombre">
+                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre">
             </div>
         </div>
         <div class="form-group row">
             <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="apellido">
+                <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="apellido">
             </div>
         </div>
         <div class="form-group row">
             <label for="dni" class="col-sm-4 col-form-label">DNI</label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" id="dni">
+                <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="dni">
             </div>
         </div>
         <div class="form-group row">
             <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" id="fecnac">
+                <input type="date" class="form-control" id="fecnac" name="fechaNac" [(ngModel)]="fechaNac">
             </div>
         </div>
         <div class="form-group row">
             <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="direccion">
+                <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="direccion">
             </div>
         </div>
         <div class="form-group row">
             <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="telefono">
+                <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="telefono">
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
-                <input type="email" class="form-control" id="staticEmail" placeholder="email@example.com">
+                <input type="email" class="form-control" id="staticEmail" placeholder="email@example.com" name="email"
+                    [(ngModel)]="email">
             </div>
         </div>
         <div class="form-group row">
             <label for="foto" class="col-sm-4 col-form-label">Foto</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="foto" placeholder="foto">
+                <input type="text" class="form-control" id="foto" placeholder="foto" name="foto" [(ngModel)]="foto">
             </div>
         </div>
         <div class="form-group row">
             <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="username" #nombreUs placeholder="">
+                <input type="text" class="form-control" id="username" #nombreUs placeholder="" name="username"
+                    [(ngModel)]="username">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputRPassword" placeholder="*********">
+                <input type="password" class="form-control" id="inputRPassword" placeholder="*********" name="password"
+                    [(ngModel)]="password">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputPassword" placeholder="*********">
+                <input type="password" class="form-control" id="inputPassword" placeholder="*********" name="passIgual"
+                    [(ngModel)]="passIgual">
             </div>
         </div>
         <div class="form-group row">
             <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
             <div class="col-sm-8">
-                <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value">
+                <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value" name="tipoUsuario"
+                    [(ngModel)]="tipoUsuario">
                     <option value="administrativo">Administrativo</option>
                     <option value="socio">Socio</option>
                     <option value="administrador">Administrador</option>
@@ -84,19 +89,236 @@
             <div class="form-group row">
                 <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" id="legajo">
+                    <input type="number" class="form-control" id="legajo" name="legajo" [(ngModel)]="legajo">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" list="browsers" id="escribania">
+                    <input type="text" class="form-control" list="browsers" id="escribania" name="escribania"
+                        [(ngModel)]="escribania">
                 </div>
             </div>
         </div>
         <div class="form-group row">
-            <button class="col-12 btn btn-info">Enviar</button>
+            <button class="col-12 btn btn-info" (click)="nuevoUsuario()">Enviar</button>
         </div>
     </form>
 
+    <!-- TABLA -->
+    <table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="5">
+        <thead>
+            <tr>
+                <th>
+                    <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="apellido">Apellido</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="telefono">Username</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="tipoUsuario">Tipo de Usuario</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="estado">Estado</mfDefaultSorter>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of mf.data">
+                <td>{{item.nombre}}</td>
+                <td>{{item.apellido}}</td>
+                <td>{{item.dni}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.tipoUsuario}}</td>
+                <td>{{item.estado}} </td>
+                <td>
+                    <button type="button " class="btn btn-default" (click)="elegirUsuario(item)" data-toggle="modal"
+                    data-target="#myModalPerfil">Perfil</button>
+                    <button type="button " class="btn btn-default" (click)="bajaUsuario(item)">Del</button>
+                    <button class="btn btn-default" (click)="elegirUsuario(item)" data-toggle="modal"
+                        data-target="#myModalMod">Modificar</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- FIN TABLA -->
+
+    <!-- The Modal -->
+    <div class="modal" id="myModalMod">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modificar Usuario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+
+                <div class="form-group row">
+                    <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" [(ngModel)]="apellido">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="dniM" name="dniM" [(ngModel)]="dni">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" id="fecnacM" name="fechaNacM" [(ngModel)]="fechaNac">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="direccionM" name="direccionM"
+                            [(ngModel)]="direccion">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" id="staticEmailM" placeholder="email@example.com"
+                            name="emailM" [(ngModel)]="email">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="foto" class="col-sm-4 col-form-label">Foto</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="fotoM" placeholder="foto" name="fotoM"
+                            [(ngModel)]="foto">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="usernameM" #nombreUs placeholder="" name="usernameM"
+                            [(ngModel)]="username">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputRPasswordM" placeholder="*********"
+                            name="passwordM" [(ngModel)]="password">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputPasswordM" placeholder="*********"
+                            name="passIgualM" [(ngModel)]="passIgual">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
+                            name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
+                            <option value="administrativo">Administrativo</option>
+                            <option value="socio">Socio</option>
+                            <option value="administrador">Administrador</option>
+                            <option value="gerente">Gerente</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <div *ngIf="tipoUsuario=='socio'">
+                    <div class="form-group row">
+                        <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" list="browsers" id="escribaniaM" name="escribaniaM"
+                                [(ngModel)]="escribania">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="actualizarUsuario()">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FIN MODAL -->
+    <!-- The Modal PERFIL-->
+    <div class="modal" id="myModalPerfil">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Perfil Usuario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-primary">Nombre: {{usuario.nombre}}</li>
+                    <li class="list-group-item list-group-item-primary">Apellido: {{usuario.apellido}}</li>
+                    <li class="list-group-item list-group-item-primary">Dni: {{usuario.dni}}</li>
+                    <li class="list-group-item list-group-item-primary">Fecha de Nacimiento: {{usuario.fechaNac}}</li>
+                    <li class="list-group-item list-group-item-primary">Direccion: {{usuario.direccion}}</li>
+                    <li class="list-group-item list-group-item-primary">Telefono: {{usuario.telefono}}</li>
+                    <li class="list-group-item list-group-item-primary">Email: {{usuario.email}}</li>
+                    <li class="list-group-item list-group-item-primary">Username: {{usuario.username}}</li>
+                </ul>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        (click)="actualizarUsuario()">Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- FIN MODAL -->
 </div>

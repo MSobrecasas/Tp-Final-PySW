@@ -28,6 +28,7 @@ export class RegistroComponent implements OnInit {
   dni: string;
   repetido: string;
   bandRepetido: boolean;
+  passIgual : string;
 
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
@@ -130,7 +131,8 @@ export class RegistroComponent implements OnInit {
       });
   }
 
-  public bajaUsuario() {
+  public bajaUsuario(usuario : Usuario) {
+    this.usuario = Object.assign(this.usuario, usuario);
     this.usuario.nombre = this.nombre;
     this.usuario.apellido = this.apellido;
     this.usuario.direccion = this.direccion;
