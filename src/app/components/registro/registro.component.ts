@@ -29,6 +29,8 @@ export class RegistroComponent implements OnInit {
   repetido: string;
   bandRepetido: boolean;
   passIgual : string;
+  legajo: string;
+  escribania: Escribania;
 
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
@@ -81,6 +83,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
+    console.log(this.usuario);
     this.usuarioService.newUsuario(this.usuario)
       .subscribe(
         result => {

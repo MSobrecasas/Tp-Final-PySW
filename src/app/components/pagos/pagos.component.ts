@@ -28,8 +28,9 @@ export class PagosComponent implements OnInit {
 
 
   constructor(private pagosService: PagosService, private usuarioService:UsuarioService) {
-    this.pagos = new Pagos;
-    this.usuarioN = new Usuario;
+    this.usuario = new Usuario();
+    this.pagos = new Pagos();
+    this.usuarioN = new Usuario();
     this.listaPagos = new Array<Pagos>();
     this.usuarios = new Array<Usuario>();
     this.obtenerPagos();
