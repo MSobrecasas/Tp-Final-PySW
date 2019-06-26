@@ -28,9 +28,11 @@ export class RegistroComponent implements OnInit {
   dni: string;
   repetido: string;
   bandRepetido: boolean;
-  passIgual : string;
+  passIgual: string;
   legajo: string;
   escribania: Escribania;
+  passIguales: boolean = false;
+  usuarioRepetido: boolean = false;
 
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
@@ -49,26 +51,48 @@ export class RegistroComponent implements OnInit {
           console.log(this.usuarios);
         }
       );
+    /*    remueve todos que esten en estado false 
+      for (var i=0; i<this.usuarios.length; i++){
+        if( this.usuarios[i].estado == false){
+          this.usuarios.splice(i,1);
+        }
+      } */
+  }
+
+  public obtenerBorrados() {
+    this.usuarioService.getUsuarios()
+      .subscribe(
+        results => {
+          this.usuarios = results['usuarios'];
+          console.log(this.usuarios);
+        }
+      );
+    /* remueve todos que esten en estado false */
+    for (var i = 0; i <= this.usuarios.length; i++) {
+      if (this.usuarios[i].estado == true) {
+        this.usuarios.splice(i, 1);
+      }
+    }
+
 
   }
-  public datosRepetidos() {
-    this.bandRepetido = false;
-    this.repetido = "Datos repetidos: ";
-    this.usuarios.forEach(function (user) {
-      if (this.usuario.dni == user.dni) {
-        this.repetido += "Dni ";
-        this.bandRepetido = true;
-      }
-      if (this.usuario.username == user.username) {
-        this.repetido += "UserName ";
-        this.bandRepetido = true;
-      }
-      if (this.bandRepetido == true) {
-        // ACA MOSTRAR LOS DATOS REPETIDO COMO MAS TE GUSTE
-      } else {
-        this.nuevoUsuario();
-      }
-    });
+  public validarUsuario() {
+    this.usuarioRepetido = false;
+    this.passIguales = false;
+    if (this.usuario.password == this.passIgual) {
+      this.passIguales = true;
+    }
+    for (var i = 0; i < this.usuarios.length; i++) {
+        if (this.usuarios[i].username == this.username){
+          this.usuarioRepetido = true;
+          alert("Nombre de usuario existente");
+        }
+    }
+
+    if (this.usuarioRepetido == false){
+      this.nuevoUsuario();
+    }
+
   }
   public nuevoUsuario() {
     this.usuario.nombre = this.nombre;
@@ -96,14 +120,19 @@ export class RegistroComponent implements OnInit {
   }
 
   public elegirUsuario(usuario: Usuario) {
-    //Creo una copia del mensaje recibido como parametro para NO modificarlo
-    //ya que el parametro esta mostrandose por el binding en el datatable
     this.usuario = Object.assign(this.usuario, usuario);
-    /*  //se asigna a la propiedad mensaje.empresa el correspondiente en el
-     //array de empresas, ya que este array es fuente de datos del <select>
-     this.usuario.empresa = this.empresas.find(function(item: Empresa) {
-     return item.id === mensaje.empresa.id;
-     }); */
+    this.nombre = this.usuario.nombre;
+    this.apellido = this.usuario.apellido;
+    this.direccion = this.usuario.direccion;
+    this.dni = this.usuario.dni;
+    this.email = this.usuario.email;
+    this.estado = this.usuario.estado;
+    //this.fechaNac = this.usuario.fechaNac;
+    this.foto = this.usuario.foto;
+    this.password = this.usuario.password;
+    this.telefono = this.usuario.telefono;
+    this.tipoUsuario = this.usuario.tipoUsuario;
+    this.username = this.usuario.username;
   }
 
 
@@ -115,7 +144,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.email = this.email;
     this.usuario.estado = true;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
+    this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
@@ -134,20 +163,19 @@ export class RegistroComponent implements OnInit {
       });
   }
 
-  public bajaUsuario(usuario : Usuario) {
-    this.usuario = Object.assign(this.usuario, usuario);
+  public bajaUsuario() {
     this.usuario.nombre = this.nombre;
     this.usuario.apellido = this.apellido;
     this.usuario.direccion = this.direccion;
     this.usuario.dni = this.dni;
     this.usuario.email = this.email;
-    this.usuario.estado = false; // ACA se le da de baja
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
+    this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
+    this.usuario.estado = !this.estado;
     this.usuarioService.modificarUsuario(this.usuario).subscribe(
       data => {
         console.log("eliminado correctamente.")

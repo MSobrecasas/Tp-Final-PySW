@@ -5,86 +5,94 @@
         <div class="form-group row">
             <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre">
+                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="apellido">
+                <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="apellido" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="dni" class="col-sm-4 col-form-label">DNI</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="dni">
+                <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="dni" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" id="fecnac" name="fechaNac" [(ngModel)]="fechaNac">
+                <input type="date" class="form-control" id="fecnac" name="fechaNac" [(ngModel)]="fechaNac" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="direccion">
+                <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="direccion"
+                    required>
             </div>
         </div>
         <div class="form-group row">
             <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="telefono">
+                <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="telefono" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
                 <input type="email" class="form-control" id="staticEmail" placeholder="email@example.com" name="email"
-                    [(ngModel)]="email">
+                    [(ngModel)]="email" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="foto" class="col-sm-4 col-form-label">Foto</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="foto" placeholder="foto" name="foto" [(ngModel)]="foto">
+                <input type="text" class="form-control" id="foto" placeholder="foto" name="foto" [(ngModel)]="foto"
+                    required>
             </div>
         </div>
         <div class="form-group row">
             <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" id="usernameUsav" #nombreUs placeholder="" name="username"
-                    [(ngModel)]="username">
+                    [(ngModel)]="username" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputRPassword2" placeholder="*********" name="password"
-                    [(ngModel)]="password">
+                <input type="password" class="form-control" id="Pass1" placeholder="*********" name="password"
+                    [(ngModel)]="password" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="inputPassword2" placeholder="*********" name="passIgual"
-                    [(ngModel)]="passIgual">
+                <input type="password" class="form-control" id="Pass2" placeholder="*********" name="passIgual"
+                    [(ngModel)]="passIgual" required>
+            </div>
+        </div>
+        <div class="form-group row" *ngIf="passIguales==true">
+            <label class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+                Las contraseñas deben ser iguales
             </div>
         </div>
         <div class="form-group row">
             <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
             <div class="col-sm-8">
-                <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value" name="tipoUsuario"
-                    [(ngModel)]="tipoUsuario">
+                <select class="form-control" name="tipoUsuario" [(ngModel)]="tipoUsuario">
                     <option value="administrativo">Administrativo</option>
-                    <option value="socio">Socio</option>
+                    <!--   <option value="socio">Socio</option> -->
                     <option value="administrador">Administrador</option>
                     <option value="gerente">Gerente</option>
                 </select>
             </div>
         </div>
         <hr>
+        <!--   #tipo (change)="tipoUsuario=$event.target.value"
         <div *ngIf="tipoUsuario=='socio'">
             <div class="form-group row">
                 <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
@@ -99,9 +107,9 @@
                         [(ngModel)]="escribania">
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="form-group row">
-            <button class="col-12 btn btn-info" (click)="nuevoUsuario()">Enviar</button>
+            <button class="col-12 btn btn-info" (click)="validarUsuario()">Enviar</button>
         </div>
     </form>
 
@@ -113,9 +121,6 @@
                     <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
                 </th>
                 <th>
-                    <mfDefaultSorter by="apellido">Apellido</mfDefaultSorter>
-                </th>
-                <th>
                     <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
                 </th>
                 <th>
@@ -125,24 +130,25 @@
                     <mfDefaultSorter by="tipoUsuario">Tipo de Usuario</mfDefaultSorter>
                 </th>
                 <th>
-                    <mfDefaultSorter by="estado">Estado</mfDefaultSorter>
+                    <mfDefaultSorter by="tipoUsuario">Estado</mfDefaultSorter>
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of mf.data">
-                <td>{{item.nombre}}</td>
-                <td>{{item.apellido}}</td>
+                <td>{{item.nombre}},{{item.apellido}} </td>
                 <td>{{item.dni}}</td>
                 <td>{{item.username}}</td>
                 <td>{{item.tipoUsuario}}</td>
-                <td>{{item.estado}} </td>
                 <td>
-                    <button type="button " class="btn btn-default" (click)="elegirUsuario(item)" data-toggle="modal"
-                    data-target="#myModalPerfil">Perfil</button>
-                    <button type="button " class="btn btn-default" (click)="bajaUsuario(item)">Del</button>
-                    <button class="btn btn-default" (click)="elegirUsuario(item)" data-toggle="modal"
-                        data-target="#myModalMod">Modificar</button>
+                    <p *ngIf="item.estado" class="text-success">Activo</p>
+                    <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
+                </td>
+                <td>
+                    <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                        data-target="#myModalPerfil">Perfil</button> -->
+                    <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                        data-target="#myModalMod">Administrar</button>
                 </td>
             </tr>
         </tbody>
@@ -164,7 +170,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Modificar Usuario</h4>
+                    <h4 class="modal-title">Administrar Usuario</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -172,90 +178,90 @@
 
                 <div class="form-group row">
                     <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" [(ngModel)]="apellido">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" [(ngModel)]="apellido" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="dni" class="col-sm-4 col-form-label">DNI</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="dniM" name="dniM" [(ngModel)]="dni">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="dniM" name="dniM" [(ngModel)]="dni" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" id="fecnacM" name="fechaNacM" [(ngModel)]="fechaNac">
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" id="fecnacM" name="fechaNacM" [(ngModel)]="fechaNac" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="direccionM" name="direccionM"
                             [(ngModel)]="direccion">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono">
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="email" class="form-control" id="staticEmailM" placeholder="email@example.com"
-                            name="emailM" [(ngModel)]="email">
+                            name="emailM" [(ngModel)]="email" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="foto" class="col-sm-4 col-form-label">Foto</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="fotoM" placeholder="foto" name="fotoM"
-                            [(ngModel)]="foto">
+                            [(ngModel)]="foto" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="usernameM" #nombreUs placeholder="" name="usernameM"
-                            [(ngModel)]="username">
+                            [(ngModel)]="username" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="password" class="form-control" id="inputRPasswordM" placeholder="*********"
-                            name="passwordM" [(ngModel)]="password">
+                            name="passwordM" [(ngModel)]="password" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="password" class="form-control" id="inputPasswordM" placeholder="*********"
-                            name="passIgualM" [(ngModel)]="passIgual">
+                            name="passIgualM" [(ngModel)]="passIgual" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
                             name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
                             <option value="administrativo">Administrativo</option>
-                            <option value="socio">Socio</option>
+                            <!-- <option value="socio">Socio</option> -->
                             <option value="administrador">Administrador</option>
                             <option value="gerente">Gerente</option>
                         </select>
                     </div>
                 </div>
                 <hr>
-                <div *ngIf="tipoUsuario=='socio'">
+                <!--  <div *ngIf="tipoUsuario=='socio'">
                     <div class="form-group row">
                         <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
                         <div class="col-sm-8">
@@ -269,14 +275,18 @@
                                 [(ngModel)]="escribania">
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Modal footer -->
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
                         (click)="actualizarUsuario()">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button *ngIf="usuario.estado" type="button " class="btn btn-info"
+                        (click)="bajaUsuario()">Dar de baja</button>
+                    <button *ngIf="!usuario.estado" type="button " class="btn btn-info"
+                        (click)="bajaUsuario()">Dar de Alta</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
                 </div>
 
             </div>
@@ -284,41 +294,5 @@
     </div>
 
     <!-- FIN MODAL -->
-    <!-- The Modal PERFIL-->
-    <div class="modal" id="myModalPerfil">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Perfil Usuario</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-primary">Nombre: {{usuario.nombre}}</li>
-                    <li class="list-group-item list-group-item-primary">Apellido: {{usuario.apellido}}</li>
-                    <li class="list-group-item list-group-item-primary">Dni: {{usuario.dni}}</li>
-                    <li class="list-group-item list-group-item-primary">Fecha de Nacimiento: {{usuario.fechaNac}}</li>
-                    <li class="list-group-item list-group-item-primary">Direccion: {{usuario.direccion}}</li>
-                    <li class="list-group-item list-group-item-primary">Telefono: {{usuario.telefono}}</li>
-                    <li class="list-group-item list-group-item-primary">Email: {{usuario.email}}</li>
-                    <li class="list-group-item list-group-item-primary">Username: {{usuario.username}}</li>
-                </ul>
-
-                <!-- Modal footer -->
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        (click)="actualizarUsuario()">Guardar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- FIN MODAL -->
 </div>
