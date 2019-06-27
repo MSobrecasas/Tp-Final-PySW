@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RouterLink, Router} from '@angular/router'
 
 @Component({
   selector: 'app-index',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: Router) { }
 
   ngOnInit() {
     
   }
+  navegar(){
+    this.route.navigateByUrl('/registro')
+  }
+  
   
 }

@@ -5,6 +5,7 @@ import { Escribano } from 'src/app/models/escribano';
 import { EscribanoService } from 'src/app/services/escribano.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
+import * as printJS from 'print-js'
 
 @Component({
   selector: 'app-alta-pagos',
@@ -26,7 +27,9 @@ export class AltaPagosComponent implements OnInit {
   fechaPago: string;
   detalle: string;
   usuarioN: Usuario;
-
+  //Validaciones
+  impEsValido: string;
+  detEsValido: string;
 
   constructor(private pagosService: PagosService, private usuarioService:UsuarioService) {
     this.pagos = new Pagos;
@@ -67,7 +70,9 @@ export class AltaPagosComponent implements OnInit {
     this.pagos.detalle = this.detalle;
     this.pagos.usuario = this.usuario;
     this.pagos.fechaPago = null;
-    this.pagosService.newPago(this.pagos)
+    this.validarDatos();
+    if(this.validarDatos()==true){
+      this.pagosService.newPago(this.pagos)
       .subscribe(
         result => {
           console.log("agregado correctamente.");
@@ -77,6 +82,8 @@ export class AltaPagosComponent implements OnInit {
           alert("Error al agregar.");
         }
       );
+    }
+    
   }
   public elegirPago(pagos: Pagos) {
     //Creo una copia del pago recibido como parametro para NO modificarlo
@@ -119,6 +126,33 @@ export class AltaPagosComponent implements OnInit {
         return false;
       }
     )
+  }
+
+  validarDatos(){
+    let completar: boolean = true;
+    if(this.importe==null || this.importe<0){
+      this.impEsValido = 'is-invalid'
+      completar = false
+    }else{
+      this.impEsValido = 'is-valid'
+    }
+    if(this.detalle==null || this.detalle==''){
+      this.detEsValido = 'is-invalid'
+      completar = false
+    }else{
+      this.detEsValido = 'is-valid'
+    }
+    return completar;
+  }
+  imprimirPagos(){
+    var someJSONdata= JSON.stringify(this.listaPagos);
+    printJS({
+      printable: someJSONdata,
+      type: 'json',
+      properties: ['id', 'usuario.nombre', 'importe'],
+      header: '<h3 class="custom-h3">My custom header</h3>',
+      style: '.custom-h3 { color: #c1c1c1;}'
+      })
   }
 
 }
