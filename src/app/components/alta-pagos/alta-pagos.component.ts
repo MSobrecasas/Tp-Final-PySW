@@ -61,12 +61,10 @@ export class AltaPagosComponent implements OnInit {
   }
 
   public nuevoPago() {
-    this.pagos.estadoPago = false;
     this.pagos.importe = this.importe;
     this.pagos.fecha = new Date();
     this.pagos.detalle = this.detalle;
     this.pagos.usuario = this.usuario;
-    this.pagos.fechaPago = null;
     this.pagosService.newPago(this.pagos)
       .subscribe(
         result => {
@@ -85,10 +83,17 @@ export class AltaPagosComponent implements OnInit {
     this.pagos.usuario = this.usuarios.find(function (item: Usuario) {
       return item.id === pagos.usuario.id;
     })
+    this.importe = this.pagos.importe;
+    this.fecha = this.pagos.fecha;
+    this.usuario = this.pagos.usuario;
   }
 
-  public actualizarPago() {
-
+  public actualizarPago(pagos: Pagos) {
+    this.pagos = Object.assign(this.pagos, pagos);
+    this.importe = this.pagos.importe;
+    this.fecha = this.pagos.fecha;
+    this.usuario = this.pagos.usuario;
+    this.detalle = this.pagos.detalle;
     this.pagos.estadoPago = true;
     this.pagos.fechaPago = new Date();
     this.pagosService.modificarPagos(this.pagos).subscribe(

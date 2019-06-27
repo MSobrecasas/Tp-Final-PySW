@@ -65,6 +65,9 @@
           Fecha Generado
         </th>
         <th>
+            Fecha Pago
+          </th>
+        <th>
           boton pago
         </th>
       </tr>
@@ -74,10 +77,17 @@
         <td>{{item.usuario.apellido}}, {{item.usuario.nombre}}</td>
         <td>{{item.detalle}}</td>
         <td>{{item.importe}}</td>
-        <td>{{item.estadoPago}}</td>
+        <td>
+            <p *ngIf="item.estadoPago" class="text-success">Pagado</p>
+            <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+        </td>
         <td>{{item.fecha.timestamp * 1000 | date: 'dd/MM/yyyy'}}</td>
         <td>
-          <button type="button " class="btn btn-default" >Registrar pago</button>
+           <p *ngIf="item.estadoPago" >{{item.fechaPago.timestamp * 1000 | date: 'dd/MM/yyyy'}}</p>
+            <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+        </td>
+        <td>
+          <button type="button " class="btn btn-info" (click)="actualizarPago(item)" >Registrar pago</button>
         </td>
       </tr>
     </tbody>

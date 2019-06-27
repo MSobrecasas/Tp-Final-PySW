@@ -183,6 +183,8 @@ export class RegistroComponent implements OnInit {
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
     this.usuario.estado = !this.estado;
+    this.usuario.legajo = "";
+    this.usuario.escribania = null;
     this.usuarioService.modificarUsuario(this.usuario).subscribe(
       data => {
         console.log("eliminado correctamente.")

@@ -66,7 +66,7 @@
                                 </li>
                                 <li>
                                     <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
-                                    [routerLink]="['escribanos']">Escribanias</a>
+                                    [routerLink]="['altaEscribania']">Escribanias</a>
                                 </li>
                                 <li>
                                     <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrador'"
@@ -117,10 +117,8 @@
                         class="fas fa-user" style="font-size: 1.7em"></i>Login</a>
                 <!-- ACAA PUSE LOI DE LOGIN -->
                 <div>
-
-                    <a *ngIf="!loginService.userLoggedIn" [routerLink]="['login']">(Login)</a>
                     <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
-                        {{loginService.userLogged.username}} (logout)
+                        {{loginService.userLogged.username}} (Cerrar Sesion)
                     </a>
                 </div>
                 <!-- hasta acaaaaaaaaaaaaaaaaaaaaaaaaa -->
