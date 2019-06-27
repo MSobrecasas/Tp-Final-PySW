@@ -19,7 +19,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { PagosComponent } from './components/pagos/pagos.component';
 import { EscribanosComponent } from './components/escribanos/escribanos.component';
 import { ContentsComponent } from './components/contents/contents.component';
-import {DataTableModule} from "angular-6-datatable";
+import {DataTableModule} from 'angular-6-datatable';
 
 
 import { LoginService } from './services/login.service';
@@ -31,6 +31,7 @@ import { ModificarPerfilComponent } from './components/modificar-perfil/modifica
 import { EscribaniasComponent } from './components/escribanias/escribanias.component';
 import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
 import {AlifeFileToBase64Module} from 'alife-file-to-base64'
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,6 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64'
     ModificarPerfilComponent,
     EscribaniasComponent,
     AltaPagosComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -64,7 +64,8 @@ import {AlifeFileToBase64Module} from 'alife-file-to-base64'
     HttpClientModule,
     FormsModule,
     DataTableModule,
-    AlifeFileToBase64Module
+    AlifeFileToBase64Module,
+    
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
