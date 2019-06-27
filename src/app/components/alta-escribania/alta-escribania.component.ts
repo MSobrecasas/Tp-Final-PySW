@@ -18,6 +18,13 @@ export class AltaEscribaniaComponent implements OnInit {
   escribaniaMod: Escribania;
   escribanias: Array<Escribania>;
 
+  nombre: string;
+  direccion: string;
+  telefono: string;
+  estado: boolean;
+  longitud: number;
+  latitud: number;
+
   constructor(private escribaniaService: EscribaniaService, private escribanoService: EscribanoService) {
     this.escribania = new Escribania();
     this.escribaniaMod = new Escribania();
@@ -50,6 +57,11 @@ export class AltaEscribaniaComponent implements OnInit {
       )
   }
   public nuevoEscribania() {
+    this.escribaniaMod.nombre = this.nombre;
+    this.escribaniaMod.direccion = this.direccion;
+    this.escribaniaMod.telefono = this.telefono;
+    this.escribaniaMod.longitud = this.longitud;
+    this.escribaniaMod.latitud = this.latitud;
     this.escribaniaMod.estado = true;
     this.escribania = this.escribaniaMod;
     this.escribaniaService.newEscribania(this.escribania)
@@ -87,7 +99,7 @@ export class AltaEscribaniaComponent implements OnInit {
   }
 
   public borrarEscribania() {
-   // this.escribania = Object.assign(this.escribania, escribania);
+    // this.escribania = Object.assign(this.escribania, escribania);
     this.escribania.estado = !this.escribania.estado;
     this.escribaniaService.modificarEscribania(this.escribania).subscribe(
       data => {
@@ -101,36 +113,36 @@ export class AltaEscribaniaComponent implements OnInit {
         console.log(error);
         return false;
       });
-   /*  this.escribaniaService.borrarEscribania(id).subscribe(
-      result => {
-        console.log("borrado correctamente.")
-        //actualizo la tabla de escribanias
-        this.obtenerEscribania();
-        return true;
-      },
-      error => {
-        console.error("Error deleting!");
-        console.log(error);
-        return false;
-      }
-    ) */
+    /*  this.escribaniaService.borrarEscribania(id).subscribe(
+       result => {
+         console.log("borrado correctamente.")
+         //actualizo la tabla de escribanias
+         this.obtenerEscribania();
+         return true;
+       },
+       error => {
+         console.error("Error deleting!");
+         console.log(error);
+         return false;
+       }
+     ) */
   }
 
   public escribanosEnEscribania(escribania: Escribania) {
     this.escribanosAsoc = new Array<Escribano>();
     this.obtenerEscribanos();
     this.escribania = Object.assign(this.escribania, escribania);
-    for(var i=0;i<this.escribanos.length; i++){
-      if(this.escribanos[i].escribania != null){
+    for (var i = 0; i < this.escribanos.length; i++) {
+      if (this.escribanos[i].escribania != null) {
         if (this.escribania.id == this.escribanos[i].escribania.id) {
-        this.escribanosAsoc.push(this.escribanos[i]);
+          this.escribanosAsoc.push(this.escribanos[i]);
+        }
       }
-      }
-       
+
     }
     console.log(this.escribanosAsoc);
-   /*  this.escribanos.forEach(function (escribano) {
-     
-    }); */
+    /*  this.escribanos.forEach(function (escribano) {
+      
+     }); */
   }
 }
