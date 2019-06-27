@@ -47,10 +47,16 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="foto" class="col-sm-4 col-form-label">Foto</label>
+            <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="foto" placeholder="foto" name="foto" [(ngModel)]="foto"
-                    required>
+                <div class="custom-file" style="z-index: 0 !important">
+                    <input type="file" class="custom-file-input" id="customFileLang" lang="es" alife-file-to-base64
+                        multiple (onFileChanged)="onFileChanges($event)">
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    <div class="row justify-content-center mt-1" *ngIf="foto">
+                        <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group row">
@@ -93,21 +99,21 @@
         </div>
         <hr>
         <!--   #tipo (change)="tipoUsuario=$event.target.value"
-        <div *ngIf="tipoUsuario=='socio'">
-            <div class="form-group row">
-                <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                <div class="col-sm-8">
-                    <input type="number" class="form-control" id="legajo" name="legajo" [(ngModel)]="legajo">
+            <div *ngIf="tipoUsuario=='socio'">
+                <div class="form-group row">
+                    <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="legajo" name="legajo" [(ngModel)]="legajo">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" list="browsers" id="escribania" name="escribania"
-                        [(ngModel)]="escribania">
+                <div class="form-group row">
+                    <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" list="browsers" id="escribania" name="escribania"
+                            [(ngModel)]="escribania">
+                    </div>
                 </div>
-            </div>
-        </div> -->
+            </div> -->
         <div class="form-group row">
             <button class="col-12 btn btn-info" (click)="validarUsuario()">Enviar</button>
         </div>
@@ -146,7 +152,7 @@
                 </td>
                 <td>
                     <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
-                        data-target="#myModalPerfil">Perfil</button> -->
+                            data-target="#myModalPerfil">Perfil</button> -->
                     <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
                         data-target="#myModalMod">Administrar</button>
                 </td>
@@ -225,10 +231,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="foto" class="col-sm-4 col-form-label">Foto</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="fotoM" placeholder="foto" name="fotoM"
-                            [(ngModel)]="foto" required>
+                    <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file" style="z-index: 0 !important">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
+                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            <div class="row justify-content-center mt-1" *ngIf="foto">
+                                <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -266,20 +278,20 @@
                 </div>
                 <hr>
                 <!--  <div *ngIf="tipoUsuario=='socio'">
-                    <div class="form-group row">
-                        <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                        <div class="col-sm-8">
-                            <input type="number" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo">
+                        <div class="form-group row">
+                            <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" list="browsers" id="escribaniaM" name="escribaniaM"
-                                [(ngModel)]="escribania">
+                        <div class="form-group row">
+                            <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" list="browsers" id="escribaniaM" name="escribaniaM"
+                                    [(ngModel)]="escribania">
+                            </div>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
 
                 <!-- Modal footer -->
 

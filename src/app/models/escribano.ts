@@ -7,15 +7,13 @@ export class Escribano {
     legajo: number;
     usuario: Usuario;
     escribania: Escribania;
-    pagos: Pagos;
     estado: boolean;
 
-    Escribano(id?: number, legajo?: number, usuario?: Usuario, escribania?: Escribania, pagos?: Pagos, estado?: boolean) {
+    Escribano(id?: number, legajo?: number, usuario?: Usuario, escribania?: Escribania, estado?: boolean) {
         this.id = id;
         this.legajo = legajo;
         this.usuario = usuario;
         this.escribania = escribania;
-        this.pagos = pagos;
         this.estado = estado;
     }
 }

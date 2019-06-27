@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 import { Escribania } from 'src/app/models/escribania';
+import { EscribaniaService } from 'src/app/services/escribania.service';
+import { EscribanoService } from 'src/app/services/escribano.service';
+import { Escribano } from 'src/app/models/escribano';
 
 @Component({
   selector: 'app-registro',
@@ -9,6 +12,12 @@ import { Escribania } from 'src/app/models/escribania';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+ 
+  //Foto
+  foto2: string;
+  comparar: string = 'data:image/jpeg;base64,';
+  archivo: string;
+  //----------
   usuario: Usuario;
   usuarioMod: Usuario;
   usuarios: Array<Usuario>;
@@ -200,5 +209,32 @@ export class RegistroComponent implements OnInit {
   }
   consola(dato: HTMLSelectElement) {
     console.log(dato.value);
+  }
+  onFileChanges(files) {
+    console.log("File :: ", files),
+      this.archivo = files[0].base64;
+    if (this.comparar == this.archivo.substr(0, 23) && this.archivo.substr(23).length < 4000000) {
+      this.foto = this.archivo;
+    } else {
+      alert("Inserte una Foto JPEG y menor a 4MB")
+    }
+  }
+  vaciarCampos() {
+    this.nombre=null;
+    this.apellido=null;
+    this.fechaNac=null;
+    this.direccion=null;
+    this.telefono=null;
+    this.email=null;
+    this.foto=null;
+    this.username=null;
+    this.password=null;
+    this.tipoUsuario=null;
+    this.estado=null;
+    this.dni=null;
+    this.repetido=null;
+    this.bandRepetido=null;
+    this.passIgual=null;
+    this.escribania=null;
   }
 }
