@@ -64,6 +64,7 @@ export class AltaEscribaniaComponent implements OnInit {
     this.escribaniaMod.latitud = this.latitud;
     this.escribaniaMod.estado = true;
     this.escribania = this.escribaniaMod;
+    console.log(this.escribaniaMod);
     this.escribaniaService.newEscribania(this.escribania)
       .subscribe(
         result => {

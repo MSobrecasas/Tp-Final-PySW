@@ -5,35 +5,35 @@
     <div class="form-group row">
       <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="nombreEscribania" name="nombre" (ngModel)="escribaniaMod.nombre">
+        <input type="text" class="form-control" id="nombreEscribania" name="nombre" [(ngModel)]="nombre">
       </div>
     </div>
     <div class="form-group row">
       <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
       <div class="col-sm-8">
         <input type="text" class="form-control" id="direccionEscr" value="" name="direccion"
-          [(ngModel)]="escribaniaMod.direccion">
+          [(ngModel)]="direccion">
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
       <div class="col-sm-8">
         <input type="number" class="form-control" id="telefonoEscr" value="NULL" name="telefono"
-          [(ngModel)]="escribaniaMod.telefono">
+          [(ngModel)]="telefono">
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Longitud</label>
       <div class="col-sm-8">
         <input type="number" class="form-control" id="long" value="NULL" name="Longitud"
-          [(ngModel)]="escribaniaMod.longitud">
+          [(ngModel)]="longitud">
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Latitud</label>
       <div class="col-sm-8">
         <input type="number" class="form-control" id="lat" value="NULL" name="latitud"
-          [(ngModel)]="escribaniaMod.latitud">
+          [(ngModel)]="latitud">
       </div>
     </div>
     <div class="form-group row">
@@ -63,7 +63,10 @@
         <td>{{item.nombre}}</td>
         <td>{{item.direccion}}</td>
         <td>{{item.telefono}}</td>
-        <td>{{item.estado}} </td>
+        <td>
+            <p *ngIf="item.estado" class="text-success">Activo</p>
+            <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
+        </td>
         <td>
 
           <button class="btn btn-info" (click)="elegirEscribania(item)" data-toggle="modal"
@@ -99,35 +102,35 @@
         <div class="form-group row">
           <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="nombreEscribania" name="nombre" [(ngModel)]="escribania.nombre">
+            <input type="text" class="form-control" id="nombreEscribania" name="nombre" [(ngModel)]="nombre">
           </div>
         </div>
         <div class="form-group row">
           <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" id="direccionEscr" value="" name="direccion"
-              [(ngModel)]="escribania.direccion">
+              [(ngModel)]="direccion">
           </div>
         </div>
         <div class="form-group row">
           <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
           <div class="col-sm-8">
             <input type="number" class="form-control" id="telefonoEscr" value="NULL" name="telefono"
-              [(ngModel)]="escribania.telefono">
+              [(ngModel)]="telefono">
           </div>
         </div>
         <div class="form-group row">
           <label for="telefonoEscr" class="col-sm-4 col-form-label">Longitud</label>
           <div class="col-sm-8">
             <input type="number" class="form-control" id="long1" value="NULL" name="longitud"
-              [(ngModel)]="escribaniaMod.longitud">
+              [(ngModel)]="longitud">
           </div>
         </div>
         <div class="form-group row">
           <label for="telefonoEscr" class="col-sm-4 col-form-label">Latitud</label>
           <div class="col-sm-8">
             <input type="number" class="form-control" id="lat1Escr" value="NULL" name="latitud"
-              [(ngModel)]="escribaniaMod.latitud">
+              [(ngModel)]="latitud">
           </div>
         </div>
 
