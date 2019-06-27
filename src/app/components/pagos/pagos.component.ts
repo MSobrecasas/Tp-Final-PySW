@@ -5,6 +5,7 @@ import { Escribano } from 'src/app/models/escribano';
 import { EscribanoService } from 'src/app/services/escribano.service';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-pagos',
@@ -27,7 +28,8 @@ export class PagosComponent implements OnInit {
   usuarioN: Usuario;
 
 
-  constructor(private pagosService: PagosService, private usuarioService:UsuarioService) {
+  constructor(private pagosService: PagosService, private usuarioService:UsuarioService,
+    public loginService: LoginService) {
     this.usuario = new Usuario();
     this.pagos = new Pagos();
     this.usuarioN = new Usuario();

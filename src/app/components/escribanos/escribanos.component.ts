@@ -164,9 +164,9 @@ export class EscribanosComponent implements OnInit {
     this.username = this.usuario.username;
     this.escribania = this.usuario.escribania;
     this.legajo = this.usuario.legajo;
-    this.usuario.escribania = this.escribanias.find(function (item: Escribania) {
+    /* this.usuario.escribania = this.escribanias.find(function (item: Escribania) {
       return item.id === usuario.escribania.id;
-    });
+    }); */
   }
 
 
@@ -177,7 +177,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.dni = this.dni;
     this.usuario.email = this.email;
     this.usuario.estado = true;
-    // this.usuario.fechaNac = this.fechaNac;
+    this.usuario.fechaNac = this.fechaNac;
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
@@ -205,7 +205,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.direccion = this.direccion;
     this.usuario.dni = this.dni;
     this.usuario.email = this.email;
-    //  this.usuario.fechaNac = this.fechaNac;
+    this.usuario.fechaNac = this.fechaNac;
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
