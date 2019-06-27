@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.0.1",
     "@angular/platform-browser-dynamic": "~8.0.1",
     "@angular/router": "~8.0.1",
+    "alife-file-to-base64": "0.0.4",
     "angular-6-datatable": "^0.8.0",
     "angular2-fontawesome": "^5.2.1",
     "bootstrap": "^4.3.1",

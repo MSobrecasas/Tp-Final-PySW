@@ -30,6 +30,7 @@ import { NovedadesComponent } from './components/novedades/novedades.component';
 import { ModificarPerfilComponent } from './components/modificar-perfil/modificar-perfil.component';
 import { EscribaniasComponent } from './components/escribanias/escribanias.component';
 import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
+import {AlifeFileToBase64Module} from 'alife-file-to-base64'
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    DataTableModule
+    DataTableModule,
+    AlifeFileToBase64Module
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
