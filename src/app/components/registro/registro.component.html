@@ -124,7 +124,7 @@
                     <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
                 </th>
                 <th>
-                    <mfDefaultSorter by="telefono">Username</mfDefaultSorter>
+                    <mfDefaultSorter by="username">Username</mfDefaultSorter>
                 </th>
                 <th>
                     <mfDefaultSorter by="tipoUsuario">Tipo de Usuario</mfDefaultSorter>
@@ -179,13 +179,15 @@
                 <div class="form-group row">
                     <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre" required>
+                        <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre"
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" [(ngModel)]="apellido" required>
+                        <input type="text" class="form-control" id="apellidoM" name="apellidoM" [(ngModel)]="apellido"
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -197,7 +199,8 @@
                 <div class="form-group row">
                     <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" id="fecnacM" name="fechaNacM" [(ngModel)]="fechaNac" required>
+                        <input type="date" class="form-control" id="fecnacM" name="fechaNacM" [(ngModel)]="fechaNac"
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -210,7 +213,8 @@
                 <div class="form-group row">
                     <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono" required>
+                        <input type="text" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono"
+                            required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -282,10 +286,10 @@
                 <div class="modal-footer">
                     <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
                         (click)="actualizarUsuario()">Guardar</button>
-                    <button *ngIf="usuario.estado" type="button " class="btn btn-info"
-                        (click)="bajaUsuario()">Dar de baja</button>
-                    <button *ngIf="!usuario.estado" type="button " class="btn btn-info"
-                        (click)="bajaUsuario()">Dar de Alta</button>
+                    <button *ngIf="usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
+                        baja</button>
+                    <button *ngIf="!usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
+                        Alta</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
                 </div>
 

@@ -79,7 +79,7 @@ export class RegistroComponent implements OnInit {
   public validarUsuario() {
     this.usuarioRepetido = false;
     this.passIguales = false;
-    if (this.usuario.password == this.passIgual) {
+    if (this.password == this.passIgual) {
       this.passIguales = true;
     }
     for (var i = 0; i < this.usuarios.length; i++) {
@@ -88,6 +88,13 @@ export class RegistroComponent implements OnInit {
           alert("Nombre de usuario existente");
         }
     }
+
+    for (var i = 0; i < this.usuarios.length; i++) {
+      if (this.usuarios[i].dni == this.dni){
+        this.usuarioRepetido = true;
+        alert("Dni de usuario existente");
+      }
+  }
 
     if (this.usuarioRepetido == false){
       this.nuevoUsuario();
