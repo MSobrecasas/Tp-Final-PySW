@@ -5,7 +5,7 @@
         <div class="form-group row">
             <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                <input type="text" class="form-control" id="nombre" name="nombre" (ngModel)="nombre" required>
             </div>
         </div>
         <div class="form-group row">
@@ -30,8 +30,9 @@
             <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
             <div class="col-sm-8">
                 <select [(ngModel)]="escribania" name="escribania" class="form-control">
-                    <option *ngFor="let escribania of escribanias" [ngValue]="escribania">
-                        {{escribania.nombre}}</option>
+                    <option *ngFor="let escribania of escribanias" [ngValue]="escribania" [hidden]="!escribania.estado">
+                     {{escribania.nombre}}
+                    </option>
                 </select>
             </div>
         </div>
@@ -62,12 +63,19 @@
             </div>
         </div>
         <div class="form-group row">
-            <label for="foto" class="col-sm-4 col-form-label">Foto</label>
+            <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="foto" placeholder="foto" name="foto" [(ngModel)]="foto"
-                    required>
+                <div class="custom-file" style="z-index: 0 !important">
+                    <input type="file" class="custom-file-input" id="customFileLang" lang="es" alife-file-to-base64
+                        multiple (onFileChanged)="onFileChanges($event)">
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    <div class="row justify-content-center mt-1" *ngIf="foto">
+                        <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="form-group row">
             <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
             <div class="col-sm-8">
@@ -124,7 +132,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of mf.data">
+            <tr *ngFor="let item of mf.data" [hidden]="item.tipoUsuario!='socio'">
                 <td>{{item.nombre}},{{item.apellido}} </td>
                 <td>{{item.dni}}</td>
                 <td>{{item.legajo}}</td>
@@ -184,16 +192,16 @@
                 </div>
                 <div class="form-group row">
                     <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control" id="legajoMod" name="legajoM" [(ngModel)]="legajo"
                             required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                    <div class="col-sm-8">
-                        <select [(ngModel)]="escribania" name="escribania">
-                            <option *ngFor="let escribania of escribanias" [ngValue]="escribania">
+                    <div class="col-sm-6">
+                        <select [(ngModel)]="escribania" name="escribania" class="form-control" >
+                            <option *ngFor="let escribania of escribanias" [ngValue]="escribania" [hidden]="!escribania.estado">
                                 {{escribania.nombre}}</option>
                         </select>
                     </div>
@@ -233,10 +241,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="foto" class="col-sm-4 col-form-label">Foto</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="fotoM" placeholder="foto" name="fotoM"
-                            [(ngModel)]="foto" required>
+                    <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file" style="z-index: 0 !important">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
+                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            <div class="row justify-content-center mt-1" *ngIf="foto">
+                                <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">

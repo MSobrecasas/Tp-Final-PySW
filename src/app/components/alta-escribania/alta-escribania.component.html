@@ -51,10 +51,10 @@
         <td>{{item.telefono}}</td>
         <td>{{item.estado}} </td>
         <td>
-          <button type="button " class="btn btn-default" (click)="borrarEscribania(item)">Del</button>
-          <button class="btn btn-default" (click)="elegirEscribania(item)" data-toggle="modal"
+
+          <button class="btn btn-info" (click)="elegirEscribania(item)" data-toggle="modal"
             data-target="#myModalMod">Modificar</button>
-          <button class="btn btn-default" (click)="escribanosEnEscribania(item)" data-toggle="modal"
+          <button class="btn btn-info" (click)="escribanosEnEscribania(item)" data-toggle="modal"
             data-target="#myModalEscri">ver Escribanos</button>
         </td>
       </tr>
@@ -106,9 +106,13 @@
         <!-- Modal footer -->
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal"
+          <button *ngIf="escribania.estado" type="button " class="btn btn-info" (click)="borrarEscribania()">Dar de
+            Baja</button>
+          <button *ngIf="!escribania.estado" type="button " class="btn btn-info" (click)="borrarEscribania()">Dar de
+            Alta</button>
+          <button *ngIf="escribania.estado" type="button" class="btn btn-info" data-dismiss="modal"
             (click)="actualizarEscribania()">Guardar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
         </div>
 
       </div>
@@ -123,36 +127,41 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modificar Mensaje</h4>
+          <h4 class="modal-title">Escribanos</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
+        <div *ngIf="escribanosAsoc==null">
+          No hay escribanos Registrados en la Escribania
+        </div>
+        <div *ngIf="escribanosAsoc!=null">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  nombre
+                </th>
+                <th>
+                  Legajo
+                </th>
+                <th>
+                  Telefono
+                </th>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>
-                nombre
-              </th>
-              <th>
-                Legajo
-              </th>
-              <th>
-                Telefono
-              </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of escribanosAsoc">
+                <td>{{item.usuario.apellido}},{{item.usuario.nombre}}</td>
+                <td>{{item.legajo}}</td>
+                <td>{{item.usuario.telefono}}</td>
+              </tr>
+            </tbody>
 
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of escribanosAsoc">
-              <td>{{item.usuario.apellido}},{{item.usuario.nombre}}</td>
-              <td>{{item.legajo}}</td>
-              <td>{{item.usuario.telefono}}</td>
-            </tr>
-          </tbody>
+          </table>
+        </div>
 
-        </table>
 
         <!-- Modal footer -->
 

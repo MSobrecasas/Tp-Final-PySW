@@ -11,6 +11,11 @@ import { EscribaniaService } from 'src/app/services/escribania.service';
 })
 export class EscribanosComponent implements OnInit {
 
+  //Foto
+  foto2: string;
+  comparar: string = 'data:image/jpeg;base64,';
+  archivo: string;
+
   usuario: Usuario;
   usuarioMod: Usuario;
   usuarios: Array<Usuario>;
@@ -37,7 +42,7 @@ export class EscribanosComponent implements OnInit {
   passIguales: boolean = false;
   usuarioRepetido: boolean = false;
   agregado: boolean;
-  tablaEscribanos= false;
+  tablaEscribanos = false;
 
 
   constructor(private usuarioService: UsuarioService,
@@ -53,7 +58,7 @@ export class EscribanosComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
   public obtenerEscribanias() {
     this.escribaniaService.getEscribanias()
@@ -72,9 +77,9 @@ export class EscribanosComponent implements OnInit {
           console.log(this.usuarios);
         }
       );
-     
+
   }
- 
+
 
 
 
@@ -138,10 +143,10 @@ export class EscribanosComponent implements OnInit {
         error => {
           alert("Error al agregar.");
         });
-    
+
 
   }
-  
+
 
   public elegirUsuario(usuario: Usuario) {
     this.usuario = Object.assign(this.usuario, usuario);
@@ -159,6 +164,9 @@ export class EscribanosComponent implements OnInit {
     this.username = this.usuario.username;
     this.escribania = this.usuario.escribania;
     this.legajo = this.usuario.legajo;
+    this.usuario.escribania = this.escribanias.find(function (item: Escribania) {
+      return item.id === usuario.escribania.id;
+    });
   }
 
 
@@ -169,7 +177,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.dni = this.dni;
     this.usuario.email = this.email;
     this.usuario.estado = true;
-    this.usuario.fechaNac = this.fechaNac;
+    // this.usuario.fechaNac = this.fechaNac;
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
@@ -197,7 +205,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.direccion = this.direccion;
     this.usuario.dni = this.dni;
     this.usuario.email = this.email;
-    this.usuario.fechaNac = this.fechaNac;
+    //  this.usuario.fechaNac = this.fechaNac;
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
@@ -219,6 +227,35 @@ export class EscribanosComponent implements OnInit {
   }
   consola(dato: HTMLSelectElement) {
     console.log(dato.value);
+  }
+
+  onFileChanges(files) {
+    console.log("File :: ", files),
+      this.archivo = files[0].base64;
+    if (this.comparar == this.archivo.substr(0, 23) && this.archivo.substr(23).length < 4000000) {
+      this.foto = this.archivo;
+    } else {
+      alert("Inserte una Foto JPEG y menor a 4MB")
+    }
+  }
+
+  vaciarCampos() {
+    this.nombre = null;
+    this.apellido = null;
+    this.fechaNac = null;
+    this.direccion = null;
+    this.telefono = null;
+    this.email = null;
+    this.foto = null;
+    this.username = null;
+    this.password = null;
+    this.tipoUsuario = null;
+    this.estado = null;
+    this.dni = null;
+    this.repetido = null;
+    this.bandRepetido = null;
+    this.passIgual = null;
+    this.escribania = null;
   }
 
 }

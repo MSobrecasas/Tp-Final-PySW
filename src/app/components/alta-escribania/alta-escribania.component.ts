@@ -86,18 +86,18 @@ export class AltaEscribaniaComponent implements OnInit {
       });
   }
 
-  public borrarEscribania(escribania: Escribania) {
-    this.escribania = Object.assign(this.escribania, escribania);
-    this.escribania.estado = false;
+  public borrarEscribania() {
+   // this.escribania = Object.assign(this.escribania, escribania);
+    this.escribania.estado = !this.escribania.estado;
     this.escribaniaService.modificarEscribania(this.escribania).subscribe(
       data => {
-        console.log("escribania actualizada.")
+        console.log("escribania borrada.")
         //actualizo la tabla de mensajes
         this.obtenerEscribania();
         return true;
       },
       error => {
-        console.error("Error al actualizar escribania");
+        console.error("Error al borrar escribania");
         console.log(error);
         return false;
       });
