@@ -1,3 +1,30 @@
-<p>
-  escribanias works!
-</p>
+<table class="table table-striped" [mfData]="escribanias" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+      <tr>
+        <th>
+          <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="direccion">Direccion</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mf.data">
+        <td>{{item.nombre}}</td>
+        <td>{{item.direccion}}</td>
+        <td>{{item.telefono}}</td>
+        <td>boton ver ubicacion</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>

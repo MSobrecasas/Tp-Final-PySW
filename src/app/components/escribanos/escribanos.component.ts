@@ -3,8 +3,6 @@ import { Usuario } from 'src/app/models/usuario';
 import { Escribania } from 'src/app/models/escribania';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { EscribaniaService } from 'src/app/services/escribania.service';
-import { EscribanoService } from 'src/app/services/escribano.service';
-import { Escribano } from 'src/app/models/escribano';
 
 @Component({
   selector: 'app-escribanos',
@@ -32,32 +30,30 @@ export class EscribanosComponent implements OnInit {
   repetido: string;
   bandRepetido: boolean;
   passIgual: string;
-  legajo: number;
+  legajo: string;
   escribania: Escribania;
   escribanias: Array<Escribania>;
-  escribano: Escribano;
-  escribanos: Array<Escribano>;
+  escribanos: Array<Usuario>;
   passIguales: boolean = false;
   usuarioRepetido: boolean = false;
   agregado: boolean;
+  tablaEscribanos= false;
 
 
   constructor(private usuarioService: UsuarioService,
-    private escribaniaService: EscribaniaService,
-    private escribanoService: EscribanoService) {
+    private escribaniaService: EscribaniaService) {
     this.usuarioMod = new Usuario();
     this.usuario = new Usuario();
     this.usuarios = new Array<Usuario>();
     this.escribanias = new Array<Escribania>();
-    this.escribanos = new Array<Escribano>();
+    this.escribanos = new Array<Usuario>();
     this.escribania = new Escribania();
-    this.escribano = new Escribano();
     this.obtenerUsuarios();
     this.obtenerEscribanias();
-    this.obtenerEscribanos();
   }
 
   ngOnInit() {
+    
   }
   public obtenerEscribanias() {
     this.escribaniaService.getEscribanias()
@@ -65,16 +61,6 @@ export class EscribanosComponent implements OnInit {
         results => {
           this.escribanias = results['escribanias'];
           console.log(this.escribanias);
-        }
-      );
-  }
-
-  public obtenerEscribanos() {
-    this.escribanoService.getEscribanos()
-      .subscribe(
-        results => {
-          this.escribanos = results['escribanos'];
-          console.log(this.escribanos);
         }
       );
   }
@@ -86,8 +72,9 @@ export class EscribanosComponent implements OnInit {
           console.log(this.usuarios);
         }
       );
-
+     
   }
+ 
 
 
 
@@ -112,7 +99,7 @@ export class EscribanosComponent implements OnInit {
     }
 
     for (var i = 0; i < this.escribanos.length; i++) {
-      if (this.escribanos[i].legajo == this.legajo) {
+      if (this.usuarios[i].legajo == this.legajo) {
         this.usuarioRepetido = true;
         alert("Legajo de usuario existente");
       }
@@ -138,53 +125,23 @@ export class EscribanosComponent implements OnInit {
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = "socio";
     this.usuario.username = this.username;
+    this.usuario.legajo = this.legajo;
+    this.usuario.escribania = this.escribania;
     console.log(this.usuario);
-   
+
     this.usuarioService.newUsuario(this.usuario)
       .subscribe(
         result => {
           console.log("agregado correctamente.");
           this.obtenerUsuarios();
-         // this.obtenerUsuarioCreado();
-          this.escribano.usuario= this.usuarios[this.usuarios.length];
-          console.log(this.escribano);
-          this.agregado = true;
-          this.escribano.estado = true;
-          this.escribano.legajo = this.legajo;
-          this.escribano.escribania = this.escribania;
-          this.escribanoService.newEscribano(this.escribano)
-            .subscribe(
-              res => {
-                console.log(" escribano agregado correctamente");
-                this.obtenerEscribanos();
-              },
-              error => {
-                alert("Error al agregar Escribano.");
-              });
-
         },
         error => {
           alert("Error al agregar.");
         });
-
-    if (this.agregado) {
-     
-
-    }
+    
 
   }
-  public obtenerUsuarioCreado() {
-    this.obtenerUsuarios();
-    console.log(this.usuarios.length);
-    for (var i = 0; i <= this.usuarios.length; i++) {
-      if (this.usuarios[i].username == this.username) {
-        this.usuario = this.usuarios[i];
-        console.log("usuario por dni");
-        console.log(this.usuario);
-      }
-    }
-
-  }
+  
 
   public elegirUsuario(usuario: Usuario) {
     this.usuario = Object.assign(this.usuario, usuario);
@@ -200,6 +157,8 @@ export class EscribanosComponent implements OnInit {
     this.telefono = this.usuario.telefono;
     this.tipoUsuario = this.usuario.tipoUsuario;
     this.username = this.usuario.username;
+    this.escribania = this.usuario.escribania;
+    this.legajo = this.usuario.legajo;
   }
 
 
@@ -216,7 +175,9 @@ export class EscribanosComponent implements OnInit {
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
-    this.usuarioService.modificarUsuario(this.usuario).subscribe(
+    this.usuario.legajo = this.legajo;
+    this.usuario.escribania = this.escribania;
+    this.usuarioService.modificarEscribano(this.usuario).subscribe(
       data => {
         console.log("modificado correctamente.")
         //actualizo la tabla de mensajes
@@ -243,7 +204,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
     this.usuario.estado = !this.estado;
-    this.usuarioService.modificarUsuario(this.usuario).subscribe(
+    this.usuarioService.modificarEscribano(this.usuario).subscribe(
       data => {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes

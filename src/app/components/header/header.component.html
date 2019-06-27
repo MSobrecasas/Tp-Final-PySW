@@ -1,136 +1,134 @@
 <div class="cyan-skin">
-    <div id="mySidenav" class="sidenav justify-content-center">
-        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-        <ul class="list-group bg-transparent">
-            <!-- Logo -->
-            <li>
-                <div class="social">
-                    <a href="#" class="d-inline m-2" style="font-size: 4em"><i class="fas fa-feather-alt"> </i></a>
-                </div>
-            </li>
-            <!--/. Logo -->
-            <!--Social-->
-            <li>
-                <div class="social">
-                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-pinterest"> </i></a>
-                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-facebook-f"> </i></a>
-                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-google-plus-g"> </i></a>
-                    <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-twitter"> </i></a>
-                </div>
-            </li>
-
-            <!--/Social-->
-            <!--Search Form-->
-            <form class="search-form" role="search">
-                <div class="form-group md-form mt-0 pt-1 waves-light">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-            </form>
-            <!--/.Search Form-->
-            <!-- Side navigation links -->
-            <li class="list-group bg-transparent">
-                <ul class="list-group-item bg-transparent">
-                    <li class="list-group bg-transparent">
-                        <a class="nav-link" [routerLink]="['contents']">Inicio</a>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a class="nav-link" [routerLink]="['slide']">Slide</a>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
-                        class="nav-link" [routerLink]="['modificarPerfil']">Modificar Perfil</a>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
-                        class="nav-link" [routerLink]="['pagos']">Historial de Pagos</a>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a class="nav-link" [routerLink]="['escribania']">Escribanias</a>
-                    </li>
-                    <li *ngIf="loginService.userLoggedIn"
-                    class="list-group bg-transparent">
-                        <a class="nav-link" [routerLink]="['novedades']">Novedades</a>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a href="#demo" data-toggle="collapse" class="">
-                            <i class="fas fa-chevron-right"></i>Administracion</a>
-                        <div id="demo" class="collapse">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
-                                    class="nav-link"[routerLink]="['escribanos']">Escribanos</a>
-                                </li>
-                                <li>
-                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='gerente'"
-                                    [routerLink]="['altaPagos']">Pagos</a>
-                                </li>
-                                <li>
-                                    <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
-                                    [routerLink]="['escribanos']">Escribanias</a>
-                                </li>
-                                <li>
-                                    <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrador'"
-                                    [routerLink]="['registro']">Usuarios</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="list-group bg-transparent">
-                        <a href="#demo2" data-toggle="collapse" class="">
-                            <i class="fas fa-chevron-right"></i> Submit blog</a>
-                        <div id="demo2" class="collapse">
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="">Submit listing</a>
-                                </li>
-                                <li><a href="#" class="">Registration form</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-            <!--/. Side navigation links -->
-        </ul>
-    </div>
-</div>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top navColg"
-    style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav">
-    <div>
-        <div class="">
-            <span style="font-size:30px;cursor:pointer" style="font-size: 2em; color: white; cursor: pointer"
-                (click)="openNav()">
-                <i class="fas fa-angle-double-right mx-2"></i></span>
-            <a id="logo" class="navbar-brand">Colegio de Escribanos</a>
+        <div id="mySidenav" class="sidenav justify-content-center">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <ul class="list-group bg-transparent">
+                <!-- Logo -->
+                <li>
+                    <div class="social">
+                        <a href="#" class="d-inline m-2" style="font-size: 4em"><i class="fas fa-feather-alt"> </i></a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+                <!--Social-->
+                <li>
+                    <div class="social">
+                        <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-pinterest"> </i></a>
+                        <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-facebook-f"> </i></a>
+                        <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-google-plus-g"> </i></a>
+                        <a href="#" class="d-inline m-2" style="font-size: 1.5em"><i class="fab fa-twitter"> </i></a>
+                    </div>
+                </li>
+    
+                <!--/Social-->
+                <!--Search Form-->
+                <form class="search-form" role="search">
+                    <div class="form-group md-form mt-0 pt-1 waves-light">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li class="list-group bg-transparent">
+                    <ul class="list-group-item bg-transparent">
+                        <li class="list-group bg-transparent">
+                            <a class="nav-link" [routerLink]="['contents']">Inicio</a>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a class="nav-link" [routerLink]="['slide']">Slide</a>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
+                            class="nav-link" [routerLink]="['modificarPerfil']">Modificar Perfil</a>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='socio'"
+                            class="nav-link" [routerLink]="['pagos']">Historial de Pagos</a>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a class="nav-link" [routerLink]="['escribania']">Escribanias</a>
+                        </li>
+                        <li *ngIf="loginService.userLoggedIn"
+                        class="list-group bg-transparent">
+                            <a class="nav-link" [routerLink]="['novedades']">Novedades</a>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a href="#demo" data-toggle="collapse" class="">
+                                <i class="fas fa-chevron-right"></i>Administracion</a>
+                            <div id="demo" class="collapse">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
+                                        class="nav-link"[routerLink]="['escribanos']">Escribanos</a>
+                                    </li>
+                                    <li>
+                                        <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='gerente'"
+                                        [routerLink]="['altaPagos']">Pagos</a>
+                                    </li>
+                                    <li>
+                                        <a  *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
+                                        [routerLink]="['altaEscribania']">Escribanias</a>
+                                    </li>
+                                    <li>
+                                        <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrador'"
+                                        [routerLink]="['registro']">Usuarios</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="list-group bg-transparent">
+                            <a href="#demo2" data-toggle="collapse" class="">
+                                <i class="fas fa-chevron-right"></i> Submit blog</a>
+                            <div id="demo2" class="collapse">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="">Submit listing</a>
+                                    </li>
+                                    <li><a href="#" class="">Registration form</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
         </div>
     </div>
-    <div class="nav navbar-nav ml-auto" id="opciones">
-        <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
-            <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-envelope" style="font-size: 1.7em"></i>
-                    <span class="d-sm-none d-xl-inline-block">Contacto</span></a>
-            </li>
-            <li class="nav-item dropleft">
-                <a class="nav-link d-xl-none pl-2" [routerLink]="['login']">
-                    <i class="fas fa-user" style="font-size: 1.7em"></i></a>
-                <a *ngIf="!loginService.userLoggedIn" class="nav-link dropdown-toggle d-sm-none d-xl-block"
-                    data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i
-                        class="fas fa-user" style="font-size: 1.7em"></i>Login</a>
-                <!-- ACAA PUSE LOI DE LOGIN -->
-                <div>
-
-                    <a *ngIf="!loginService.userLoggedIn" [routerLink]="['login']">(Login)</a>
-                    <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
-                        {{loginService.userLogged.username}} (logout)
-                    </a>
-                </div>
-                <!-- hasta acaaaaaaaaaaaaaaaaaaaaaaaaa -->
-                <!-- OKAAAAAAAY-->
-                <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
-                    <app-login-user></app-login-user>
-                </div>
-            </li>
-        </ul>
-
-    </div>
-
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navColg"
+        style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav">
+        <div>
+            <div class="">
+                <span style="font-size:30px;cursor:pointer" style="font-size: 2em; color: white; cursor: pointer"
+                    (click)="openNav()">
+                    <i class="fas fa-angle-double-right mx-2"></i></span>
+                <a id="logo" class="navbar-brand">Colegio de Escribanos</a>
+            </div>
+        </div>
+        <div class="nav navbar-nav ml-auto" id="opciones">
+            <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-envelope" style="font-size: 1.7em"></i>
+                        <span class="d-sm-none d-xl-inline-block">Contacto</span></a>
+                </li>
+                <li class="nav-item dropleft">
+                    <a class="nav-link d-xl-none pl-2" [routerLink]="['login']">
+                        <i class="fas fa-user" style="font-size: 1.7em"></i></a>
+                    <a *ngIf="!loginService.userLoggedIn" class="nav-link dropdown-toggle d-sm-none d-xl-block"
+                        data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i
+                            class="fas fa-user" style="font-size: 1.7em"></i>Login</a>
+                    <!-- ACAA PUSE LOI DE LOGIN -->
+                    <div>
+                        <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
+                            {{loginService.userLogged.username}} (Cerrar Sesion)
+                        </a>
+                    </div>
+                    <!-- hasta acaaaaaaaaaaaaaaaaaaaaaaaaa -->
+                    <!-- OKAAAAAAAY-->
+                    <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
+                        <app-login-user></app-login-user>
+                    </div>
+                </li>
+            </ul>
+    
+        </div>
+    
+    </nav>

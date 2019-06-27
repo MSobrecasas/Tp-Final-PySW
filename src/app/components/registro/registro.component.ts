@@ -14,6 +14,7 @@ import { Escribano } from 'src/app/models/escribano';
 export class RegistroComponent implements OnInit {
  
   //Foto
+  foto2: string;
   comparar: string = 'data:image/jpeg;base64,';
   archivo: string;
   //----------
@@ -57,7 +58,6 @@ export class RegistroComponent implements OnInit {
         results => {
           this.usuarios = results['usuarios'];
           console.log(this.usuarios);
-          
         }
       );
     /*    remueve todos que esten en estado false 
@@ -118,7 +118,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.email = this.email;
     this.usuario.estado = true;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = this.foto;
+    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
@@ -192,6 +192,8 @@ export class RegistroComponent implements OnInit {
     this.usuario.tipoUsuario = this.tipoUsuario;
     this.usuario.username = this.username;
     this.usuario.estado = !this.estado;
+    this.usuario.legajo = "";
+    this.usuario.escribania = null;
     this.usuarioService.modificarUsuario(this.usuario).subscribe(
       data => {
         console.log("eliminado correctamente.")
@@ -231,8 +233,8 @@ export class RegistroComponent implements OnInit {
     this.estado=null;
     this.dni=null;
     this.repetido=null;
+    this.bandRepetido=null;
+    this.passIgual=null;
     this.escribania=null;
   }
-  
-  
 }

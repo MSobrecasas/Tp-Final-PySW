@@ -1,4 +1,5 @@
 import { Escribano } from './escribano';
+import { Escribania } from './escribania';
 
 
 export class Usuario {
@@ -15,10 +16,12 @@ export class Usuario {
     tipoUsuario: string;
     estado: boolean;
     dni: string;
+    legajo: string;
+    escribania: Escribania;
 
     Usuario(id?: number, nombre?: string, apellido?: string, fechaNac?: Date, direccion?: string,
         telefono?: string, email?: string, foto?: string, username?: string, password?: string,
-        tipoUsuario?: string, estado?: boolean, dni?: string) {
+        tipoUsuario?: string, estado?: boolean, dni?: string, legajo?: string, escribania?: Escribania) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -32,5 +35,7 @@ export class Usuario {
         this.tipoUsuario = tipoUsuario;
         this.estado = estado;
         this.dni = dni;
+        this.legajo = legajo;
+        this.escribania = escribania;
     }
 }
