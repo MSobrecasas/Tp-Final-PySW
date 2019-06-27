@@ -19,7 +19,7 @@ import { LoginUserComponent } from './components/login-user/login-user.component
 import { PagosComponent } from './components/pagos/pagos.component';
 import { EscribanosComponent } from './components/escribanos/escribanos.component';
 import { ContentsComponent } from './components/contents/contents.component';
-import {DataTableModule} from "angular-6-datatable";
+import {DataTableModule} from 'angular-6-datatable';
 
 
 import { LoginService } from './services/login.service';
@@ -32,6 +32,7 @@ import { EscribaniasComponent } from './components/escribanias/escribanias.compo
 import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
 import {AlifeFileToBase64Module} from 'alife-file-to-base64'
 import { AgmCoreModule } from '@agm/core';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAeCoYNOs5mOnN6e1m0LaggF7hxh9NzEDs'
     })
+    
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]
