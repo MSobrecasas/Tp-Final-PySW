@@ -13,11 +13,14 @@ import { Usuario } from 'src/app/models/usuario';
 })
 export class AltaPagosComponent implements OnInit {
 
-  
+
   pagos: Pagos;
   listaPagos: Array<Pagos>;
   usuario: Usuario;
   usuarios: Array<Usuario>;
+  //Validaciones
+  impEsValido: string;
+  detEsValido: string;
   //variables para asignar
   id: number;
   importe: number;
@@ -28,7 +31,7 @@ export class AltaPagosComponent implements OnInit {
   usuarioN: Usuario;
 
 
-  constructor(private pagosService: PagosService, private usuarioService:UsuarioService) {
+  constructor(private pagosService: PagosService, private usuarioService: UsuarioService) {
     this.pagos = new Pagos;
     this.usuarioN = new Usuario;
     this.listaPagos = new Array<Pagos>();
@@ -65,16 +68,19 @@ export class AltaPagosComponent implements OnInit {
     this.pagos.fecha = new Date();
     this.pagos.detalle = this.detalle;
     this.pagos.usuario = this.usuario;
-    this.pagosService.newPago(this.pagos)
-      .subscribe(
-        result => {
-          console.log("agregado correctamente.");
-          this.obtenerPagos();
-        },
-        error => {
-          alert("Error al agregar.");
-        }
-      );
+    if (this.validarDatos()) {
+      this.pagosService.newPago(this.pagos)
+        .subscribe(
+          result => {
+            console.log("agregado correctamente.");
+            this.obtenerPagos();
+          },
+          error => {
+            alert("Error al agregar.");
+          }
+        );
+    }
+
   }
   public elegirPago(pagos: Pagos) {
     //Creo una copia del pago recibido como parametro para NO modificarlo
@@ -124,6 +130,22 @@ export class AltaPagosComponent implements OnInit {
         return false;
       }
     )
+  }
+  validarDatos() {
+    let completar: boolean = true;
+    if (this.importe == null || this.importe < 0) {
+      this.impEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.impEsValido = 'is-valid'
+    }
+    if (this.detalle == null || this.detalle == '') {
+      this.detEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.detEsValido = 'is-valid'
+    }
+    return completar;
   }
 
 }
