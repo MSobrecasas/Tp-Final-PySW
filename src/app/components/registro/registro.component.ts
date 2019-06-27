@@ -60,12 +60,6 @@ export class RegistroComponent implements OnInit {
           console.log(this.usuarios);
         }
       );
-    /*    remueve todos que esten en estado false 
-      for (var i=0; i<this.usuarios.length; i++){
-        if( this.usuarios[i].estado == false){
-          this.usuarios.splice(i,1);
-        }
-      } */
   }
 
   public obtenerBorrados() {

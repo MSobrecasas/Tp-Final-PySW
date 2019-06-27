@@ -17,6 +17,10 @@ export class UsuarioService {
     return this._http.get(this.link);
   }
 
+  getUsuario(id: number): Observable<any> {
+    return this._http.get(this.link+id);
+  }
+
   public newUsuario(usuario) {
     const httpOption = {
       headers: new HttpHeaders({
