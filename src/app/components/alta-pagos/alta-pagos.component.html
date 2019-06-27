@@ -5,9 +5,9 @@
     <div class="form-group row">
       <label for="importe" class="col-sm-4 col-form-label">Importe</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control {{impEsValido}}" name="importe" [(ngModel)]="importe">
+        <input type="number" class="form-control {{impEsValido}}" name="importe" (ngModel)="importe">
         <div class="invalid-feedback">
-          Importe valido
+          Inserte un importe valido
         </div>
       </div>
     </div>
@@ -32,10 +32,7 @@
     <div class="form-group row">
       <label for="detalle" class="col-sm-4 col-form-label">Detalle</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control {{detEsValido}}" name="detalle" [(ngModel)]="detalle" required>
-        <div class="invalid-feedback">
-            Detalle valido
-          </div>
+        <input type="text" class="form-control" name="detalle" (ngModel)="detalle">
       </div>
     </div>
     <div class="form-group row">

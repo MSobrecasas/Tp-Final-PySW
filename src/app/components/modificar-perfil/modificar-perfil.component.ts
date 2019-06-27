@@ -71,20 +71,50 @@ export class ModificarPerfilComponent implements OnInit {
   }
 
   public elegirUsuario() {
-    this.loginService.userLogged.id;
     this.nombre = this.usuario.nombre;
     this.apellido = this.usuario.apellido;
     this.direccion = this.usuario.direccion;
     this.dni = this.usuario.dni;
     this.email = this.usuario.email;
     this.estado = this.usuario.estado;
-    //this.fechaNac = this.usuario.fechaNac;
+    this.fechaNac = this.usuario.fechaNac;
     this.foto = this.usuario.foto;
     this.password = this.usuario.password;
     this.telefono = this.usuario.telefono;
     this.tipoUsuario = this.usuario.tipoUsuario;
     this.username = this.usuario.username;
+    this.escribania = this.usuario.escribania;
+    this.legajo = this.usuario.legajo;
   }
+
+  public actualizarUsuario() {
+    this.usuario.nombre = this.nombre;
+    this.usuario.apellido = this.apellido;
+    this.usuario.direccion = this.direccion;
+    this.usuario.dni = this.dni;
+    this.usuario.email = this.email;
+    this.usuario.estado = true;
+    this.usuario.fechaNac = this.fechaNac;
+    this.usuario.foto = this.foto;
+    this.usuario.password = this.password;
+    this.usuario.telefono = this.telefono;
+   // this.usuario.tipoUsuario = "socio";
+   // this.usuario.username = this.username;
+    this.usuarioService.modificarEscribano(this.usuario).subscribe(
+      data => {
+        console.log("modificado correctamente.")
+        //actualizo la tabla de mensajes
+        this.obtenerUsuario();
+        return true;
+      },
+      error => {
+        console.error("Error al modificar!");
+        console.log(error);
+        return false;
+      });
+  }
+
+
   consola(dato: HTMLSelectElement) {
     console.log(dato.value);
   }
@@ -97,4 +127,6 @@ export class ModificarPerfilComponent implements OnInit {
       alert("Inserte una Foto JPEG y menor a 4MB")
     }
   }
+
+
 }
