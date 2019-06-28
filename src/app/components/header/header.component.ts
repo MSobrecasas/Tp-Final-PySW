@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +11,14 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
   btn;
-  
+  usuariolog: Usuario;
   constructor(public route: Router,
-    public loginService: LoginService) { 
-    
+    public loginService: LoginService,
+    private usuarioService: UsuarioService) {
+    this.usuariolog = new Usuario();
+    this.obtenerUsuarioLog();
   }
-  
+
   ngOnInit() {
 
   }
@@ -25,15 +29,30 @@ export class HeaderComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "250px";
     this.btn = document.getElementById('cardv');
     this.btn.addEventListener("click",
-    (e:Event) => this.closeNav())
+      (e: Event) => this.closeNav())
   }
 
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-}
+  }
 
-logout(){
-  //localStorage.removeItem('currentUser');
-  this.loginService.logout();
+  obtenerUsuarioLog() {
+    if (this.loginService.userLoggedIn) {
+      this.usuarioService.getUsuario(this.loginService.userLogged.id)
+        .subscribe(
+          res => {
+            this.usuariolog = res;
+          },
+          err => {
+            console.log("No hay usuario logeado", err)
+          }
+        )
+
+    }
+  }
+  logout() {
+    //localStorage.removeItem('currentUser');
+    this.usuariolog = new Usuario();
+    this.loginService.logout();
   }
 }

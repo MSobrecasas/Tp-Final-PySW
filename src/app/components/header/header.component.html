@@ -117,6 +117,8 @@
                 <!-- ACAA PUSE LOI DE LOGIN -->
                 <div>
                     <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
+                        <img src="{{usuariolog.foto}}" class="rounded-sm"
+                        style="width: 1rem; height: 1rem;">
                         {{loginService.userLogged.username}} (Cerrar Sesion)
                     </a>
                 </div>
