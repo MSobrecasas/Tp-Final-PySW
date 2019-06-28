@@ -155,18 +155,20 @@ export class AltaPagosComponent implements OnInit {
     }
     return completar;
   }
-  printjs(tablita: HTMLTableElement) {
-    var ddas: HTMLTableElement;
+  printjs(tablita: HTMLDivElement) {
+    var ddas: HTMLDivElement;
     ddas = tablita;
     ddas.hidden = false;
     printJS({
       printable: ddas.id,
       type: 'html',
       css: ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',],
-      font_size: '24 pts',
-      onLoadingEnd:()=>{
+      header: '<h3 class="custom-h3">Registro</h3>',
+      style: '.custom-h3 { color: green; text-decoration-line: underline;}',
+      documentTitle: 'REGISTRO DE PAGOS',
+      onLoadingEnd: () => {
         ddas.hidden = true;
-      }
+      },
     })
   }
 

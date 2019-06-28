@@ -128,7 +128,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.email = this.email;
     this.usuario.estado = true;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
+    this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;

@@ -28,14 +28,15 @@ export class NovedadesComponent implements OnInit {
 
   constructor(private novedadesService: NovedadesService,
     private usuarioService: UsuarioService, public loginService: LoginService) {
-    this.usuario = new Usuario();
+    this.usuario = loginService.userLogged;
     this.usuarioMod = new Usuario();
     this.usuarios = new Array<Usuario>();
     this.novedades = new Novedades();
     this.novedadesMod = new Novedades();
     this.listaNovedades = new Array<Novedades>();
     this.obtenerNovedades();
-    this.obtenerUsuarios();
+    this.obtenerUsuarioLog();
+    //this.obtenerUsuarios();
   }
   
   ngOnInit() {
@@ -61,6 +62,7 @@ export class NovedadesComponent implements OnInit {
 
   }
   public nuevoNovedades() {
+    this.novedades.usuario = this.usuario;
     this.novedades.fecha = new Date;
     this.novedadesService.newNovedades(this.novedades)
       .subscribe(
@@ -114,5 +116,14 @@ export class NovedadesComponent implements OnInit {
         return false;
       });
   }
-
+  obtenerUsuarioLog(){
+    console.log(this.loginService.userLogged.id)
+    this.usuarioService.getUsuario(this.loginService.userLogged.id).
+    subscribe(
+      res=> {
+        console.log(res);
+        this.usuario = res;
+      }
+    )
+  }
 }
