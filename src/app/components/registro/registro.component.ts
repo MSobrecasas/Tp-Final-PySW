@@ -52,6 +52,9 @@ export class RegistroComponent implements OnInit {
   telEsValido: string;
   emlEsValido: string;
   fotEsValido: string;
+  userEsValido: string;
+  pssEsValido: string;
+  pss1EsValido: string;
   //----------
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
@@ -125,7 +128,7 @@ export class RegistroComponent implements OnInit {
     this.usuario.email = this.email;
     this.usuario.estado = true;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
+    this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = this.tipoUsuario;
@@ -136,6 +139,7 @@ export class RegistroComponent implements OnInit {
         result => {
           console.log("agregado correctamente.");
           this.obtenerUsuarios();
+          alert("Agregado Correctamente");
         },
         error => {
           alert("Error al agregar.");
@@ -177,10 +181,12 @@ export class RegistroComponent implements OnInit {
         console.log("modificado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Datos Modificados");
         return true;
       },
       error => {
         console.error("Error al modificar!");
+        alert("error al  modificar");
         console.log(error);
         return false;
       });
@@ -206,10 +212,12 @@ export class RegistroComponent implements OnInit {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Dado de baja correctamente");
         return true;
       },
       error => {
         console.error("Error al eliminar");
+        alert("Error al dar de baja");
         console.log(error);
         return false;
       });
@@ -271,30 +279,50 @@ export class RegistroComponent implements OnInit {
     } else {
       this.fnaEsValido = 'is-valid'
     }
-    if (this.direccion== null) {
+    if (this.direccion == null) {
       this.dirEsValido = 'is-invalid'
       completar = false
     } else {
       this.dirEsValido = 'is-valid'
     }
-    if (this.telefono== null) {
+    if (this.telefono == null) {
       this.telEsValido = 'is-invalid'
       completar = false
     } else {
       this.telEsValido = 'is-valid'
     }
-    if (this.email== null) {
+    if (this.email == null) {
       this.emlEsValido = 'is-invalid'
       completar = false
     } else {
       this.emlEsValido = 'is-valid'
     }
-    if (this.foto== null) {
+    if (this.foto == null) {
       this.fotEsValido = 'is-invalid'
       completar = false
     } else {
       this.fotEsValido = 'is-valid'
     }
+    if (this.username == null) {
+      this.userEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.userEsValido = 'is-valid'
+    }
+    if (this.password == null) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if (this.password != this.passIgual) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    
+
 
     return completar;
   }

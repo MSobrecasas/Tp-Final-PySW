@@ -38,6 +38,12 @@
         </div>
       </div>
     </div>
+    <div class="form-group row" hidden>
+      <label class="col-sm-4 col-form-label">Fecha</label>
+      <div class="col-sm-8">
+        <input type="date" class="form-control" name="fecha" [(ngModel)]="fecha">
+      </div>
+    </div>
     <div class="form-group row">
       <label for="escribano" class="col-sm-4 col-form-label">Escribano</label>
       <div class="col-sm-8">
@@ -94,6 +100,7 @@
           </td>
           <td>
             <button type="button " class="btn btn-info" (click)="actualizarPago(item)">Registrar pago</button>
+            <button type="button " class="btn btn-info" (click)="borrarPago(item.id)">Eliminar</button>
           </td>
         </tr>
       </tbody>
@@ -110,6 +117,7 @@
       <button class="btn btn-download btn-info" (click)="printjs(tablita)">
         <i class="fas fa-print"></i> Imprimir Pagos</button>
     </div>
+<<<<<<< HEAD
     <div class="row justify-content-center" id="tablita" #tablita hidden>
         <table class="table table-bordered col-12">
             <thead>
@@ -154,6 +162,49 @@
           </table>
     </div>
     
+=======
+    <table class="table table-bordered col-12" id="tablita" #tablita hidden>
+      <thead>
+        <tr>
+          <th scope="col">
+            Escribano
+          </th>
+          <th scope="col">
+            Detalle
+          </th>
+          <th scope="col">
+            Importe
+          </th>
+          <th scope="col">
+            Estado
+          </th>
+          <th scope="col">
+            Fecha Generado
+          </th>
+          <th scope="col">
+            Fecha Pago
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaPagos">
+          <td>{{item.usuario.apellido}}, {{item.usuario.nombre}}</td>
+          <td>{{item.detalle}}</td>
+          <td>{{item.importe}}</td>
+          <td>
+            <p *ngIf="item.estadoPago" class="text-success">Pagado</p>
+            <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+          </td>
+          <td>{{item.fecha.timestamp * 1000 | date: 'dd/MM/yyyy'}}</td>
+          <td>
+            <p *ngIf="item.estadoPago">{{item.fechaPago.timestamp * 1000 | date: 'dd/MM/yyyy'}}</p>
+            <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+>>>>>>> 4af5559a781134ca38723b2c2102892c5a5d85ea
   </div>
 
 </div>

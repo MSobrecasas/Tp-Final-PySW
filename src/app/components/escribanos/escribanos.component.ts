@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { Escribania } from 'src/app/models/escribania';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { EscribaniaService } from 'src/app/services/escribania.service';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-escribanos',
@@ -43,7 +44,20 @@ export class EscribanosComponent implements OnInit {
   usuarioRepetido: boolean = false;
   agregado: boolean;
   tablaEscribanos = false;
-
+ //Validaciones
+ nomEsValido: string;
+ apeEsValido: string;
+ dniEsValido: string;
+ fnaEsValido: string;
+ dirEsValido: string;
+ telEsValido: string;
+ emlEsValido: string;
+ fotEsValido: string;
+ userEsValido: string;
+ pssEsValido: string;
+ pss1EsValido: string;
+ legInvalido: string;
+ //----------
 
   constructor(private usuarioService: UsuarioService,
     private escribaniaService: EscribaniaService) {
@@ -86,32 +100,28 @@ export class EscribanosComponent implements OnInit {
   public validarUsuario() {
     this.usuarioRepetido = false;
     this.passIguales = false;
-    if (this.password == this.passIgual) {
-      this.passIguales = true;
-    }
-    for (var i = 0; i < this.usuarios.length; i++) {
-      if (this.usuarios[i].username == this.username) {
-        this.usuarioRepetido = true;
-        alert("Nombre de usuario existente");
+    if (this.validarDatos()) {
+      if (this.password == this.passIgual) {
+        this.passIguales = true;
       }
-    }
-
-    for (var i = 0; i < this.usuarios.length; i++) {
-      if (this.usuarios[i].dni == this.dni) {
-        this.usuarioRepetido = true;
-        alert("Dni de usuario existente");
+      for (var i = 0; i < this.usuarios.length; i++) {
+        if (this.usuarios[i].username == this.username) {
+          this.usuarioRepetido = true;
+          alert("Nombre de usuario existente");
+        }
       }
-    }
 
-    for (var i = 0; i < this.escribanos.length; i++) {
-      if (this.usuarios[i].legajo == this.legajo) {
-        this.usuarioRepetido = true;
-        alert("Legajo de usuario existente");
+      for (var i = 0; i < this.usuarios.length; i++) {
+        if (this.usuarios[i].dni == this.dni) {
+          this.usuarioRepetido = true;
+          alert("Dni de usuario existente");
+        }
       }
-    }
 
-    if (this.usuarioRepetido == false) {
-      this.nuevoUsuario();
+      if (this.usuarioRepetido == false) {
+        this.nuevoUsuario();
+      }
+
     }
 
 
@@ -139,6 +149,7 @@ export class EscribanosComponent implements OnInit {
         result => {
           console.log("agregado correctamente.");
           this.obtenerUsuarios();
+          alert("Escribano Agregado");
         },
         error => {
           alert("Error al agregar.");
@@ -190,11 +201,13 @@ export class EscribanosComponent implements OnInit {
         console.log("modificado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Datos Modificados");
         return true;
       },
       error => {
         console.error("Error al modificar!");
         console.log(error);
+        alert("Error al modificar");
         return false;
       });
   }
@@ -217,11 +230,13 @@ export class EscribanosComponent implements OnInit {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Dado de Baja Correctamente");
         return true;
       },
       error => {
         console.error("Error al eliminar");
         console.log(error);
+        alert("Error al dar de Baja");
         return false;
       });
   }
@@ -258,4 +273,84 @@ export class EscribanosComponent implements OnInit {
     this.escribania = null;
   }
 
+  validarDatos() {
+    let completar: boolean = true;
+    if (this.nombre == null) {
+      this.nomEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.nomEsValido = 'is-valid'
+    }
+    if (this.apellido == null) {
+      this.apeEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.apeEsValido = 'is-valid'
+      console.log(this.apeEsValido)
+    }
+    if (this.dni == null) {
+      this.dniEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.dniEsValido = 'is-valid'
+    }
+    if (!this.fechaNac) {
+      this.fnaEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.fnaEsValido = 'is-valid'
+    }
+    if (this.direccion == null) {
+      this.dirEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.dirEsValido = 'is-valid'
+    }
+    if (this.telefono == null) {
+      this.telEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.telEsValido = 'is-valid'
+    }
+    if (this.email == null) {
+      this.emlEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.emlEsValido = 'is-valid'
+    }
+    if (this.foto == null) {
+      this.fotEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.fotEsValido = 'is-valid'
+    }
+    if (this.username == null) {
+      this.userEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.userEsValido = 'is-valid'
+    }
+    if (this.password == null) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if (this.password != this.passIgual) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if (this.legajo == null) {
+      this.legInvalido = 'is-invalid'
+      completar = false
+    } else {
+      this.legInvalido = 'is-valid'
+    }
+    
+
+
+    return completar;
+  }
 }
