@@ -52,6 +52,9 @@ export class RegistroComponent implements OnInit {
   telEsValido: string;
   emlEsValido: string;
   fotEsValido: string;
+  userEsValido: string;
+  pssEsValido: string;
+  pss1EsValido: string;
   //----------
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
@@ -271,30 +274,50 @@ export class RegistroComponent implements OnInit {
     } else {
       this.fnaEsValido = 'is-valid'
     }
-    if (this.direccion== null) {
+    if (this.direccion == null) {
       this.dirEsValido = 'is-invalid'
       completar = false
     } else {
       this.dirEsValido = 'is-valid'
     }
-    if (this.telefono== null) {
+    if (this.telefono == null) {
       this.telEsValido = 'is-invalid'
       completar = false
     } else {
       this.telEsValido = 'is-valid'
     }
-    if (this.email== null) {
+    if (this.email == null) {
       this.emlEsValido = 'is-invalid'
       completar = false
     } else {
       this.emlEsValido = 'is-valid'
     }
-    if (this.foto== null) {
+    if (this.foto == null) {
       this.fotEsValido = 'is-invalid'
       completar = false
     } else {
       this.fotEsValido = 'is-valid'
     }
+    if (this.username == null) {
+      this.userEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.userEsValido = 'is-valid'
+    }
+    if (this.password == null) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if (this.password != this.passIgual) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    
+
 
     return completar;
   }
