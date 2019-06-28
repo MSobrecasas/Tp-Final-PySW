@@ -5,6 +5,7 @@ import { Escribano } from 'src/app/models/escribano';
 import { EscribanoService } from 'src/app/services/escribano.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
+import * as printJS from 'print-js'
 
 @Component({
   selector: 'app-alta-pagos',
@@ -29,6 +30,8 @@ export class AltaPagosComponent implements OnInit {
   fechaPago: string;
   detalle: string;
   usuarioN: Usuario;
+  //PrintJS
+  jsonPagos: JSON;
 
 
   constructor(private pagosService: PagosService, private usuarioService: UsuarioService) {
@@ -47,6 +50,7 @@ export class AltaPagosComponent implements OnInit {
       .subscribe(
         results => {
           this.listaPagos = results['listaPagos'];
+          this.jsonPagos = results['listaPagos']
           console.log(this.listaPagos);
         }
       );
@@ -146,6 +150,20 @@ export class AltaPagosComponent implements OnInit {
       this.detEsValido = 'is-valid'
     }
     return completar;
+  }
+  printjs(tablita: HTMLTableElement) {
+    var ddas: HTMLTableElement;
+    ddas = tablita;
+    ddas.hidden = false;
+    printJS({
+      printable: ddas.id,
+      type: 'html',
+      css: ['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',],
+      font_size: '24 pts',
+      onLoadingEnd:()=>{
+        ddas.hidden = true;
+      }
+    })
   }
 
 }
