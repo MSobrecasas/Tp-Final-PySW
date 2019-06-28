@@ -1,30 +1,46 @@
-<table class="table table-striped" [mfData]="escribanias" #mf="mfDataTable" [mfRowsOnPage]="5">
-    <thead>
-      <tr>
-        <th>
-          <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
-        </th>
-        <th>
-          <mfDefaultSorter by="direccion">Direccion</mfDefaultSorter>
-        </th>
-        <th>
-          <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of mf.data">
-        <td>{{item.nombre}}</td>
-        <td>{{item.direccion}}</td>
-        <td>{{item.telefono}}</td>
-        <td>boton ver ubicacion</td>
-      </tr>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="4">
-          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
+<div>
+  <div class="row justify-content-center">
+    <div class="row justify-content-center">
+      <agm-map [latitude]="-24.233542" [longitude]="-65.271521" >
+        <agm-marker [latitude]="item.latitud" [longitude]="item.longitud" *ngFor="let item of escribanias">
+          <agm-info-window>{{item.nombre}}</agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+
+  </div>
+
+  <div class="row justify-content-center">
+    <table class="table table-striped" [mfData]="escribanias" #mf="mfDataTable" [mfRowsOnPage]="5">
+      <thead>
+        <tr>
+          <th>
+            <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="direccion">Direccion</mfDefaultSorter>
+          </th>
+          <th>
+            <mfDefaultSorter by="telefono">Telefono</mfDefaultSorter>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of mf.data">
+          <td>{{item.nombre}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.telefono}}</td>
+          <td>boton ver ubicacion</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+</div>

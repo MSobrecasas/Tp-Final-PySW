@@ -31,6 +31,7 @@ import { ModificarPerfilComponent } from './components/modificar-perfil/modifica
 import { EscribaniasComponent } from './components/escribanias/escribanias.component';
 import { AltaPagosComponent } from './components/alta-pagos/alta-pagos.component';
 import {AlifeFileToBase64Module} from 'alife-file-to-base64'
+import { AgmCoreModule } from '@agm/core';
 import { from } from 'rxjs';
 
 @NgModule({
@@ -57,6 +58,8 @@ import { from } from 'rxjs';
     ModificarPerfilComponent,
     EscribaniasComponent,
     AltaPagosComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -65,6 +68,9 @@ import { from } from 'rxjs';
     FormsModule,
     DataTableModule,
     AlifeFileToBase64Module,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAeCoYNOs5mOnN6e1m0LaggF7hxh9NzEDs'
+    })
     
   ],
   providers: [LoginService],

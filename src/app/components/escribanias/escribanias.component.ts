@@ -18,6 +18,10 @@ export class EscribaniasComponent implements OnInit {
   escribania: Escribania;
   escribaniaMod: Escribania;
   escribanias: Array<Escribania>;
+  //MAPS
+  title: string = 'Mapa Escribanias';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
 
   constructor(private escribaniaService: EscribaniaService, private escribanoService: EscribanoService) {
     this.escribania = new Escribania();
