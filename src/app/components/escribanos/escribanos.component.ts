@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { Escribania } from 'src/app/models/escribania';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { EscribaniaService } from 'src/app/services/escribania.service';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-escribanos',
@@ -148,6 +149,7 @@ export class EscribanosComponent implements OnInit {
         result => {
           console.log("agregado correctamente.");
           this.obtenerUsuarios();
+          alert("Escribano Agregado");
         },
         error => {
           alert("Error al agregar.");
@@ -199,11 +201,13 @@ export class EscribanosComponent implements OnInit {
         console.log("modificado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Datos Modificados");
         return true;
       },
       error => {
         console.error("Error al modificar!");
         console.log(error);
+        alert("Error al modificar");
         return false;
       });
   }
@@ -226,11 +230,13 @@ export class EscribanosComponent implements OnInit {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Dado de Baja Correctamente");
         return true;
       },
       error => {
         console.error("Error al eliminar");
         console.log(error);
+        alert("Error al dar de Baja");
         return false;
       });
   }

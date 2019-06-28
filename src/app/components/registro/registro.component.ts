@@ -139,6 +139,7 @@ export class RegistroComponent implements OnInit {
         result => {
           console.log("agregado correctamente.");
           this.obtenerUsuarios();
+          alert("Agregado Correctamente");
         },
         error => {
           alert("Error al agregar.");
@@ -180,10 +181,12 @@ export class RegistroComponent implements OnInit {
         console.log("modificado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Datos Modificados");
         return true;
       },
       error => {
         console.error("Error al modificar!");
+        alert("error al  modificar");
         console.log(error);
         return false;
       });
@@ -209,10 +212,12 @@ export class RegistroComponent implements OnInit {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes
         this.obtenerUsuarios();
+        alert("Dado de baja correctamente");
         return true;
       },
       error => {
         console.error("Error al eliminar");
+        alert("Error al dar de baja");
         console.log(error);
         return false;
       });
