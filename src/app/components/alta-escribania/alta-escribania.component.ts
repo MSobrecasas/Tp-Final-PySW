@@ -24,6 +24,13 @@ export class AltaEscribaniaComponent implements OnInit {
   estado: boolean;
   longitud: number;
   latitud: number;
+  //Validaciones
+  nomEsValido: string;
+  dirEsValido: string;
+  telEsValido: string;
+  latEsValido: string;
+  lonEsValido: string;
+  //----------
 
   constructor(private escribaniaService: EscribaniaService, private escribanoService: EscribanoService) {
     this.escribania = new Escribania();
@@ -57,24 +64,26 @@ export class AltaEscribaniaComponent implements OnInit {
       )
   }
   public nuevoEscribania() {
-    this.escribaniaMod.nombre = this.nombre;
-    this.escribaniaMod.direccion = this.direccion;
-    this.escribaniaMod.telefono = this.telefono;
-    this.escribaniaMod.longitud = this.longitud;
-    this.escribaniaMod.latitud = this.latitud;
-    this.escribaniaMod.estado = true;
-    this.escribania = this.escribaniaMod;
-    console.log(this.escribaniaMod);
-    this.escribaniaService.newEscribania(this.escribania)
-      .subscribe(
-        result => {
-          console.log("agregado correctamente.");
-          this.obtenerEscribania();
-        },
-        error => {
-          alert("Error al agregar.");
-        }
-      );
+    if (this.validarDatos()) {
+      this.escribaniaMod.nombre = this.nombre;
+      this.escribaniaMod.direccion = this.direccion;
+      this.escribaniaMod.telefono = this.telefono;
+      this.escribaniaMod.longitud = this.longitud;
+      this.escribaniaMod.latitud = this.latitud;
+      this.escribaniaMod.estado = true;
+      this.escribania = this.escribaniaMod;
+      console.log(this.escribaniaMod);
+      this.escribaniaService.newEscribania(this.escribania)
+        .subscribe(
+          result => {
+            console.log("agregado correctamente.");
+            this.obtenerEscribania();
+          },
+          error => {
+            alert("Error al agregar.");
+          }
+        );
+    }
   }
   public elegirEscribania(escribania: Escribania) {
     //Creo una copia del escribania recibido como parametro para NO modificarlo
@@ -145,5 +154,44 @@ export class AltaEscribaniaComponent implements OnInit {
     /*  this.escribanos.forEach(function (escribano) {
       
      }); */
+  }
+  validarDatos() {
+    let completar: boolean = true;
+    if (this.nombre == null) {
+      this.nomEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.nomEsValido = 'is-valid'
+    }
+
+    if (this.direccion == null) {
+      this.dirEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.dirEsValido = 'is-valid'
+    }
+    if (this.telefono == null) {
+      this.telEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.telEsValido = 'is-valid'
+    }
+
+    if (this.latitud == null) {
+      this.latEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.latEsValido = 'is-valid'
+    }
+    if (this.longitud == null) {
+      this.lonEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.lonEsValido = 'is-valid'
+    }
+
+
+
+    return completar;
   }
 }
