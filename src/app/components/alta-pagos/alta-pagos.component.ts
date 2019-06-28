@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PagosService } from 'src/app/services/pagos.service';
 import { Pagos } from 'src/app/models/pagos';
-import { Escribano } from 'src/app/models/escribano';
-import { EscribanoService } from 'src/app/services/escribano.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 import * as printJS from 'print-js'
@@ -78,6 +76,7 @@ export class AltaPagosComponent implements OnInit {
           result => {
             console.log("agregado correctamente.");
             this.obtenerPagos();
+            alert("Pago Generado");
           },
           error => {
             alert("Error al agregar.");
@@ -101,9 +100,10 @@ export class AltaPagosComponent implements OnInit {
   public actualizarPago(pagos: Pagos) {
     this.pagos = Object.assign(this.pagos, pagos);
     this.importe = this.pagos.importe;
-    this.fecha = this.pagos.fecha;
+    this.fecha = new Date();
     this.usuario = this.pagos.usuario;
     this.detalle = this.pagos.detalle;
+    this.pagos.fecha = this.fecha;
     this.pagos.estadoPago = true;
     this.pagos.fechaPago = new Date();
     this.pagosService.modificarPagos(this.pagos).subscribe(
@@ -111,11 +111,13 @@ export class AltaPagosComponent implements OnInit {
         console.log("Pago registrado.")
         //actualizo la tabla de mensajes
         this.obtenerPagos();
+        alert("Pago Registrado");
         return true;
       },
       error => {
         console.error("Error al registrar pago");
         console.log(error);
+        alert("Error al generar Pago");
         return false;
       });
   }
@@ -126,11 +128,13 @@ export class AltaPagosComponent implements OnInit {
         console.log("borrado correctamente.")
         //actualizo la tabla de pagos
         this.obtenerPagos();
+        alert("Pago Borrado");
         return true;
       },
       error => {
         console.error("Error deleting!");
         console.log(error);
+        alert("No se puedo borrar");
         return false;
       }
     )

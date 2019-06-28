@@ -50,7 +50,7 @@
                     <li *ngIf="loginService.userLoggedIn" class="list-group bg-transparent">
                         <a class="nav-link" [routerLink]="['novedades']">Novedades</a>
                     </li>
-                    <li class="list-group bg-transparent">
+                    <li class="list-group bg-transparent" *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario!='socio'">
                         <a href="#demo" data-toggle="collapse" class="">
                             <i class="fas fa-chevron-right"></i>Administracion</a>
                         <div id="demo" class="collapse">
@@ -61,15 +61,15 @@
                                 </li>
                                 <li>
                                     <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='gerente'"
-                                        [routerLink]="['altaPagos']">Pagos</a>
+                                        class="nav-link" [routerLink]="['altaPagos']">Pagos</a>
                                 </li>
                                 <li>
                                     <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'"
-                                        [routerLink]="['altaEscribania']">Escribanias</a>
+                                        class="nav-link" [routerLink]="['altaEscribania']">Escribanias</a>
                                 </li>
                                 <li>
                                     <a *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrador'"
-                                        [routerLink]="['registro']">Usuarios</a>
+                                        class="nav-link" [routerLink]="['registro']">Usuarios</a>
                                 </li>
                             </ul>
                         </div>
