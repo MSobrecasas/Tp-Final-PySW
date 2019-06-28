@@ -40,15 +40,28 @@ export class ModificarPerfilComponent implements OnInit {
   escribania: Escribania;
   passIguales: boolean = false;
   usuarioRepetido: boolean = false;
+  //Validar Datos
+  nomEsValido: string;
+  apeEsValido: string;
+  dniEsValido: string;
+  fnaEsValido: string;
+  dirEsValido: string;
+  telEsValido: string;
+  emlEsValido: string;
+  fotEsValido: string;
+  userEsValido: string;
+  lejEsValido: string;
+  pssEsValido: string;
+  pss1EsValido: string;
 
   constructor(public loginService: LoginService,
-    public usuarioService: UsuarioService) {
+    private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
-    this.obtenerUsuario();
+    //this.obtenerUsuario();
   }
 
   ngOnInit() {
-    this.obtenerUsuarios();
+    //this.obtenerUsuarios();
   }
   public obtenerUsuarios() {
     this.usuarioService.getUsuarios()
@@ -98,20 +111,23 @@ export class ModificarPerfilComponent implements OnInit {
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
-   // this.usuario.tipoUsuario = "socio";
-   // this.usuario.username = this.username;
-    this.usuarioService.modificarEscribano(this.usuario).subscribe(
-      data => {
-        console.log("modificado correctamente.")
-        //actualizo la tabla de mensajes
-        this.obtenerUsuario();
-        return true;
-      },
-      error => {
-        console.error("Error al modificar!");
-        console.log(error);
-        return false;
-      });
+    // this.usuario.tipoUsuario = "socio";
+    // this.usuario.username = this.username;
+    if (this.validarDatos()) {
+      this.usuarioService.modificarEscribano(this.usuario).subscribe(
+        data => {
+          console.log("modificado correctamente.")
+          //actualizo la tabla de mensajes
+          this.obtenerUsuario();
+          return true;
+        },
+        error => {
+          console.error("Error al modificar!");
+          console.log(error);
+          return false;
+        });
+    }
+
   }
 
 
@@ -127,6 +143,82 @@ export class ModificarPerfilComponent implements OnInit {
       alert("Inserte una Foto JPEG y menor a 4MB")
     }
   }
+  validarDatos() {
+    let completar: boolean = true;
+    if (this.nombre == null) {
+      this.nomEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.nomEsValido = 'is-valid'
+    }
+    if (this.apellido == null) {
+      this.apeEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.apeEsValido = 'is-valid'
+      console.log(this.apeEsValido)
+    }
+    if (this.dni == null) {
+      this.dniEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.dniEsValido = 'is-valid'
+    }
+    if (!this.fechaNac) {
+      this.fnaEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.fnaEsValido = 'is-valid'
+    }
+    if (this.direccion == null) {
+      this.dirEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.dirEsValido = 'is-valid'
+    }
+    if (this.telefono == null) {
+      this.telEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.telEsValido = 'is-valid'
+    }
+    if (this.email == null) {
+      this.emlEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.emlEsValido = 'is-valid'
+    }
+    if (this.foto == null) {
+      this.fotEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.fotEsValido = 'is-valid'
+    }
+    if (this.username == null) {
+      this.userEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.userEsValido = 'is-valid'
+    }
+    if (this.password == null) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if (this.password != this.passIgual) {
+      this.pssEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.pssEsValido = 'is-valid'
+    }
+    if(this.legajo==null||this.legajo.length <4){
+      this.lejEsValido = 'is-invalid'
+    }else{
+      this.lejEsValido = 'is-valid'
+    }
 
 
+    return completar;
+  }
 }
