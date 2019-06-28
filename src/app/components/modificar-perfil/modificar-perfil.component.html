@@ -1,11 +1,12 @@
-<div  class="row justify-content-center">
+<div class="row justify-content-center">
     <form method="POST">
         <legend class="tForm">Perfil</legend>
         <div class="dropdown-divider"></div>
         <div class="form-group row">
             <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+                <input type="text" class="form-control {{nomEsValido}}" id="nombre" name="nombre" [(ngModel)]="nombre"
+                    required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
                 </div>
@@ -14,7 +15,8 @@
         <div class="form-group row">
             <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="apellido" name="apellido" [(ngModel)]="apellido" required>
+                <input type="text" class="form-control {{apeEsValido}}" id="apellido" name="apellido"
+                    [(ngModel)]="apellido" required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
                 </div>
@@ -23,35 +25,45 @@
         <div class="form-group row">
             <label for="dni" class="col-sm-4 col-form-label">DNI</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="dni" name="dni" [(ngModel)]="dni" disabled>
+                <input type="text" class="form-control {{dniEsValido}}" id="dni" name="dni" [(ngModel)]="dni" disabled>
+                <div class="invalid-feedback">
+                    Inserte un importe valido
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo" disabled>
+                <input type="text" class="form-control {{lejEsValido}}" id="legajoM" name="legajoM" [(ngModel)]="legajo"
+                    disabled>
+                <div class="invalid-feedback">
+                    Inserte un importe valido
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
             <div class="col-sm-8">
-               <!--  <select [(ngModel)]="escribania" name="escribania" class="form-control" disabled>
+                <!--  <select [(ngModel)]="escribania" name="escribania" class="form-control" disabled>
                     <option *ngFor="let escribania of escribanias" [ngValue]="escribania" [hidden]="!escribania.estado"> -->
-                     {{escribania.nombre}}
-                 <!--    </option> -->
-               <!--  </select> -->
+                {{escribania.nombre}}
+                <!--    </option> -->
+                <!--  </select> -->
             </div>
         </div>
         <div class="form-group row">
             <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
             <div class="col-sm-8">
-                <input type="date" class="form-control" id="fecnac" name="fechaNac" [(ngModel)]="fechaNac" required>
+                <input type="date" class="form-control {{fnaEsValido}}" id="fecnac" name="fechaNac" [(ngModel)]="fechaNac" required>
+                <div class="invalid-feedback">
+                    Inserte un importe valido
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="direccion" name="direccion" [(ngModel)]="direccion"
+                <input type="text" class="form-control {{dirEsValido}}" id="direccion" name="direccion" [(ngModel)]="direccion"
                     required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
@@ -61,7 +73,7 @@
         <div class="form-group row">
             <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" id="telefono" name="telefono" [(ngModel)]="telefono" required>
+                <input type="text" class="form-control {{telEsValido}}" id="telefono" name="telefono" [(ngModel)]="telefono" required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
                 </div>
@@ -70,7 +82,7 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
-                <input type="email" class="form-control" id="staticEmail" placeholder="email@example.com" name="email"
+                <input type="email" class="form-control {{emlEsValido}}" id="staticEmail" placeholder="email@example.com" name="email"
                     [(ngModel)]="email" required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
@@ -81,8 +93,11 @@
             <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
             <div class="col-sm-8">
                 <div class="custom-file" style="z-index: 0 !important">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="es" alife-file-to-base64
+                    <input type="file" class="custom-file-input {{fotEsValido}}" id="customFileLang" lang="es" alife-file-to-base64
                         multiple (onFileChanged)="onFileChanges($event)">
+                    <div class="invalid-feedback">
+                        Inserte un importe valido
+                    </div>
                     <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
                     <div class="row justify-content-center mt-1" *ngIf="foto">
                         <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
@@ -91,16 +106,19 @@
             </div>
         </div>
         <div class="form-group row">
-            <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+            <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label {{userEsValido}}">Nombre de Usuario</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" id="usernameUsav" #nombreUs placeholder="" name="username"
                     [(ngModel)]="username" disabled>
+                <div class="invalid-feedback">
+                    Inserte un importe valido
+                </div>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="Pass1" placeholder="*********" name="password"
+                <input type="password" class="form-control {{pss1EsValido}}" id="Pass1" placeholder="*********" name="password"
                     [(ngModel)]="password" required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
@@ -110,7 +128,7 @@
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
             <div class="col-sm-8">
-                <input type="password" class="form-control" id="Pass2" placeholder="*********" name="passIgual"
+                <input type="password" class="form-control {{pssEsValido}}" id="Pass2" placeholder="*********" name="passIgual"
                     [(ngModel)]="passIgual" required>
                 <div class="invalid-feedback">
                     Inserte un importe valido
