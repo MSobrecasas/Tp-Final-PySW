@@ -19,3 +19,7 @@ form {
   font-weight: bold;
   font-size: 10;
 }
+
+.tError{
+  font-size: 14px;
+}
