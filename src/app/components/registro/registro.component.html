@@ -113,9 +113,9 @@
         <div class="form-group row">
             <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
             <div class="col-sm-8">
-                <input type="email" class="form-control {{emlEsValido}}" id="staticEmail"
-                    placeholder="email@example.com" name="emailI" [(ngModel)]="email"
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="emailI" #emailI="ngModel" required>
+                <input type="email" class="form-control {{emlEsValido}}" placeholder="email@example.com" name="emailI"
+                    [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="emailI" #emailI="ngModel"
+                    required>
                 <div *ngIf="emailI.touched && !emailI.valid">
                     <div *ngIf="emailI.errors.required" class=" tError text text-danger">
                         Email Requerido
@@ -453,8 +453,8 @@
                             <label for="Pass1M" class="col-sm-4 col-form-label">Contraseña</label>
                             <div class="col-sm-8">
                                 <input type="password" class="form-control {{pssEsValido}}" id="Pass1M"
-                                    placeholder="*********" name="Pass1M" [(ngModel)]="password" 
-                                    #Pass1M="ngModel" required>
+                                    placeholder="*********" name="Pass1M" [(ngModel)]="password" #Pass1M="ngModel"
+                                    required>
                                 <div *ngIf="Pass1M.touched && !Pass1M.valid">
                                     <div *ngIf="Pass1M.errors.required" class=" tError text text-danger">
                                         Contraseña requerida
