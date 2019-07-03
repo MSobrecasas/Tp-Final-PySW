@@ -57,6 +57,9 @@ export class RegistroComponent implements OnInit {
   pssEsValido: string;
   pss1EsValido: string;
   //----------
+  busq: string ="";
+
+  
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
     this.usuario = new Usuario();
