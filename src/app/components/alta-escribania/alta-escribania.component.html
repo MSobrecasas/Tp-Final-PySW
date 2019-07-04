@@ -1,58 +1,83 @@
 <div class="row justify-content-center">
-  <form method="POST">
+  <form method="POST" (ngSubmit)="nuevoEscribania()" #formEscribania="ngForm">
     <legend class="tForm">Registrar Escribania</legend>
     <div class="dropdown-divider"></div>
     <div class="form-group row">
       <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control {{nomEsValido}}" id="nombreEscribania" name="nombre" [(ngModel)]="nombre">
+        <input type="text" class="form-control {{nomEsValido}}" id="nombreI" name="nombreI" [(ngModel)]="nombre"
+          #nombreI="ngModel" minlength="3" maxlength="20" required pattern="[A-Za-z ]+">
+        <div *ngIf="nombreI.touched && !nombreI.valid">
+          <div *ngIf="nombreI.errors.required" class=" tError text text-danger">
+            Nombre Requerido
+          </div>
+          <div *ngIf="nombreI.errors.minlength" class=" tError text text-danger">
+            Nombre debe tener minimo 3 caracteres
+          </div>
+          <div *ngIf="nombreI.errors.pattern" class=" tError text text-danger">
+            caracteres invalidos
+          </div>
+        </div>
         <div class="invalid-feedback">
-            Nombre Invalido
+          Nombre Invalido
         </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control {{dirEsValido}}" id="direccionEscr" value="" name="direccion"
-          [(ngModel)]="direccion">
-          <div class="invalid-feedback">
-              Direccion Invalido
+        <input type="text" class="form-control {{dirEsValido}}" id="direccionI" name="direccionI"
+          [(ngModel)]="direccion" #direccionI="ngModel" required>
+        <div *ngIf="direccionI.touched && !direccionI.valid">
+          <div *ngIf="direccionI.errors.required" class=" tError text text-danger">
+            Direccion Requerida
           </div>
+        </div>
+        <div class="invalid-feedback">
+          Direccion Invalido
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control {{telEsValido}}" id="telefonoEscr" value="NULL" name="telefono"
-          [(ngModel)]="telefono">
-          <div class="invalid-feedback">
-              Telefon Invalido
+        <input type="number" class="form-control {{telEsValido}}" id="telefonoI" name="telefonoI" [(ngModel)]="telefono"
+          pattern="[0-9]+" #telefonoI="ngModel" required>
+        <div *ngIf="telefonoI.touched && !telefonoI.valid">
+          <div *ngIf="telefonoI.errors.required" class=" tError text text-danger">
+            Telefono Requerido
           </div>
+          <div *ngIf="telefonoI.errors.pattern" class=" tError text text-danger">
+            Telefono solo puede contener numeros
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Telefon Invalido
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Longitud</label>
       <div class="col-sm-8">
         <input type="number" class="form-control {{lonEsValido}}" id="long" value="NULL" name="Longitud"
-          [(ngModel)]="longitud">
-          <div class="invalid-feedback">
-              Longitud Invalida
-          </div>
+          [(ngModel)]="longitud" required>
+        <div class="invalid-feedback">
+          Longitud Invalida
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <label for="telefonoEscr" class="col-sm-4 col-form-label">Latitud</label>
       <div class="col-sm-8">
         <input type="number" class="form-control {{latEsValido}}" id="lat" value="NULL" name="latitud"
-          [(ngModel)]="latitud">
-          <div class="invalid-feedback">
-              Latitud Invalida
-          </div>
+          [(ngModel)]="latitud" required>
+        <div class="invalid-feedback">
+          Latitud Invalida
+        </div>
       </div>
     </div>
     <div class="form-group row">
-      <button class="col-12 btn btn-info" (click)="nuevoEscribania()">Enviar</button>
+      <button class="col-12 btn btn-info" [disabled]="!formEscribania.form.valid">Enviar</button>
     </div>
   </form>
 
@@ -79,8 +104,8 @@
         <td>{{item.direccion}}</td>
         <td>{{item.telefono}}</td>
         <td>
-            <p *ngIf="item.estado" class="text-success">Activo</p>
-            <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
+          <p *ngIf="item.estado" class="text-success">Activo</p>
+          <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
         </td>
         <td>
 
@@ -106,48 +131,74 @@
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Modificar Mensaje</h4>
+          <h4 class="modal-title">Modificar Escribania</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
         <!-- Modal body -->
+        <div class="mod">
+          <div class="dropdown-divider"></div>
+          <div class="form-group row">
+            <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="nombreM" name="nombreM" [(ngModel)]="nombre"
+                #nombreM="ngModel" minlength="3" maxlength="20" pattern="[A-Za-z ]+" required>
+              <div *ngIf="nombreM.touched && !nombreM.valid">
+                <div *ngIf="nombreM.errors.required" class=" tError text text-danger">
+                  Nombre Requerido
+                </div>
+                <div *ngIf="nombreM.errors.minlength" class=" tError text text-danger">
+                  Nombre debe tener minimo 3 caracteres
+                </div>
+                <div *ngIf="nombreM.errors.pattern" class=" tError text text-danger">
+                  caracteres invalidos
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="direccionM" name="direccionM" [(ngModel)]="direccion"
+                #direccionM="ngModel" required>
+              <div *ngIf="direccionM.touched && !direccionM.valid">
+                <div *ngIf="direccionM.errors.required" class=" tError text text-danger">
+                  Direccion Requerida
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="telefonoM" name="telefonoM" [(ngModel)]="telefono"
+                pattern="[0-9]+" #telefonoM="ngModel" required>
+              <div *ngIf="telefonoM.touched && !telefonoM.valid">
+                <div *ngIf="telefonoM.errors.required" class=" tError text text-danger">
+                  Telefono Requerido
+                </div>
+                <div *ngIf="telefonoM.errors.pattern" class=" tError text text-danger">
+                  Telefono solo puede contener numeros
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="telefonoEscr" class="col-sm-4 col-form-label">Longitud</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="long1" value="NULL" name="longitud" [(ngModel)]="longitud"
+                required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="telefonoEscr" class="col-sm-4 col-form-label">Latitud</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" id="lat1Escr" value="NULL" name="latitud" [(ngModel)]="latitud"
+                required>
+            </div>
+          </div>
+        </div>
 
-        <legend class="tForm">Registrar Escribania</legend>
-        <div class="dropdown-divider"></div>
-        <div class="form-group row">
-          <label for="nombreEscribania" class="col-sm-4 col-form-label">Nombre</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="nombreEscribania" name="nombre" [(ngModel)]="nombre">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="direccionEscr" class="col-sm-4 col-form-label">Direccion</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="direccionEscr" value="" name="direccion"
-              [(ngModel)]="direccion">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="telefonoEscr" class="col-sm-4 col-form-label">Telefono</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" id="telefonoEscr" value="NULL" name="telefono"
-              [(ngModel)]="telefono">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="telefonoEscr" class="col-sm-4 col-form-label">Longitud</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" id="long1" value="NULL" name="longitud"
-              [(ngModel)]="longitud">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="telefonoEscr" class="col-sm-4 col-form-label">Latitud</label>
-          <div class="col-sm-8">
-            <input type="number" class="form-control" id="lat1Escr" value="NULL" name="latitud"
-              [(ngModel)]="latitud">
-          </div>
-        </div>
 
         <!-- Modal footer -->
 

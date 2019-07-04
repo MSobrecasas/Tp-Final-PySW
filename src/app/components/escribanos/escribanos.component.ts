@@ -99,29 +99,41 @@ export class EscribanosComponent implements OnInit {
 
   public validarUsuario() {
     this.usuarioRepetido = false;
-    this.passIguales = false;
+    this.userEsValido = 'is-valid';
+    this.dniEsValido = 'is-valid';
+    this.legInvalido = 'is-valid';
     if (this.validarDatos()) {
-      if (this.password == this.passIgual) {
-        this.passIguales = true;
-      }
-      for (var i = 0; i < this.usuarios.length; i++) {
-        if (this.usuarios[i].username == this.username) {
-          this.usuarioRepetido = true;
-          alert("Nombre de usuario existente");
+      if (this.password != this.passIgual) {
+        this.pssEsValido = 'is-invalid'
+      } else {
+        this.pssEsValido = 'is-valid'
+        for (var i = 0; i < this.usuarios.length; i++) {
+          if (this.usuarios[i].username == this.username) {
+            this.usuarioRepetido = true;
+            this.userEsValido = 'is-invalid'
+            alert("Nombre de usuario existente");
+          }
+        }
+
+        for (var i = 0; i < this.usuarios.length; i++) {
+          if (this.usuarios[i].dni == this.dni) {
+            this.usuarioRepetido = true;
+            this.dniEsValido = 'is-invalid'
+            alert("Dni de usuario existente");
+          }
+        }
+        for (var i = 0; i < this.usuarios.length; i++) {
+          if (this.usuarios[i].legajo == this.legajo) {
+            this.usuarioRepetido = true;
+            this.legInvalido = 'is-invalid'
+            alert("Legajo de usuario existente");
+          }
+        }
+
+        if (this.usuarioRepetido == false) {
+          this.nuevoUsuario();
         }
       }
-
-      for (var i = 0; i < this.usuarios.length; i++) {
-        if (this.usuarios[i].dni == this.dni) {
-          this.usuarioRepetido = true;
-          alert("Dni de usuario existente");
-        }
-      }
-
-      if (this.usuarioRepetido == false) {
-        this.nuevoUsuario();
-      }
-
     }
 
 
@@ -135,7 +147,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.email = this.email;
     this.usuario.estado = true;
     this.usuario.fechaNac = this.fechaNac;
-    this.usuario.foto = "ACA NO SE QUE VA EN LA FOTO"
+    this.usuario.foto = this.foto
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
     this.usuario.tipoUsuario = "socio";
@@ -274,7 +286,8 @@ export class EscribanosComponent implements OnInit {
   }
 
   validarDatos() {
-    let completar: boolean = true;
+
+    /* let completar: boolean = true;
     if (this.nombre == null) {
       this.nomEsValido = 'is-invalid'
       completar = false
@@ -347,8 +360,22 @@ export class EscribanosComponent implements OnInit {
       completar = false
     } else {
       this.legInvalido = 'is-valid'
+    } */
+    let completar: boolean = true;
+    this.nomEsValido = 'is-valid';
+    this.apeEsValido = 'is-valid';
+    this.fnaEsValido = 'is-valid';
+    this.dirEsValido = 'is-valid';
+    this.telEsValido = 'is-valid';
+    this.emlEsValido = 'is-valid';
+    this.userEsValido = 'is-valid';
+    this.pssEsValido = 'is-valid';
+    if (this.foto == null) {
+      this.fotEsValido = 'is-invalid'
+      completar = false
+    } else {
+      this.fotEsValido = 'is-valid'
     }
-    
 
 
     return completar;

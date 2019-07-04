@@ -1,6 +1,6 @@
 <div *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'">
   <!-- <div> -->
-  <form method="POST">
+  <form method="POST" (ngSubmit)="nuevoNovedades()" #formNovedades="ngForm">
     <legend class="tForm">Agregar Novedad</legend>
     <div class="dropdown-divider"></div>
     <div class="form-group row">
@@ -12,11 +12,17 @@
     <div class="form-group row">
       <label for="detalle" class="col-sm-4 col-form-label">Descripcion</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="detalle" name="detalle" [(ngModel)]="novedades.descripcion">
+        <input type="text" class="form-control" id="detalleI" name="detalleI" [(ngModel)]="novedades.descripcion"
+          #detalleI="ngModel" required>
+        <div *ngIf="detalleI.touched && !detalleI.valid">
+          <div *ngIf="detalleI.errors.required" class=" tError text text-danger">
+            Nombre Requerido
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
-      <button class="col-12 btn btn-info" (click)="nuevoNovedades()">Agregar</button>
+      <button class="col-12 btn btn-info" [disabled]="!formNovedades.form.valid">Agregar</button>
     </div>
   </form>
 
@@ -40,9 +46,51 @@
             Novedades de: {{item.usuario.nombre}}
           </div>
           {{item.descripcion}}
+          <div  class="table-primary justify-content-start py-2"
+          *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario=='administrativo'">
+            <button class="btn btn-info" data-toggle="modal" data-target="#myModalMod"
+            (click)="elegirnovedades(item)">Administrar</button>
+          </div>
         </td>
+
       </tr>
     </tbody>
   </table>
 </div>
-<div>
+<!-- The Modal -->
+<div class="modal" id="myModalMod">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modificar Escribania</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="mod">
+          <div class="form-group row">
+              <label for="detalle" class="col-sm-4 col-form-label">Descripcion</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="detalleI" name="detalleI" [(ngModel)]="novedades.descripcion"
+                  #detalleI="ngModel" required>
+                <div *ngIf="detalleI.touched && !detalleI.valid">
+                  <div *ngIf="detalleI.errors.required" class=" tError text text-danger">
+                    Detalle Requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+
+      <!-- Modal footer -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal"
+          (click)="actualizarNovedades()">Guardar</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal"
+          (click)="borrarNovedades()">Eliminar</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+      </div>
