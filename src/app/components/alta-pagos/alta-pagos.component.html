@@ -178,14 +178,3 @@
   </div>
 
 </div>
-
-<script>
-  $(document).ready(function () {
-    $("filtroFecha1").on("keyup", function () {
-      var value = $(this).val().toLowerCase();
-      $("#filtrito tr").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-</script>
