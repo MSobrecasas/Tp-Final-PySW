@@ -12,6 +12,7 @@ import { Usuario } from 'src/app/models/usuario';
 export class HeaderComponent implements OnInit {
   btn;
   usuariolog: Usuario;
+  ocultar: boolean;
   constructor(public route: Router,
     public loginService: LoginService,
     private usuarioService: UsuarioService) {
@@ -48,6 +49,14 @@ export class HeaderComponent implements OnInit {
           }
         )
 
+    }
+  }
+  ocultarBoton(btnlog:HTMLElement){
+    if(document.documentElement.clientWidth<768){
+      btnlog.hidden=true;
+    }
+    if(document.documentElement.clientWidth>768){
+      btnlog.hidden=false;
     }
   }
   logout() {
