@@ -38,6 +38,7 @@ import { EscribanoPipe } from './pipes/escribano.pipe';
 import { PagosPipe } from './pipes/pagos.pipe';
 import { EscribaniaPipe } from './pipes/escribania.pipe';
 import { NovedadesPipe } from './pipes/novedades.pipe';
+import { FechaPipe } from './pipes/fecha.pipe';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { NovedadesPipe } from './pipes/novedades.pipe';
     PagosPipe,
     EscribaniaPipe,
     NovedadesPipe,
+    FechaPipe,
     
     
   ],

@@ -4,6 +4,7 @@ import { Pagos } from 'src/app/models/pagos';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from 'src/app/models/usuario';
 import * as printJS from 'print-js'
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-alta-pagos',
@@ -30,7 +31,11 @@ export class AltaPagosComponent implements OnInit {
   usuarioN: Usuario;
   //PrintJS
   jsonPagos: JSON;
-
+  //filtro
+  filtroPago = "";
+  filtroFecha: "";
+  filtroFecha2: Date;
+  public meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
   constructor(private pagosService: PagosService, private usuarioService: UsuarioService) {
     this.pagos = new Pagos;
@@ -172,4 +177,11 @@ export class AltaPagosComponent implements OnInit {
     })
   }
 
+  limpiar() {
+    console.log(this.filtroFecha);
+    this.filtroFecha = "";
+    console.log(new Date(1562278431000));
+    console.log(new Date);
+    console.log(this.filtroFecha2);
+  }
 }
