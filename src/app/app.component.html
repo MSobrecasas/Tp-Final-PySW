@@ -2,15 +2,13 @@
     <script src="./../../node_modules/print-js/src/js/print.js"></script>
 </head>
 
-<body id="dda" (window:resize)="pantallaSM()">
+<body id="dda">
 
-    <div class="container">
-        <app-header></app-header>
-    </div>
-    <div class="{{fondo}}" id="cardv">
-        <div class="{{fondo2}}">
-            <div class="{{fondo3}}">
-                <router-outlet></router-outlet>
+    <app-header></app-header>
+    <div class="container contenido" id="cardv">
+        <div class="card border-0 shadow my-5">
+            <div class="card-body p-5">
+                    <router-outlet></router-outlet>
             </div>
         </div>
     </div>

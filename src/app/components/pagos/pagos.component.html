@@ -1,53 +1,49 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12" style="overflow-x: scroll">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>
-              Escribano
-            </th>
-            <th>
-              Detalle
-            </th>
-            <th>
-              Importe
-            </th>
-            <th>
-              Estado
-            </th>
-            <th>
-              Fecha Generado
-            </th>
-            <th>
-              Fecha Pago
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of listaPagos"
-            [hidden]="loginService.userLoggedIn && loginService.userLogged.id!=item.usuario.id">
-            <td>{{item.usuario.apellido}}, {{item.usuario.nombre}}</td>
-            <td>{{item.detalle}}</td>
-            <td>{{item.importe}}</td>
-            <td>
-              <p *ngIf="item.estadoPago" class="text-success">Pagado</p>
-              <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
-            </td>
-            <td>{{item.fecha.timestamp * 1000 | date: 'dd/MM/yyyy'}}</td>
-            <td>
-              <p *ngIf="item.estadoPago">{{item.fechaPago.timestamp * 1000 | date: 'dd/MM/yyyy'}}</p>
-              <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
-            </td>
+<div class="row justify-content-center">
 
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
-
-
-    <!--   <form method="POST">
+        <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>
+                      Escribano
+                    </th>
+                    <th>
+                      Detalle
+                    </th>
+                    <th>
+                      Importe
+                    </th>
+                    <th>
+                      Estado
+                    </th>
+                    <th>
+                      Fecha Generado
+                    </th>
+                    <th>
+                      Fecha Pago
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of listaPagos" [hidden]="loginService.userLoggedIn && loginService.userLogged.id!=item.usuario.id">
+                    <td>{{item.usuario.apellido}}, {{item.usuario.nombre}}</td>
+                    <td>{{item.detalle}}</td>
+                    <td>{{item.importe}}</td>
+                    <td>
+                      <p *ngIf="item.estadoPago" class="text-success">Pagado</p>
+                      <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+                    </td>
+                    <td>{{item.fecha.timestamp * 1000 | date: 'dd/MM/yyyy'}}</td>
+                    <td>
+                      <p *ngIf="item.estadoPago">{{item.fechaPago.timestamp * 1000 | date: 'dd/MM/yyyy'}}</p>
+                      <p *ngIf="!item.estadoPago" class="text-danger"> Impago</p>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+            
+              </table>
+            
+  <!--   <form method="POST">
         <legend class="tForm">Registro</legend>
         <div class="dropdown-divider"></div>
         <div class="form-group row">
@@ -95,5 +91,4 @@
     </form> -->
 
 
-  </div>
 </div>

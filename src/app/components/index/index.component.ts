@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit {
   constructor(public route: Router) { }
 
   ngOnInit() {
-  //this.push();
+  this.push();
   }
   navegar(){
     //this.route.navigateByUrl('/registro')

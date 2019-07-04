@@ -1,9 +1,9 @@
 #logo {
   text-transform: uppercase;
-  font-weight: 200;
+  font-weight: 300;
+  font-size: 25px;
   letter-spacing: 2px;
   position: relative;
-  
   color: rgb(255, 255, 255);
 }
 

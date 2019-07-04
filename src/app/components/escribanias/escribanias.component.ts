@@ -3,7 +3,6 @@ import { Escribano } from 'src/app/models/escribano';
 import { Escribania } from 'src/app/models/escribania';
 import { EscribaniaService } from 'src/app/services/escribania.service';
 import { EscribanoService } from 'src/app/services/escribano.service';
-import { AgmMap } from '@agm/core';
 
 @Component({
   selector: 'app-escribanias',
@@ -23,8 +22,7 @@ export class EscribaniasComponent implements OnInit {
   title: string = 'Mapa Escribanias';
   lat: number = 51.678418;
   lng: number = 7.809007;
-  //
-  estilo: string = 'width=100vh'
+
   constructor(private escribaniaService: EscribaniaService, private escribanoService: EscribanoService) {
     this.escribania = new Escribania();
     this.escribaniaMod = new Escribania();
@@ -45,8 +43,5 @@ export class EscribaniasComponent implements OnInit {
           console.log(this.escribanias);
         }
       )
-  }
-  mapaResponsivo(){
-
   }
 }

@@ -57,7 +57,7 @@ export class ModificarPerfilComponent implements OnInit {
   constructor(public loginService: LoginService,
     private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
-    this.obtenerUsuario();
+    //this.obtenerUsuario();
   }
 
   ngOnInit() {
@@ -111,9 +111,8 @@ export class ModificarPerfilComponent implements OnInit {
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
-    this.usuario.tipoUsuario = "socio";
-    this.usuario.username = this.username;
-    console.log(this.usuario);
+    // this.usuario.tipoUsuario = "socio";
+    // this.usuario.username = this.username;
     if (this.validarDatos()) {
       this.usuarioService.modificarEscribano(this.usuario).subscribe(
         data => {
@@ -213,9 +212,9 @@ export class ModificarPerfilComponent implements OnInit {
     } else {
       this.pssEsValido = 'is-valid'
     }
-    if (this.legajo == null || this.legajo.length < 4) {
+    if(this.legajo==null||this.legajo.length <4){
       this.lejEsValido = 'is-invalid'
-    } else {
+    }else{
       this.lejEsValido = 'is-valid'
     }
 

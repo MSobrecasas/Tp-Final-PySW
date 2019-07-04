@@ -1,377 +1,370 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <form method="POST">
-            <legend class="tForm">Registro</legend>
-            <div class="dropdown-divider"></div>
-            <div class="form-group row">
-                <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{nomEsValido}}" id="nombre" name="nombre"
-                        [(ngModel)]="nombre" required>
+<div class="row justify-content-center">
+    <form method="POST">
+        <legend class="tForm">Registro</legend>
+        <div class="dropdown-divider"></div>
+        <div class="form-group row">
+            <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{nomEsValido}}" id="nombre" name="nombre" [(ngModel)]="nombre"
+                    required>
+                <div class="invalid-feedback">
+                    Nombre Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{apeEsValido}}" id="apellido" name="apellido"
+                    [(ngModel)]="apellido" required>
+                <div class="invalid-feedback">
+                    Apellido Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{dniEsValido}}" id="dni" name="dni" [(ngModel)]="dni" required
+                    maxlength="10" pattern="[0-9]">
+                <div class="invalid-feedback">
+                    DNI Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
+            <div class="col-sm-8">
+                <input type="date" class="form-control {{fnaEsValido}}" id="fecnac" name="fechaNac"
+                    [(ngModel)]="fechaNac" required>
+                <div class="invalid-feedback">
+                    Fecha Invalida
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{dirEsValido}}" id="direccion" name="direccion"
+                    [(ngModel)]="direccion" required>
+                <div class="invalid-feedback">
+                    Direccion Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{telEsValido}}" id="telefono" name="telefono"
+                    [(ngModel)]="telefono" pattern="[0-9]" required>
+                <div class="invalid-feedback">
+                    Telefon Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control {{emlEsValido}}" id="staticEmail"
+                    placeholder="email@example.com" name="email" [(ngModel)]="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                <div class="invalid-feedback">
+                    Email Invalido
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+            <div class="col-sm-8">
+                <div class="custom-file" style="z-index: 0 !important">
+                    <input type="file" class="custom-file-input {{fotEsValido}}" id="customFileLang" lang="es"
+                        alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
                     <div class="invalid-feedback">
-                        Nombre Invalido
+                        Foto Invalida
+                    </div>
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    <div class="row justify-content-center mt-1" *ngIf="foto">
+                        <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{apeEsValido}}" id="apellido" name="apellido"
-                        [(ngModel)]="apellido" required>
-                    <div class="invalid-feedback">
-                        Apellido Invalido
-                    </div>
+        </div>
+        <div class="form-group row">
+            <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control {{userEsValido}}" id="usernameUsav" #nombreUs placeholder=""
+                    name="username" [(ngModel)]="username" required>
+                <div class="invalid-feedback">
+                    Nombre de Usuario Invalido
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="dni" class="col-sm-4 col-form-label">DNI</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{dniEsValido}}" id="dni" name="dni" [(ngModel)]="dni"
-                        required maxlength="10" pattern="[0-9]">
-                    <div class="invalid-feedback">
-                        DNI Invalido
-                    </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control {{pssEsValido}}" id="Pass1" placeholder="*********"
+                    name="password" [(ngModel)]="password" required>
+                <div class="invalid-feedback">
+                    Contraseñas deben ser iguales
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
-                <div class="col-sm-8">
-                    <input type="date" class="form-control {{fnaEsValido}}" id="fecnac" name="fechaNac"
-                        [(ngModel)]="fechaNac" required>
-                    <div class="invalid-feedback">
-                        Fecha Invalida
-                    </div>
-                </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita Contraseña</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="Pass2" placeholder="*********" name="passIgual"
+                    [(ngModel)]="passIgual" required>
             </div>
-            <div class="form-group row">
-                <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{dirEsValido}}" id="direccion" name="direccion"
-                        [(ngModel)]="direccion" required>
-                    <div class="invalid-feedback">
-                        Direccion Invalido
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{telEsValido}}" id="telefono" name="telefono"
-                        [(ngModel)]="telefono" pattern="[0-9]" required>
-                    <div class="invalid-feedback">
-                        Telefon Invalido
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-                <div class="col-sm-8">
-                    <input type="email" class="form-control {{emlEsValido}}" id="staticEmail"
-                        placeholder="email@example.com" name="email" [(ngModel)]="email"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-                    <div class="invalid-feedback">
-                        Email Invalido
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
-                <div class="col-sm-8">
-                    <div class="custom-file" style="z-index: 0 !important">
-                        <input type="file" class="custom-file-input {{fotEsValido}}" id="customFileLang" lang="es"
-                            alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
-                        <div class="invalid-feedback">
-                            Foto Invalida
-                        </div>
-                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                        <div class="row justify-content-center mt-1" *ngIf="foto">
-                            <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control {{userEsValido}}" id="usernameUsav" #nombreUs placeholder=""
-                        name="username" [(ngModel)]="username" required>
-                    <div class="invalid-feedback">
-                        Nombre de Usuario Invalido
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
-                <div class="col-sm-8">
-                    <input type="password" class="form-control {{pssEsValido}}" id="Pass1" placeholder="*********"
-                        name="password" [(ngModel)]="password" required>
-                    <div class="invalid-feedback">
-                        Contraseñas deben ser iguales
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita Contraseña</label>
-                <div class="col-sm-8">
-                    <input type="password" class="form-control" id="Pass2" placeholder="*********" name="passIgual"
-                        [(ngModel)]="passIgual" required>
-                </div>
-            </div>
+        </div>
 
-            <div class="form-group row">
-                <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
-                <div class="col-sm-8">
-                    <select class="form-control" name="tipoUsuario" [(ngModel)]="tipoUsuario">
-                        <option value="administrativo">Administrativo</option>
-                        <!--   <option value="socio">Socio</option> -->
-                        <option value="administrador">Administrador</option>
-                        <option value="gerente">Gerente</option>
-                    </select>
+        <div class="form-group row">
+            <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="tipoUsuario" [(ngModel)]="tipoUsuario">
+                    <option value="administrativo">Administrativo</option>
+                    <!--   <option value="socio">Socio</option> -->
+                    <option value="administrador">Administrador</option>
+                    <option value="gerente">Gerente</option>
+                </select>
+            </div>
+        </div>
+        <hr>
+        <!--   #tipo (change)="tipoUsuario=$event.target.value"
+            <div *ngIf="tipoUsuario=='socio'">
+                <div class="form-group row">
+                    <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="legajo" name="legajo" [(ngModel)]="legajo">
+                    </div>
                 </div>
-            </div>
-            <hr>
-            <!--   #tipo (change)="tipoUsuario=$event.target.value"
-                        <div *ngIf="tipoUsuario=='socio'">
-                            <div class="form-group row">
-                                <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                                <div class="col-sm-8">
-                                    <input type="number" class="form-control" id="legajo" name="legajo" [(ngModel)]="legajo">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" list="browsers" id="escribania" name="escribania"
-                                        [(ngModel)]="escribania">
-                                </div>
-                            </div>
-                        </div> -->
-            <div class="form-group row">
-                <button class="col-12 btn btn-info" (click)="validarUsuario()">Enviar</button>
-            </div>
-        </form>
-        <div class="col-12" style="overflow-x: scroll">
-            <!-- TABLA -->
-            <table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="5">
-                <thead>
-                    <tr>
-                        <th>
-                            <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
-                        </th>
-                        <th>
-                            <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
-                        </th>
-                        <th>
-                            <mfDefaultSorter by="username">Username</mfDefaultSorter>
-                        </th>
-                        <th>
-                            <mfDefaultSorter by="tipoUsuario">Tipo de Usuario</mfDefaultSorter>
-                        </th>
-                        <th>
-                            <mfDefaultSorter by="tipoUsuario">Estado</mfDefaultSorter>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of mf.data">
-                        <td>{{item.nombre}},{{item.apellido}} </td>
-                        <td>{{item.dni}}</td>
-                        <td>{{item.username}}</td>
-                        <td>{{item.tipoUsuario}}</td>
-                        <td>
-                            <p *ngIf="item.estado" class="text-success">Activo</p>
-                            <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
-                        </td>
-                        <td>
-                            <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                <div class="form-group row">
+                    <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" list="browsers" id="escribania" name="escribania"
+                            [(ngModel)]="escribania">
+                    </div>
+                </div>
+            </div> -->
+        <div class="form-group row">
+            <button class="col-12 btn btn-info" (click)="validarUsuario()">Enviar</button>
+        </div>
+    </form>
+
+    <!-- TABLA -->
+    <table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="5">
+        <thead>
+            <tr>
+                <th>
+                    <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="username">Username</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="tipoUsuario">Tipo de Usuario</mfDefaultSorter>
+                </th>
+                <th>
+                    <mfDefaultSorter by="tipoUsuario">Estado</mfDefaultSorter>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of mf.data">
+                <td>{{item.nombre}},{{item.apellido}} </td>
+                <td>{{item.dni}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.tipoUsuario}}</td>
+                <td>
+                    <p *ngIf="item.estado" class="text-success">Activo</p>
+                    <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
+                </td>
+                <td>
+                    <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
                             data-target="#myModalPerfil">Perfil</button> -->
-                            <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
-                                data-target="#myModalMod">Administrar</button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4">
-                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+                    <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                        data-target="#myModalMod">Administrar</button>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 
-            <!-- FIN TABLA -->
-        </div>
+    <!-- FIN TABLA -->
 
+    <!-- The Modal -->
+    <div class="modal" id="myModalMod">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-        <!-- The Modal -->
-        <div class="modal" id="myModalMod">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Administrar Usuario</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="form-group row">
-                        <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control {{nomEsValido}}" id="nombreM" name="nombreM"
-                                [(ngModel)]="nombre" required>
-                            <div class="invalid-feedback">
-                                Nombre Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control {{apeEsValido}}" id="apellidoM" name="apellidoM"
-                                [(ngModel)]="apellido" required>
-                            <div class="invalid-feedback">
-                                Apellido Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="dni" class="col-sm-4 col-form-label">DNI</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control {{dniEsValido}}" id="dniM" name="dniM"
-                                [(ngModel)]="dni" required maxlength="10" pattern="[0-9]">
-                            <div class="invalid-feedback">
-                                DNI Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
-                        <div class="col-sm-8">
-                            <input type="date" class="form-control {{fnaEsValido}}" id="fecnacM" name="fechaNacM"
-                                [(ngModel)]="fechaNac" required>
-                            <div class="invalid-feedback">
-                                Fecha Invalida
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control {{dirEsValido}}" id="direccionM" name="direccionM"
-                                [(ngModel)]="direccion" required>
-                            <div class="invalid-feedback">
-                                Direccion Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control {{telEsValido}}" id="telefonoM" name="telefonoM"
-                                [(ngModel)]="telefono" pattern="[0-9]" required>
-                            <div class="invalid-feedback">
-                                Telefon Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-                        <div class="col-sm-8">
-                            <input type="email" class="form-control {{emlEsValido}}" id="staticEmailM"
-                                placeholder="email@example.com" name="emailM" [(ngModel)]="email"
-                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-                            <div class="invalid-feedback">
-                                Email Invalido
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
-                        <div class="col-sm-8">
-                            <div class="custom-file" style="z-index: 0 !important">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="es"
-                                    alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
-                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                                <div class="row justify-content-center mt-1" *ngIf="foto">
-                                    <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" id="usernameM" #nombreUs placeholder=""
-                                name="usernameM" [(ngModel)]="username" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control {{pssEsValido}}" id="inputRPasswordM"
-                                placeholder="*********" name="passwordM" [(ngModel)]="password" required>
-                            <div class="invalid-feedback">
-                                Contraseñas deben ser iguales
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita
-                            Contraseña</label>
-                        <div class="col-sm-8">
-                            <input type="password" class="form-control" id="inputPasswordM" placeholder="*********"
-                                name="passIgualM" [(ngModel)]="passIgual" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
-                        <div class="col-sm-6">
-                            <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
-                                name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
-                                <option value="administrativo">Administrativo</option>
-                                <!-- <option value="socio">Socio</option> -->
-                                <option value="administrador">Administrador</option>
-                                <option value="gerente">Gerente</option>
-                            </select>
-                        </div>
-                    </div>
-                    <hr>
-                    <!--  <div *ngIf="tipoUsuario=='socio'">
-                                    <div class="form-group row">
-                                        <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                                        <div class="col-sm-8">
-                                            <input type="number" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" list="browsers" id="escribaniaM" name="escribaniaM"
-                                                [(ngModel)]="escribania">
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                    <!-- Modal footer -->
-
-                    <div class="modal-footer">
-                        <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
-                            (click)="actualizarUsuario()">Guardar</button>
-                        <button *ngIf="usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar
-                            de
-                            baja</button>
-                        <button *ngIf="!usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar
-                            de
-                            Alta</button>
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                    </div>
-
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Administrar Usuario</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+
+                <!-- Modal body -->
+                <div class="form-group row">
+                    <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control {{nomEsValido}}" id="nombreM" name="nombreM"
+                            [(ngModel)]="nombre" required>
+                        <div class="invalid-feedback">
+                            Nombre Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control {{apeEsValido}}" id="apellidoM" name="apellidoM"
+                            [(ngModel)]="apellido" required>
+                        <div class="invalid-feedback">
+                            Apellido Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control {{dniEsValido}}" id="dniM" name="dniM" [(ngModel)]="dni"
+                            required maxlength="10" pattern="[0-9]">
+                        <div class="invalid-feedback">
+                            DNI Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control {{fnaEsValido}}" id="fecnacM" name="fechaNacM"
+                            [(ngModel)]="fechaNac" required>
+                        <div class="invalid-feedback">
+                            Fecha Invalida
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control {{dirEsValido}}" id="direccionM" name="direccionM"
+                            [(ngModel)]="direccion" required>
+                        <div class="invalid-feedback">
+                            Direccion Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control {{telEsValido}}" id="telefonoM" name="telefonoM"
+                            [(ngModel)]="telefono" pattern="[0-9]" required>
+                        <div class="invalid-feedback">
+                            Telefon Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control {{emlEsValido}}" id="staticEmailM"
+                            placeholder="email@example.com" name="emailM" [(ngModel)]="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        <div class="invalid-feedback">
+                            Email Invalido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+                    <div class="col-sm-8">
+                        <div class="custom-file" style="z-index: 0 !important">
+                            <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
+                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                            <div class="row justify-content-center mt-1" *ngIf="foto">
+                                <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="usernameM" #nombreUs placeholder="" name="usernameM"
+                            [(ngModel)]="username" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control {{pssEsValido}}" id="inputRPasswordM"
+                            placeholder="*********" name="passwordM" [(ngModel)]="password" required>
+                        <div class="invalid-feedback">
+                            Contraseñas deben ser iguales
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita Contraseña</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputPasswordM" placeholder="*********"
+                            name="passIgualM" [(ngModel)]="passIgual" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
+                            name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
+                            <option value="administrativo">Administrativo</option>
+                            <!-- <option value="socio">Socio</option> -->
+                            <option value="administrador">Administrador</option>
+                            <option value="gerente">Gerente</option>
+                        </select>
+                    </div>
+                </div>
+                <hr>
+                <!--  <div *ngIf="tipoUsuario=='socio'">
+                        <div class="form-group row">
+                            <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="legajoM" name="legajoM" [(ngModel)]="legajo">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" list="browsers" id="escribaniaM" name="escribaniaM"
+                                    [(ngModel)]="escribania">
+                            </div>
+                        </div>
+                    </div> -->
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
+                        (click)="actualizarUsuario()">Guardar</button>
+                    <button *ngIf="usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
+                        baja</button>
+                    <button *ngIf="!usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
+                        Alta</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                </div>
+
             </div>
         </div>
-
-        <!-- FIN MODAL -->
-
     </div>
+
+    <!-- FIN MODAL -->
+
 </div>

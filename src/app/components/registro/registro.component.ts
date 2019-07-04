@@ -56,13 +56,11 @@ export class RegistroComponent implements OnInit {
   pssEsValido: string;
   pss1EsValido: string;
   //----------
-  modalcss: string;
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
     this.usuario = new Usuario();
     this.usuarios = new Array<Usuario>();
     this.obtenerUsuarios();
-    
   }
 
   ngOnInit() {
@@ -324,14 +322,8 @@ export class RegistroComponent implements OnInit {
       this.pssEsValido = 'is-valid'
     }
     
+
+
     return completar;
-  }
-  modalfull(){
-    if(document.documentElement.clientWidth<600){
-      this.modalcss = 'modal-full'
-    }else{
-      this.modalcss = '';
-    }
-    console.log(document.documentElement.clientWidth)
   }
 }
