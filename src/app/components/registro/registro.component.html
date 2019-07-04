@@ -228,14 +228,14 @@
 </div>
 <div class="row justify-content-center">
     <div class="form-group row">
-        <label for="busq" class="col-sm-4 col-form-label">buscar por nombre</label>
+        <label for="busq" class="col-sm-4 col-form-label">buscar por Apellido</label>
         <div class="col-sm-8">
             <input type="text" class="form-control " id="busq" placeholder="search.." name="busq" [(ngModel)]="busq">
         </div>
     </div>
 </div>
 <!-- TABLA -->
-<table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="5">
+<table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="10">
     <thead>
         <tr>
             <th>
@@ -276,7 +276,7 @@
     <tfoot>
         <tr>
             <td colspan="4">
-                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                <mfBootstrapPaginator [rowsOnPageSet]="[10,20]"></mfBootstrapPaginator>
             </td>
         </tr>
     </tfoot>
