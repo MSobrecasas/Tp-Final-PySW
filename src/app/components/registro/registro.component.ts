@@ -6,6 +6,7 @@ import { EscribaniaService } from 'src/app/services/escribania.service';
 import { EscribanoService } from 'src/app/services/escribano.service';
 import { Escribano } from 'src/app/models/escribano';
 import { isDate } from 'util';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -56,6 +57,9 @@ export class RegistroComponent implements OnInit {
   pssEsValido: string;
   pss1EsValido: string;
   //----------
+  busq: string ="";
+
+  
   constructor(private usuarioService: UsuarioService) {
     this.usuarioMod = new Usuario();
     this.usuario = new Usuario();
@@ -94,29 +98,33 @@ export class RegistroComponent implements OnInit {
   }
   public validarUsuario() {
     this.usuarioRepetido = false;
-    this.passIguales = false;
+    this.userEsValido = 'is-valid';
+    this.dniEsValido = 'is-valid';
     if (this.validarDatos()) {
-      if (this.password == this.passIgual) {
-        this.passIguales = true;
-      }
-      for (var i = 0; i < this.usuarios.length; i++) {
-        if (this.usuarios[i].username == this.username) {
-          this.usuarioRepetido = true;
-          alert("Nombre de usuario existente");
+      if (this.password != this.passIgual) {
+        this.pssEsValido = 'is-invalid'
+      } else {
+        this.pssEsValido = 'is-valid'
+        for (var i = 0; i < this.usuarios.length; i++) {
+          if (this.usuarios[i].username == this.username) {
+            this.usuarioRepetido = true;
+            this.userEsValido = 'is-invalid'
+            alert("Nombre de usuario existente");
+          }
+        }
+
+        for (var i = 0; i < this.usuarios.length; i++) {
+          if (this.usuarios[i].dni == this.dni) {
+            this.usuarioRepetido = true;
+            this.dniEsValido = 'is-invalid'
+            alert("Dni de usuario existente");
+          }
+        }
+
+        if (this.usuarioRepetido == false) {
+          this.nuevoUsuario();
         }
       }
-
-      for (var i = 0; i < this.usuarios.length; i++) {
-        if (this.usuarios[i].dni == this.dni) {
-          this.usuarioRepetido = true;
-          alert("Dni de usuario existente");
-        }
-      }
-
-      if (this.usuarioRepetido == false) {
-        this.nuevoUsuario();
-      }
-
     }
 
   }
@@ -254,56 +262,62 @@ export class RegistroComponent implements OnInit {
   }
   validarDatos() {
     let completar: boolean = true;
-    if (this.nombre == null) {
-      this.nomEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.nomEsValido = 'is-valid'
-    }
-    if (this.apellido == null) {
-      this.apeEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.apeEsValido = 'is-valid'
-      console.log(this.apeEsValido)
-    }
-    if (this.dni == null) {
-      this.dniEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.dniEsValido = 'is-valid'
-    }
-    if (!this.fechaNac) {
-      this.fnaEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.fnaEsValido = 'is-valid'
-    }
-    if (this.direccion == null) {
-      this.dirEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.dirEsValido = 'is-valid'
-    }
-    if (this.telefono == null) {
-      this.telEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.telEsValido = 'is-valid'
-    }
-    if (this.email == null) {
-      this.emlEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.emlEsValido = 'is-valid'
-    }
+    this.nomEsValido = 'is-valid';
+    this.apeEsValido = 'is-valid';
+    this.fnaEsValido = 'is-valid';
+    this.dirEsValido = 'is-valid';
+    this.telEsValido = 'is-valid';
+    this.emlEsValido = 'is-valid';
+    /*   if (this.nombre == null) {
+        this.nomEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.nomEsValido = 'is-valid'
+      }
+      if (this.apellido == null) {
+        this.apeEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.apeEsValido = 'is-valid'
+        console.log(this.apeEsValido)
+      }
+      if (this.dni == null) {
+        this.dniEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.dniEsValido = 'is-valid'
+      }
+      if (!this.fechaNac) {
+        this.fnaEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.fnaEsValido = 'is-valid'
+      }
+      if (this.direccion == null) {
+        this.dirEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.dirEsValido = 'is-valid'
+      }
+      if (this.telefono == null) {
+        this.telEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.telEsValido = 'is-valid'
+      }
+      if (this.email == null) {
+        this.emlEsValido = 'is-invalid'
+        completar = false
+      } else {
+        this.emlEsValido = 'is-valid'
+      } */
     if (this.foto == null) {
       this.fotEsValido = 'is-invalid'
       completar = false
     } else {
       this.fotEsValido = 'is-valid'
     }
-    if (this.username == null) {
+    /* if (this.username == null) {
       this.userEsValido = 'is-invalid'
       completar = false
     } else {
@@ -314,14 +328,9 @@ export class RegistroComponent implements OnInit {
       completar = false
     } else {
       this.pssEsValido = 'is-valid'
-    }
-    if (this.password != this.passIgual) {
-      this.pssEsValido = 'is-invalid'
-      completar = false
-    } else {
-      this.pssEsValido = 'is-valid'
-    }
-    
+    } */
+    this.userEsValido = 'is-valid';
+    this.pssEsValido = 'is-valid';
 
 
     return completar;

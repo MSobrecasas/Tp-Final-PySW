@@ -89,11 +89,19 @@ export class AltaEscribaniaComponent implements OnInit {
     //Creo una copia del escribania recibido como parametro para NO modificarlo
     //ya que el parametro esta mostrandose por el binding en el datatable
     this.escribania = Object.assign(this.escribania, escribania);
-
+    this.nombre = this.escribania.nombre;
+    this.direccion = this.escribania.direccion;
+    this.telefono = this.escribania.telefono;
+    this.longitud = this.escribania.longitud;
+    this.latitud = this.escribania.latitud;
   }
 
   public actualizarEscribania() {
-
+    this.escribania.nombre = this.nombre;
+    this.escribania.direccion = this.direccion;
+    this.escribania.telefono = this.telefono;
+    this.escribania.longitud = this.longitud;
+    this.escribania.latitud = this.latitud;
     this.escribaniaService.modificarEscribania(this.escribania).subscribe(
       data => {
         console.log("escribania actualizada.")

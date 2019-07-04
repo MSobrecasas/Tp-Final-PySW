@@ -1,38 +1,21 @@
 <div class="row justify-content-center">
   <form method="POST">
-    <legend class="tForm">Registro</legend>
+    <legend class="tForm">Pagos</legend>
     <div class="dropdown-divider"></div>
     <div class="form-group row">
       <label for="importe" class="col-sm-4 col-form-label">Importe</label>
       <div class="col-sm-8">
-        <input type="number" class="form-control {{impEsValido}}" name="importe" [(ngModel)]="importe">
+        <input type="number" class="form-control {{impEsValido}}" name="importe" [(ngModel)]="importe" required>
         <div class="invalid-feedback">
           Importe invalido
         </div>
       </div>
     </div>
-    <!--  <div class="form-group row">
-        <label for="fecha" class="col-sm-4 col-form-label">Fecha</label>
-        <div class="col-sm-8">
-          <input type="date" class="form-control" id="fecha">
-        </div>
-      </div> -->
-    <!-- <div class="form-group row">
-        <label for="foto" class="col-sm-4 col-form-label">Estado</label>
-        <div class="col-sm-8">
-          <input type="email" class="form-control" id="foto" value="Impago" disabled>
-        </div>
-      </div> -->
-    <!-- <div class="form-group row">
-        <label for="fechaPago" class="col-sm-4 col-form-label">Fecha Pago</label>
-        <div class="col-sm-8">
-          <input type="date" class="form-control" id="fechaPago" value="NULL">
-        </div>
-      </div> -->
+
     <div class="form-group row">
       <label for="detalle" class="col-sm-4 col-form-label">Detalle</label>
       <div class="col-sm-8">
-        <input type="text" class="form-control {{detEsValido}}" name="detalle" [(ngModel)]="detalle">
+        <input type="text" class="form-control {{detEsValido}}" name="detalle" [(ngModel)]="detalle" required>
         <div class="invalid-feedback">
           Detalle invalido
         </div>
@@ -48,7 +31,7 @@
       <label for="escribano" class="col-sm-4 col-form-label">Escribano</label>
       <div class="col-sm-8">
         <select [(ngModel)]="usuario" name="usuario" class="form-control">
-          <option *ngFor="let usuario of usuarios" [ngValue]="usuario">
+          <option *ngFor="let usuario of usuarios" [ngValue]="usuario" [hidden]="!usuario.estado">
             {{usuario.apellido}},{{usuario.nombre}}</option>
         </select>
       </div>

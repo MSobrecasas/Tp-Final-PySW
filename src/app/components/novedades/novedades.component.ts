@@ -88,6 +88,7 @@ export class NovedadesComponent implements OnInit {
 
 
   public actualizarNovedades() {
+    this.novedades.fecha = new Date();
     this.novedadesService.modificarNovedades(this.novedades).subscribe(
       data => {
         console.log("modificado correctamente.")
@@ -102,8 +103,8 @@ export class NovedadesComponent implements OnInit {
       });
   }
 
-  public bajaNovedades() {
-    this.novedadesService.modificarNovedades(this.novedades).subscribe(
+  public borrarNovedades() {
+    this.novedadesService.borrarNovedades(this.novedades.id).subscribe(
       data => {
         console.log("eliminado correctamente.")
         //actualizo la tabla de mensajes
