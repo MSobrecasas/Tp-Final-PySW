@@ -1,0 +1,40 @@
+/*
+HTML 5 Template Name: 
+File: About Us - 2 CSS
+Author: OS Templates
+Author URI: https://www.os-templates.com/
+Licence: <a href="https://www.os-templates.com/template-terms">Website Template Licence</a>
+*/
+
+#about-us{display:block; width:100%; line-height:1.6em;}
+
+#about-us #team{margin-bottom:50px;}
+#about-us #team ul{margin:0; padding:0; list-style:none;}
+#about-us #team ul li{}
+#about-us #team ul li:first-child h1{margin:0 0 20px 0; padding:0; border:none;}
+#about-us #team ul li:first-child p{margin:0 0 20px 0; padding:0;}
+#about-us #team ul li:first-child .imgholder{margin:0; padding:9px; border:1px solid #CCCCCC;}
+#about-us #team ul li figure{}
+#about-us #team ul li figure img{}
+#about-us #team ul li figure figcaption{}
+#about-us #team ul li figure figcaption p{margin:15px 0 0 0; padding:0;}
+#about-us #team ul li figure figcaption .fl_left{}
+#about-us #team ul li figure figcaption .fl_left .team_name{font-weight:bold;}
+#about-us #team ul li figure figcaption .fl_left .team_title{margin:0 0 15px 0; font-size:11px; line-height:normal;}
+#about-us #team ul li figure figcaption ul{float:right; clear:right; margin-top:15px;}
+#about-us #team ul li figure figcaption ul li{display:inline; margin:0 0 0 5px;}
+#about-us #team ul li figure figcaption ul li:first-child{margin-left:0;}
+#about-us #team ul li figure figcaption ul li a{}
+#about-us #team ul li figure figcaption ul li a img{}
+#about-us #team ul li figure figcaption .team_description{display:block; clear:both; margin:0; padding-top:15px; line-height:1.4em; border-top:1px solid #CCCCCC;}
+
+#about-us #client_logos{margin:0 0 50px 0; padding:30px 0; border:#CCCCCC solid; border-width:1px 0;}
+#about-us #client_logos ul{margin:0; padding:0; list-style:none;}
+#about-us #client_logos ul li{}
+#about-us #client_logos ul li:first-child{margin-left:0;}
+#about-us #client_logos ul li img{}
+
+#about-us #statements{margin-bottom:0;}
+#about-us #statements img{margin-bottom:30px;}
+#about-us #statements h2{}
+#about-us #statements p{}

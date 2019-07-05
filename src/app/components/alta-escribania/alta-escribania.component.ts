@@ -3,6 +3,8 @@ import { EscribaniaService } from 'src/app/services/escribania.service';
 import { Escribania } from 'src/app/models/escribania';
 import { Escribano } from 'src/app/models/escribano'
 import { EscribanoService } from 'src/app/services/escribano.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-alta-escribania',
@@ -10,9 +12,9 @@ import { EscribanoService } from 'src/app/services/escribano.service';
   styleUrls: ['./alta-escribania.component.css']
 })
 export class AltaEscribaniaComponent implements OnInit {
-  escribano: Escribano;
-  escribanos: Array<Escribano>;
-  escribanosAsoc: Array<Escribano>;
+  escribano: Usuario;
+  escribanos: Array<Usuario>;
+  escribanosAsoc: Array<Usuario>;
   //
   escribania: Escribania;
   escribaniaMod: Escribania;
@@ -32,12 +34,13 @@ export class AltaEscribaniaComponent implements OnInit {
   lonEsValido: string;
   //----------
 
-  constructor(private escribaniaService: EscribaniaService, private escribanoService: EscribanoService) {
+  constructor(private escribaniaService: EscribaniaService, private usuarioService: UsuarioService) {
     this.escribania = new Escribania();
     this.escribaniaMod = new Escribania();
     this.escribanias = new Array<Escribania>();
-    this.escribanos = new Array<Escribano>();
+    this.escribanos = new Array<Usuario>();
     this.obtenerEscribania();
+    this.obtenerEscribanos();
 
   }
 
@@ -55,10 +58,10 @@ export class AltaEscribaniaComponent implements OnInit {
   }
 
   public obtenerEscribanos() {
-    this.escribanoService.getEscribanos().
+    this.usuarioService.getUsuarios().
       subscribe(
         res => {
-          this.escribanos = res['escribanos'];
+          this.escribanos = res['usuarios'];
           console.log(this.escribanos);
         }
       )
@@ -147,7 +150,7 @@ export class AltaEscribaniaComponent implements OnInit {
   }
 
   public escribanosEnEscribania(escribania: Escribania) {
-    this.escribanosAsoc = new Array<Escribano>();
+    this.escribanosAsoc = new Array<Usuario>();
     this.obtenerEscribanos();
     this.escribania = Object.assign(this.escribania, escribania);
     for (var i = 0; i < this.escribanos.length; i++) {
