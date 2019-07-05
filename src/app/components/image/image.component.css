@@ -5,7 +5,11 @@ Author: OS Templates
 Author URI: https://www.os-templates.com/
 Licence: <a href="https://www.os-templates.com/template-terms">Website Template Licence</a>
 */
-
+.responsive{
+    max-width: 100%;
+    height: auto;
+    margin:auto;
+}
 #about-us{display:block; width:100%; line-height:1.6em;}
 
 #about-us #team{margin-bottom:50px;}
