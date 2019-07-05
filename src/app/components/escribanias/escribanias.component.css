@@ -1,4 +1,16 @@
-agm-map {
+/* agm-map {
   width: 60vw;
   height: 40vh;
+} */
+@media (min-width: 0px) and (max-width: 697px) {
+  agm-map {
+    width: 80vw;
+    height: 50vh;
+  }
+}
+@media (min-width: 698px){
+  agm-map {
+    width: 500px;
+    height: 300px;
+  }
 }
