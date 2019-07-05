@@ -31,7 +31,7 @@
             <li class="list-group bg-transparent">
                 <ul class="list-group-item bg-transparent">
                     <li class="list-group bg-transparent">
-                        <a class="nav-link" [routerLink]="['contents']">Inicio</a>
+                        <a class="nav-link" [routerLink]="['index']">Inicio</a>
                     </li>
                     <li class="list-group bg-transparent">
                         <a class="nav-link" [routerLink]="['slide']">Informacion</a>
@@ -50,7 +50,8 @@
                     <li *ngIf="loginService.userLoggedIn" class="list-group bg-transparent">
                         <a class="nav-link" [routerLink]="['novedades']">Novedades</a>
                     </li>
-                    <li class="list-group bg-transparent" *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario!='socio'">
+                    <li class="list-group bg-transparent"
+                        *ngIf="loginService.userLoggedIn && loginService.userLogged.tipoUsuario!='socio'">
                         <a href="#demo" data-toggle="collapse" class="">
                             <i class="fas fa-chevron-right"></i>Administracion</a>
                         <div id="demo" class="collapse">
@@ -93,40 +94,48 @@
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top navColg"
-    style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav">
+    style="background: linear-gradient(rgb(71, 103, 109), rgb(40, 124, 145));" id="lgnav"
+    (window:resize)="ocultarBoton(btnlog)">
     <div>
         <div class="">
             <span style="font-size:30px;cursor:pointer" style="font-size: 2em; color: white; cursor: pointer"
                 (click)="openNav()">
                 <i class="fas fa-angle-double-right mx-2"></i></span>
-            <a id="logo" class="navbar-brand">Colegio de Escribanos</a>
         </div>
     </div>
+    <a id="logo" class="collapse navbar-collapse">Colegio de Escribanos</a>
     <div class="nav navbar-nav ml-auto" id="opciones">
         <ul class="nav nav-pills dropdown-menu-xl-right dropdown-item-text">
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-envelope" style="font-size: 1.7em"></i>
-                    <span class="d-sm-none d-xl-inline-block">Contacto</span></a>
+                <a class="nav-link" [routerLink]="['contents']">
+                    <i class="fas fa-envelope" style="font-size: 1.7em"></i>
+                    <figcaption class="figure-caption text-center" style="color: white" id="contacto">Contacto</figcaption>
+                </a>
+
             </li>
             <li class="nav-item dropleft">
                 <a class="nav-link d-xl-none pl-2" [routerLink]="['login']">
                     <i class="fas fa-user" style="font-size: 1.7em"></i></a>
-                <a *ngIf="!loginService.userLoggedIn" class="nav-link dropdown-toggle d-sm-none d-xl-block"
-                    data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i
-                        class="fas fa-user" style="font-size: 1.7em"></i>Login</a>
+                <div #btnlog>
+                    <a *ngIf="!loginService.userLoggedIn" class="nav-link dropdown-toggle d-sm-none d-xl-block"
+                        data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user" style="font-size: 1.7em"></i>
+                        <figcaption class="figure-caption text-center" style="color: white">Login</figcaption>
+                    </a>
+                    <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
+                        <app-login-user></app-login-user>
+                    </div>
+                </div>
                 <!-- ACAA PUSE LOI DE LOGIN -->
                 <div>
                     <a *ngIf="loginService.userLoggedIn" [routerLink]="['login']" (click)="logout()">
-                        <img src="{{usuariolog.foto}}" class="rounded-sm"
-                        style="width: 1rem; height: 1rem;">
+                        <img src="{{usuariolog.foto}}" class="rounded-sm" style="width: 1rem; height: 1rem;">
                         {{loginService.userLogged.username}} (Cerrar Sesion)
                     </a>
                 </div>
                 <!-- hasta acaaaaaaaaaaaaaaaaaaaaaaaaa -->
                 <!-- OKAAAAAAAY-->
-                <div id="menuLogin" class="dpmpage dropdown-menu" style="background: rgb(29, 98, 129)">
-                    <app-login-user></app-login-user>
-                </div>
+
             </li>
         </ul>
 
