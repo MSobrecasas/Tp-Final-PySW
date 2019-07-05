@@ -18,3 +18,18 @@
   width: 100%;
   opacity: 0.7;
 }
+form {
+  margin: initial;
+  padding: inherit;
+  padding-right: 20px;
+  padding-left: 20px;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  padding-bottom: 1rem;
+}
+
+.tForm {
+  text-align: center;
+  font-weight: bold;
+  font-size: 10;
+}
