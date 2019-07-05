@@ -208,6 +208,8 @@ export class EscribanosComponent implements OnInit {
     this.usuario.username = this.username;
     this.usuario.legajo = this.legajo;
     this.usuario.escribania = this.escribania;
+    console.log(this.usuario);
+    console.log(this.usuario.escribania);
     this.usuarioService.modificarEscribano(this.usuario).subscribe(
       data => {
         console.log("modificado correctamente.")
@@ -234,7 +236,7 @@ export class EscribanosComponent implements OnInit {
     this.usuario.foto = this.foto;
     this.usuario.password = this.password;
     this.usuario.telefono = this.telefono;
-    this.usuario.tipoUsuario = this.tipoUsuario;
+    this.usuario.tipoUsuario = "socio";
     this.usuario.username = this.username;
     this.usuario.estado = !this.estado;
     this.usuarioService.modificarEscribano(this.usuario).subscribe(

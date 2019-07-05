@@ -232,44 +232,37 @@
         <div *ngIf="escribanosAsoc==null">
           No hay escribanos Registrados en la Escribania
         </div>
-        <div *ngIf="escribanosAsoc!=null">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>
-                  nombre
-                </th>
-                <th>
-                  Legajo
-                </th>
-                <th>
-                  Telefono
-                </th>
+        <div *ngIf="escribanosAsoc!=null"></div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>
+                nombre
+              </th>
+              <th>
+                Legajo
+              </th>
+              <th>
+                Telefono
+              </th>
 
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of escribanosAsoc">
-                <td>{{item.usuario.apellido}},{{item.usuario.nombre}}</td>
-                <td>{{item.legajo}}</td>
-                <td>{{item.usuario.telefono}}</td>
-              </tr>
-            </tbody>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of escribanosAsoc">
+              <td>{{item.apellido}},{{item.nombre}}</td>
+              <td>{{item.legajo}}</td>
+              <td>{{item.telefono}}</td>
+            </tr>
+          </tbody>
 
-          </table>
-        </div>
-
-
-        <!-- Modal footer -->
-
-        <div class="modal-footer">
-
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        </div>
-
+        </table>
       </div>
+
+
+      <!-- Modal footer -->
+
+
     </div>
   </div>
-
-
 </div>

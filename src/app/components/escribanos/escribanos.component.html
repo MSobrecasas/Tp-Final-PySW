@@ -398,7 +398,7 @@
                             <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
                             <div class="col-sm-8">
                                 <select [(ngModel)]="escribania" name="escribania" class="form-control" required>
-                                    <option *ngFor="let escribania of escribanias" ([ngValue])="escribania"
+                                    <option *ngFor="let escribania of escribanias" [ngValue]="escribania"
                                         [hidden]="!escribania.estado">
                                         {{escribania.nombre}}
                                     </option>
@@ -471,7 +471,7 @@
                             <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
                             <div class="col-sm-8">
                                 <div class="custom-file" style="z-index: 0 !important">
-                                    <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                    <input type="file" class="custom-file-input" id="customFileLang1" lang="es"
                                         alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
                                     <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
                                     <div class="row justify-content-center mt-1" *ngIf="foto">
@@ -526,18 +526,7 @@
                                     name="passIgualM" [(ngModel)]="passIgual" required>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo Usuario</label>
-                            <div class="col-sm-8">
-                                <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
-                                    name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
-                                    <option value="administrativo">Administrativo</option>
-                                    <!-- <option value="socio">Socio</option> -->
-                                    <option value="administrador">Administrador</option>
-                                    <option value="gerente">Gerente</option>
-                                </select>
-                            </div>
-                        </div>
+                      
                     </form>
                 </div>
 
