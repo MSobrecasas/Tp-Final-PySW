@@ -57,7 +57,8 @@ export class ModificarPerfilComponent implements OnInit {
   constructor(public loginService: LoginService,
     private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
-    //this.obtenerUsuario();
+    this.escribania = new Escribania();
+    this.obtenerUsuarios();
   }
 
   ngOnInit() {
