@@ -1,6 +1,6 @@
-<div>
+<div class="container">
   <div class="row justify-content-center">
-    <div class="row justify-content-center">
+    <div class="content justify-content-center">
       <agm-map [latitude]="-24.233542" [longitude]="-65.271521" >
         <agm-marker [latitude]="item.latitud" [longitude]="item.longitud" *ngFor="let item of escribanias">
           <agm-info-window>{{item.nombre}}</agm-info-window>
