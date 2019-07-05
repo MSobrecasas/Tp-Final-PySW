@@ -55,4 +55,14 @@ export class HeaderComponent implements OnInit {
     this.usuariolog = new Usuario();
     this.loginService.logout();
   }
+  ocultarBoton(btnlog:HTMLElement){
+    if(document.documentElement.clientWidth<768){
+      btnlog.hidden=true;
+      document.getElementById('contacto').hidden = true;
+    }
+    if(document.documentElement.clientWidth>768){
+      btnlog.hidden=false;
+      document.getElementById('contacto').hidden = false;
+    }
+  }
 }
