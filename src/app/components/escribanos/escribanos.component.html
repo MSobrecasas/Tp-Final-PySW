@@ -1,556 +1,579 @@
-<div class="row justify-content-center">
-    <form method="POST" (ngSubmit)="validarUsuario()" #formRegistro="ngForm">
-        <legend class="tForm">Registro</legend>
-        <div class="dropdown-divider"></div>
-        <div class="form-group row">
-            <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{nomEsValido}}" id="nombreI" name="nombreI" [(ngModel)]="nombre"
-                    #nombreI="ngModel" minlength="3" maxlength="20" required pattern="[A-Za-z ]+">
-                <div *ngIf="nombreI.touched && !nombreI.valid">
-                    <div *ngIf="nombreI.errors.required" class=" tError text text-danger">
-                        Nombre Requerido
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="POST" (ngSubmit)="validarUsuario()" #formRegistro="ngForm">
+            <legend class="tForm">Registro</legend>
+            <div class="dropdown-divider"></div>
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{nomEsValido}}" id="nombreI" name="nombreI"
+                        [(ngModel)]="nombre" #nombreI="ngModel" minlength="3" maxlength="20" required
+                        pattern="[A-Za-z ]+">
+                    <div *ngIf="nombreI.touched && !nombreI.valid">
+                        <div *ngIf="nombreI.errors.required" class=" tError text text-danger">
+                            Nombre Requerido
+                        </div>
+                        <div *ngIf="nombreI.errors.minlength" class=" tError text text-danger">
+                            Nombre debe tener minimo 3 caracteres
+                        </div>
+                        <div *ngIf="nombreI.errors.pattern" class=" tError text text-danger">
+                            caracteres invalidos
+                        </div>
                     </div>
-                    <div *ngIf="nombreI.errors.minlength" class=" tError text text-danger">
-                        Nombre debe tener minimo 3 caracteres
+                    <div class="invalid-feedback">
+                        Nombre Invalido
                     </div>
-                    <div *ngIf="nombreI.errors.pattern" class=" tError text text-danger">
-                        caracteres invalidos
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    Nombre Invalido
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{apeEsValido}}" id="apellidoI" name="apellidoI"
-                    #apellidoI="ngModel" [(ngModel)]="apellido" minlength="4" maxlength="20" pattern="[A-Za-z ]+"
-                    required>
-                <div *ngIf="apellidoI.touched && !apellidoI.valid">
-                    <div *ngIf="apellidoI.errors.required" class=" tError text text-danger">
-                        Apellido Requerido
+            <div class="form-group row">
+                <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{apeEsValido}}" id="apellidoI" name="apellidoI"
+                        #apellidoI="ngModel" [(ngModel)]="apellido" minlength="4" maxlength="20" pattern="[A-Za-z ]+"
+                        required>
+                    <div *ngIf="apellidoI.touched && !apellidoI.valid">
+                        <div *ngIf="apellidoI.errors.required" class=" tError text text-danger">
+                            Apellido Requerido
+                        </div>
+                        <div *ngIf="apellidoI.errors.minlength" class=" tError text text-danger">
+                            Apellido debe tener minimo 4 caracteres
+                        </div>
+                        <div *ngIf="apellidoI.errors.pattern" class=" tError text text-danger">
+                            caracteres invalidos
+                        </div>
                     </div>
-                    <div *ngIf="apellidoI.errors.minlength" class=" tError text text-danger">
-                        Apellido debe tener minimo 4 caracteres
+                    <div class="invalid-feedback">
+                        Apellido Invalido
                     </div>
-                    <div *ngIf="apellidoI.errors.pattern" class=" tError text text-danger">
-                        caracteres invalidos
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    Apellido Invalido
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="dni" class="col-sm-4 col-form-label">DNI</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{dniEsValido}}" id="dniI" name="dniI" [(ngModel)]="dni" required
-                    minlength="7" maxlength="10" pattern="[0-9]+" #dniI="ngModel">
-                <div *ngIf="dniI.touched && !dniI.valid">
-                    <div *ngIf="dniI.errors.required" class=" tError text text-danger">
-                        DNI Requerido
+            <div class="form-group row">
+                <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{dniEsValido}}" id="dniI" name="dniI" [(ngModel)]="dni"
+                        required minlength="7" maxlength="10" pattern="[0-9]+" #dniI="ngModel">
+                    <div *ngIf="dniI.touched && !dniI.valid">
+                        <div *ngIf="dniI.errors.required" class=" tError text text-danger">
+                            DNI Requerido
+                        </div>
+                        <div *ngIf="dniI.errors.minLength" class=" tError text text-danger">
+                            DNI debe tener minimo 7 numeros
+                        </div>
+                        <div *ngIf="dniI.errors.pattern" class=" tError text text-danger">
+                            DNI solo puede contener numeros
+                        </div>
                     </div>
-                    <div *ngIf="dniI.errors.minLength" class=" tError text text-danger">
-                        DNI debe tener minimo 7 numeros
+                    <div class="invalid-feedback">
+                        DNI Invalido
                     </div>
-                    <div *ngIf="dniI.errors.pattern" class=" tError text text-danger">
-                        DNI solo puede contener numeros
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    DNI Invalido
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{legInvalido}}" id="legajoI" name="legajoI" [(ngModel)]="legajo"
-                    minlength="4" maxlength="10" pattern="[0-9]+" #legajoI="ngModel" required>
-                <div *ngIf="legajoI.touched && !legajoI.valid">
-                    <div *ngIf="legajoI.errors.required" class=" tError text text-danger">
-                        Legajo Requerido
+            <div class="form-group row">
+                <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{legInvalido}}" id="legajoI" name="legajoI"
+                        [(ngModel)]="legajo" minlength="4" maxlength="10" pattern="[0-9]+" #legajoI="ngModel" required>
+                    <div *ngIf="legajoI.touched && !legajoI.valid">
+                        <div *ngIf="legajoI.errors.required" class=" tError text text-danger">
+                            Legajo Requerido
+                        </div>
+                        <div *ngIf="legajoI.errors.minLength" class=" tError text text-danger">
+                            Legajo debe tener minimo 4 numeros
+                        </div>
+                        <div *ngIf="legajoI.errors.pattern" class=" tError text text-danger">
+                            Legajo solo puede contener numeros
+                        </div>
                     </div>
-                    <div *ngIf="legajoI.errors.minLength" class=" tError text text-danger">
-                        Legajo debe tener minimo 4 numeros
+                    <div class="invalid-feedback">
+                        Legajo Invalido
                     </div>
-                    <div *ngIf="legajoI.errors.pattern" class=" tError text text-danger">
-                        Legajo solo puede contener numeros
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    Legajo Invalido
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-            <div class="col-sm-8">
-                <select [(ngModel)]="escribania" name="escribania" class="form-control" required>
-                    <option *ngFor="let escribania of escribanias" [ngValue]="escribania" [hidden]="!escribania.estado">
-                        {{escribania.nombre}}
-                    </option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="fecnac" class="col-sm-4 col-form-label ">Fecha Nac.</label>
-            <div class="col-sm-8">
-                <input type="date" class="form-control {{fnaEsValido}}" id="fecnac" name="fechaNac"
-                    [(ngModel)]="fechaNac" required>
-                <div class="invalid-feedback">
-                    Fecha Invalida
+            <div class="form-group row">
+                <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                <div class="col-sm-8">
+                    <select [(ngModel)]="escribania" name="escribania" class="form-control" required>
+                        <option *ngFor="let escribania of escribanias" [ngValue]="escribania"
+                            [hidden]="!escribania.estado">
+                            {{escribania.nombre}}
+                        </option>
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{dirEsValido}} " id="direccionI" name="direccionI"
-                    [(ngModel)]="direccion" #direccionI="ngModel" required>
-                <div *ngIf="direccionI.touched && !direccionI.valid">
-                    <div *ngIf="direccionI.errors.required" class=" tError text text-danger">
-                        Direccion Requerida
+            <div class="form-group row">
+                <label for="fecnac" class="col-sm-4 col-form-label ">Fecha Nac.</label>
+                <div class="col-sm-8">
+                    <input type="date" class="form-control {{fnaEsValido}}" id="fecnac" name="fechaNac"
+                        [(ngModel)]="fechaNac" required>
+                    <div class="invalid-feedback">
+                        Fecha Invalida
                     </div>
                 </div>
-                <div class="invalid-feedback">
-                    Direccion Invalido
-                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control {{telEsValido}}" id="telefonoI" name="telefonoI"
-                    [(ngModel)]="telefono" pattern="[0-9]+" #telefonoI="ngModel" required>
-                <div *ngIf="telefonoI.touched && !telefonoI.valid">
-                    <div *ngIf="telefonoI.errors.required" class=" tError text text-danger">
-                        Telefono Requerido
+            <div class="form-group row">
+                <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{dirEsValido}} " id="direccionI" name="direccionI"
+                        [(ngModel)]="direccion" #direccionI="ngModel" required>
+                    <div *ngIf="direccionI.touched && !direccionI.valid">
+                        <div *ngIf="direccionI.errors.required" class=" tError text text-danger">
+                            Direccion Requerida
+                        </div>
                     </div>
-                    <div *ngIf="telefonoI.errors.pattern" class=" tError text text-danger">
-                        Telefono solo puede contener numeros
+                    <div class="invalid-feedback">
+                        Direccion Invalido
                     </div>
                 </div>
-                <div class="invalid-feedback">
-                    Telefon Invalido
+            </div>
+            <div class="form-group row">
+                <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control {{telEsValido}}" id="telefonoI" name="telefonoI"
+                        [(ngModel)]="telefono" pattern="[0-9]+" #telefonoI="ngModel" required>
+                    <div *ngIf="telefonoI.touched && !telefonoI.valid">
+                        <div *ngIf="telefonoI.errors.required" class=" tError text text-danger">
+                            Telefono Requerido
+                        </div>
+                        <div *ngIf="telefonoI.errors.pattern" class=" tError text text-danger">
+                            Telefono solo puede contener numeros
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        Telefon Invalido
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-            <div class="col-sm-8">
-                <input type="email" class="form-control {{emlEsValido}}" placeholder="email@example.com" name="emailI"
-                    [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="emailI" #emailI="ngModel"
-                    required>
-                <div *ngIf="emailI.touched && !emailI.valid">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control {{emlEsValido}}" placeholder="email@example.com"
+                        name="emailI" [(ngModel)]="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="emailI"
+                        #emailI="ngModel" required>
                     <div *ngIf="emailI.touched && !emailI.valid">
-                        <div *ngIf="emailI.errors.required" class=" tError text text-danger">
-                            Email Requerido
+                        <div *ngIf="emailI.touched && !emailI.valid">
+                            <div *ngIf="emailI.errors.required" class=" tError text text-danger">
+                                Email Requerido
+                            </div>
+                            <div *ngIf="emailI.errors.pattern" class=" tError text text-danger">
+                                el Email debe ser de formato email@example.com
+                            </div>
                         </div>
-                        <div *ngIf="emailI.errors.pattern" class=" tError text text-danger">
-                            el Email debe ser de formato email@example.com
+                        <div class="invalid-feedback">
+                            Email Invalido
                         </div>
-                    </div>
-                    <div class="invalid-feedback">
-                        Email Invalido
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
-            <div class="col-sm-8">
-                <div class="custom-file" style="z-index: 0 !important">
-                    <input type="file" class="custom-file-input  {{fotEsValido}}" id="customFileLang" lang="es"
-                        alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
-                    <div class="invalid-feedback">
-                        Foto Invalida
-                    </div>
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                    <div class="row justify-content-center mt-1" *ngIf="foto">
-                        <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+            <div class="form-group row">
+                <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+                <div class="col-sm-8">
+                    <div class="custom-file" style="z-index: 0 !important">
+                        <input type="file" class="custom-file-input  {{fotEsValido}}" id="customFileLang" lang="es"
+                            alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
+                        <div class="invalid-feedback">
+                            Foto Invalida
+                        </div>
+                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                        <div class="row justify-content-center mt-1" *ngIf="foto">
+                            <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control  {{userEsValido}}" id="usernameUsav" #nombreUs placeholder=""
-                    name="usernameUsav" [(ngModel)]="username" #usernameUsav="ngModel" pattern="[A-Za-z0-9]+"
-                    minlength="4" maxlength="20" required>
-                <div *ngIf="usernameUsav.touched && !usernameUsav.valid">
-                    <div *ngIf="usernameUsav.errors.required" class=" tError text text-danger">
-                        Nombre de usuario Requerido
+            <div class="form-group row">
+                <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control  {{userEsValido}}" id="usernameUsav" #nombreUs placeholder=""
+                        name="usernameUsav" [(ngModel)]="username" #usernameUsav="ngModel" pattern="[A-Za-z0-9]+"
+                        minlength="4" maxlength="20" required>
+                    <div *ngIf="usernameUsav.touched && !usernameUsav.valid">
+                        <div *ngIf="usernameUsav.errors.required" class=" tError text text-danger">
+                            Nombre de usuario Requerido
+                        </div>
+                        <div *ngIf="usernameUsav.errors.minLength" class=" tError text text-danger">
+                            Nombre de Usuario debe tener minimo 4 caracteres
+                        </div>
+                        <div *ngIf="usernameUsav.errors.pattern" class=" tError text text-danger">
+                            Nombre de Usuario no puede contener espacios ni simbolos
+                        </div>
                     </div>
-                    <div *ngIf="usernameUsav.errors.minLength" class=" tError text text-danger">
-                        Nombre de Usuario debe tener minimo 4 caracteres
+                    <div class="invalid-feedback">
+                        Nombre de Usuario Invalido
                     </div>
-                    <div *ngIf="usernameUsav.errors.pattern" class=" tError text text-danger">
-                        Nombre de Usuario no puede contener espacios ni simbolos
-                    </div>
-                </div>
-                <div class="invalid-feedback">
-                    Nombre de Usuario Invalido
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
-            <div class="col-sm-8">
-                <input type="password" class="form-control  {{pssEsValido}}" id="Pass1" placeholder="*********"
-                    name="Pass1" #Pass1="ngModel" [(ngModel)]="password" required>
-                <div *ngIf="Pass1.touched && !Pass1.valid">
-                    <div *ngIf="Pass1.errors.required" class=" tError text text-danger">
-                        Contraseña requerida
-                    </div>
-                    <!--  <div *ngIf="Pass1.errors.minLength" class=" tError text text-danger">
+            <div class="form-group row">
+                <label for="inputRPassword" class="col-sm-4 col-form-label">Contraseña</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control  {{pssEsValido}}" id="Pass1" placeholder="*********"
+                        name="Pass1" #Pass1="ngModel" [(ngModel)]="password" required>
+                    <div *ngIf="Pass1.touched && !Pass1.valid">
+                        <div *ngIf="Pass1.errors.required" class=" tError text text-danger">
+                            Contraseña requerida
+                        </div>
+                        <!--  <div *ngIf="Pass1.errors.minLength" class=" tError text text-danger">
                                     contraseña debe tener minimo 8 caracteres
                                 </div> -->
-                </div>
-                <div class="invalid-feedback">
-                    Contraseñas deben ser iguales
+                    </div>
+                    <div class="invalid-feedback">
+                        Contraseñas deben ser iguales
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
-            <div class="col-sm-8">
-                <input type="password" class="form-control {{pssEsValido}}" id="Pass2" placeholder="*********"
-                    name="passIgual" [(ngModel)]="passIgual" required>
-            </div>
-        </div>
-        <div class="form-group row" *ngIf="passIguales==true">
-            <label class="col-sm-4 col-form-label"></label>
-            <div class="col-sm-8">
-                Las contraseñas deben ser iguales
-            </div>
-        </div>
-
-        <hr>
-
-        <div class="form-group row">
-            <button class="col-12 btn btn-info" [disabled]="!formRegistro.form.valid">Enviar</button>
-        </div>
-    </form>
-
-    <table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="25">
-        <thead>
-            <tr>
-                <th>
-                    <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
-                </th>
-                <th>
-                    <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
-                </th>
-                <th>
-                    <mfDefaultSorter by="legajo">legajo</mfDefaultSorter>
-                </th>
-                <th>
-                    <mfDefaultSorter by="username">Username</mfDefaultSorter>
-                </th>
-                <th>
-                    <mfDefaultSorter by="estado">Estado</mfDefaultSorter>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of mf.data" [hidden]="item.tipoUsuario!='socio'">
-                <td>{{item.nombre}},{{item.apellido}} </td>
-                <td>{{item.dni}}</td>
-                <td>{{item.legajo}}</td>
-                <td>{{item.username}}</td>
-                <td>
-                    <p *ngIf="item.estado" class="text-success">Activo</p>
-                    <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
-                </td>
-                <td>
-                    <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
-                                data-target="#myModalPerfil">Perfil</button> -->
-                    <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
-                        data-target="#myModalMod">Administrar</button>
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="4">
-                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-
-    <!-- TABLA -->
-
-
-    <!-- FIN TABLA -->
-
-    <!-- The Modal -->
-    <div class="modal" id="myModalMod">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Administrar Usuario</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-4 col-form-label">Repita Contraseña</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control {{pssEsValido}}" id="Pass2" placeholder="*********"
+                        name="passIgual" [(ngModel)]="passIgual" required>
                 </div>
+            </div>
+            <div class="form-group row" *ngIf="passIguales==true">
+                <label class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                    Las contraseñas deben ser iguales
+                </div>
+            </div>
 
-                <!-- Modal body -->
+            <hr>
 
-                <div class=" mod">
-                    <form method="post">
-                        <div class="form-group row topm">
-                            <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{nomEsValido}}" id="nombreM" name="nombreM"
-                                    [(ngModel)]="nombre" #nombreM="ngModel" minlength="3" maxlength="20"
-                                    pattern="[A-Za-z ]+" required>
-                                <div *ngIf="nombreM.touched && !nombreM.valid">
-                                    <div *ngIf="nombreM.errors.required" class=" tError text text-danger">
-                                        Nombre Requerido
+            <div class="form-group row">
+                <button class="col-12 btn btn-info" [disabled]="!formRegistro.form.valid">Enviar</button>
+            </div>
+        </form>
+        <div class="col-12" style="overflow-x: scroll">
+            <table class="table table-striped" [mfData]="usuarios" #mf="mfDataTable" [mfRowsOnPage]="25">
+                <thead>
+                    <tr>
+                        <th>
+                            <mfDefaultSorter by="nombre">Nombre</mfDefaultSorter>
+                        </th>
+                        <th>
+                            <mfDefaultSorter by="Dni">Dni</mfDefaultSorter>
+                        </th>
+                        <th>
+                            <mfDefaultSorter by="legajo">legajo</mfDefaultSorter>
+                        </th>
+                        <th>
+                            <mfDefaultSorter by="username">Username</mfDefaultSorter>
+                        </th>
+                        <th>
+                            <mfDefaultSorter by="estado">Estado</mfDefaultSorter>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of mf.data" [hidden]="item.tipoUsuario!='socio'">
+                        <td>{{item.nombre}},{{item.apellido}} </td>
+                        <td>{{item.dni}}</td>
+                        <td>{{item.legajo}}</td>
+                        <td>{{item.username}}</td>
+                        <td>
+                            <p *ngIf="item.estado" class="text-success">Activo</p>
+                            <p *ngIf="!item.estado" class="text-danger"> Inactivo</p>
+                        </td>
+                        <td>
+                            <!--  <button type="button " class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                                            data-target="#myModalPerfil">Perfil</button> -->
+                            <button class="btn btn-info" (click)="elegirUsuario(item)" data-toggle="modal"
+                                data-target="#myModalMod">Administrar</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+
+
+        <!-- TABLA -->
+
+
+        <!-- FIN TABLA -->
+
+        <!-- The Modal -->
+        <div class="modal" id="myModalMod">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Administrar Usuario</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+
+                    <div class=" mod">
+                        <form method="post">
+                            <div class="form-group row topm">
+                                <label for="nombre" class="col-sm-4 col-form-label">Nombre</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{nomEsValido}}" id="nombreM" name="nombreM"
+                                        [(ngModel)]="nombre" #nombreM="ngModel" minlength="3" maxlength="20"
+                                        pattern="[A-Za-z ]+" required>
+                                    <div *ngIf="nombreM.touched && !nombreM.valid">
+                                        <div *ngIf="nombreM.errors.required" class=" tError text text-danger">
+                                            Nombre Requerido
+                                        </div>
+                                        <div *ngIf="nombreM.errors.minlength" class=" tError text text-danger">
+                                            Nombre debe tener minimo 3 caracteres
+                                        </div>
+                                        <div *ngIf="nombreM.errors.pattern" class=" tError text text-danger">
+                                            caracteres invalidos
+                                        </div>
                                     </div>
-                                    <div *ngIf="nombreM.errors.minlength" class=" tError text text-danger">
-                                        Nombre debe tener minimo 3 caracteres
-                                    </div>
-                                    <div *ngIf="nombreM.errors.pattern" class=" tError text text-danger">
-                                        caracteres invalidos
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Nombre Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{apeEsValido}}" id="apellidoM" name="apellidoM"
-                                    [(ngModel)]="apellido" #apellidoM="ngModel" minlength="4" maxlength="20"
-                                    pattern="[A-Za-z ]+" required>
-                                <div *ngIf="apellidoM.touched && !apellidoM.valid">
-                                    <div *ngIf="apellidoM.errors.required" class=" tError text text-danger">
-                                        Apellido Requerido
-                                    </div>
-                                    <div *ngIf="apellidoM.errors.minlength" class=" tError text text-danger">
-                                        Apellido debe tener minimo 4 caracteres
-                                    </div>
-                                    <div *ngIf="apellidoM.errors.pattern" class=" tError text text-danger">
-                                        caracteres invalidos
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Apellido Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="dni" class="col-sm-4 col-form-label">DNI</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{dniEsValido}}" id="dniM" name="dniM"
-                                    [(ngModel)]="dni" required minlength="7" maxlength="10" pattern="[0-9]+"
-                                    #dniM="ngModel">
-                                <div *ngIf="dniM.touched && !dniM.valid">
-                                    <div *ngIf="dniM.errors.required" class=" tError text text-danger">
-                                        DNI Requerido
-                                    </div>
-                                    <div *ngIf="dniM.errors.minLength" class=" tError text text-danger">
-                                        DNI debe tener minimo 7 numeros
-                                    </div>
-                                    <div *ngIf="dniM.errors.pattern" class=" tError text text-danger">
-                                        DNI solo puede contener numeros
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    DNI Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{legInvalido}}" id="legajoM" name="legajoM"
-                                    [(ngModel)]="legajo" minlength="4" maxlength="10" pattern="[0-9]+"
-                                    #legajoM="ngModel" required>
-                                <div *ngIf="legajoM.touched && !legajoM.valid">
-                                    <div *ngIf="legajoM.errors.required" class=" tError text text-danger">
-                                        Legajo Requerido
-                                    </div>
-                                    <div *ngIf="legajoM.errors.minLength" class=" tError text text-danger">
-                                        Legajo debe tener minimo 4 numeros
-                                    </div>
-                                    <div *ngIf="legajoM.errors.pattern" class=" tError text text-danger">
-                                        Legajo solo puede contener numeros
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Legajo Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
-                            <div class="col-sm-8">
-                                <select [(ngModel)]="escribania" name="escribania" class="form-control" required>
-                                    <option *ngFor="let escribania of escribanias" [ngValue]="escribania"
-                                        [hidden]="!escribania.estado">
-                                        {{escribania.nombre}}
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
-                            <div class="col-sm-8">
-                                <input type="date" class="form-control {{fnaEsValido}}" id="fecnacM" name="fechaNacM"
-                                    [(ngModel)]="fechaNac" required>
-                                <div class="invalid-feedback">
-                                    Fecha Invalida
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{dirEsValido}}" id="direccionM"
-                                    name="direccionM" [(ngModel)]="direccion" #direccionM="ngModel" required>
-                                <div *ngIf="direccionM.touched && !direccionM.valid">
-                                    <div *ngIf="direccionM.errors.required" class=" tError text text-danger">
-                                        Direccion Requerida
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Direccion Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control {{telEsValido}}" id="telefonoM" name="telefonoM"
-                                    [(ngModel)]="telefono" pattern="[0-9]+" #telefonoM="ngModel" required>
-                                <div *ngIf="telefonoM.touched && !telefonoM.valid">
-                                    <div *ngIf="telefonoM.errors.required" class=" tError text text-danger">
-                                        Telefono Requerido
-                                    </div>
-                                    <div *ngIf="telefonoM.errors.pattern" class=" tError text text-danger">
-                                        Telefono solo puede contener numeros
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Telefono Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
-                            <div class="col-sm-8">
-                                <input type="email" class="form-control {{emlEsValido}}" id="staticEmailM"
-                                    placeholder="email@example.com" name="emailM" [(ngModel)]="email"
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #emailM="ngModel" required>
-                                <div *ngIf="emailM.touched && !emailM.valid">
-                                    <div *ngIf="emailM.errors.required" class=" tError text text-danger">
-                                        Email Requerido
-                                    </div>
-                                    <div *ngIf="emailM.errors.pattern" class=" tError text text-danger">
-                                        el Email debe ser de formato email@example.com
-                                    </div>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Email Invalido
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
-                            <div class="col-sm-8">
-                                <div class="custom-file" style="z-index: 0 !important">
-                                    <input type="file" class="custom-file-input" id="customFileLang1" lang="es"
-                                        alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
-                                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                                    <div class="row justify-content-center mt-1" *ngIf="foto">
-                                        <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                                    <div class="invalid-feedback">
+                                        Nombre Invalido
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" id="usernameUsavM" #nombreUs placeholder=""
-                                    name="usernameUsavM" [(ngModel)]="username" required #usernameUsavM="ngModel"
-                                    pattern="[A-Za-z0-9]+" minlength="4" maxlength="20">
-                                <div *ngIf="usernameUsavM.touched && !usernameUsavM.valid">
-                                    <div *ngIf="usernameUsavM.errors.required" class=" tError text text-danger">
-                                        Nombre de usuario Requerido
+                            <div class="form-group row">
+                                <label for="apellido" class="col-sm-4 col-form-label">Apellido</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{apeEsValido}}" id="apellidoM"
+                                        name="apellidoM" [(ngModel)]="apellido" #apellidoM="ngModel" minlength="4"
+                                        maxlength="20" pattern="[A-Za-z ]+" required>
+                                    <div *ngIf="apellidoM.touched && !apellidoM.valid">
+                                        <div *ngIf="apellidoM.errors.required" class=" tError text text-danger">
+                                            Apellido Requerido
+                                        </div>
+                                        <div *ngIf="apellidoM.errors.minlength" class=" tError text text-danger">
+                                            Apellido debe tener minimo 4 caracteres
+                                        </div>
+                                        <div *ngIf="apellidoM.errors.pattern" class=" tError text text-danger">
+                                            caracteres invalidos
+                                        </div>
                                     </div>
-                                    <div *ngIf="usernameUsavM.errors.minLength" class=" tError text text-danger">
-                                        Nombre de Usuario debe tener minimo 4 caracteres
-                                    </div>
-                                    <div *ngIf="usernameUsavM.errors.pattern" class=" tError text text-danger">
-                                        Nombre de Usuario no puede contener espacios ni simbolos
+                                    <div class="invalid-feedback">
+                                        Apellido Invalido
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="Pass1M" class="col-sm-4 col-form-label">Contraseña</label>
-                            <div class="col-sm-8">
-                                <input type="password" class="form-control {{pssEsValido}}" id="Pass1M"
-                                    placeholder="*********" name="Pass1M" [(ngModel)]="password" #Pass1M="ngModel"
-                                    required>
-                                <div *ngIf="Pass1M.touched && !Pass1M.valid">
-                                    <div *ngIf="Pass1M.errors.required" class=" tError text text-danger">
-                                        Contraseña requerida
+                            <div class="form-group row">
+                                <label for="dni" class="col-sm-4 col-form-label">DNI</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{dniEsValido}}" id="dniM" name="dniM"
+                                        [(ngModel)]="dni" required minlength="7" maxlength="10" pattern="[0-9]+"
+                                        #dniM="ngModel">
+                                    <div *ngIf="dniM.touched && !dniM.valid">
+                                        <div *ngIf="dniM.errors.required" class=" tError text text-danger">
+                                            DNI Requerido
+                                        </div>
+                                        <div *ngIf="dniM.errors.minLength" class=" tError text text-danger">
+                                            DNI debe tener minimo 7 numeros
+                                        </div>
+                                        <div *ngIf="dniM.errors.pattern" class=" tError text text-danger">
+                                            DNI solo puede contener numeros
+                                        </div>
                                     </div>
-                                    <!--  <div *ngIf="Pass1.errors.minLength" class=" tError text text-danger">
+                                    <div class="invalid-feedback">
+                                        DNI Invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="legajo" class="col-sm-4 col-form-label">Legajo</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{legInvalido}}" id="legajoM" name="legajoM"
+                                        [(ngModel)]="legajo" minlength="4" maxlength="10" pattern="[0-9]+"
+                                        #legajoM="ngModel" required>
+                                    <div *ngIf="legajoM.touched && !legajoM.valid">
+                                        <div *ngIf="legajoM.errors.required" class=" tError text text-danger">
+                                            Legajo Requerido
+                                        </div>
+                                        <div *ngIf="legajoM.errors.minLength" class=" tError text text-danger">
+                                            Legajo debe tener minimo 4 numeros
+                                        </div>
+                                        <div *ngIf="legajoM.errors.pattern" class=" tError text text-danger">
+                                            Legajo solo puede contener numeros
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Legajo Invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="escribania" class="col-sm-4 col-form-label">Escribania</label>
+                                <div class="col-sm-8">
+                                    <select [(ngModel)]="escribania" name="escribania" class="form-control" required>
+                                        <option *ngFor="let escribania of escribanias" ([ngValue])="escribania"
+                                            [hidden]="!escribania.estado">
+                                            {{escribania.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fecnac" class="col-sm-4 col-form-label">Fecha Nac.</label>
+                                <div class="col-sm-8">
+                                    <input type="date" class="form-control {{fnaEsValido}}" id="fecnacM"
+                                        name="fechaNacM" [(ngModel)]="fechaNac" required>
+                                    <div class="invalid-feedback">
+                                        Fecha Invalida
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="direccion" class="col-sm-4 col-form-label">Direccion</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{dirEsValido}}" id="direccionM"
+                                        name="direccionM" [(ngModel)]="direccion" #direccionM="ngModel" required>
+                                    <div *ngIf="direccionM.touched && !direccionM.valid">
+                                        <div *ngIf="direccionM.errors.required" class=" tError text text-danger">
+                                            Direccion Requerida
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Direccion Invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="telefono" class="col-sm-4 col-form-label">Telefono</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control {{telEsValido}}" id="telefonoM"
+                                        name="telefonoM" [(ngModel)]="telefono" pattern="[0-9]+" #telefonoM="ngModel"
+                                        required>
+                                    <div *ngIf="telefonoM.touched && !telefonoM.valid">
+                                        <div *ngIf="telefonoM.errors.required" class=" tError text text-danger">
+                                            Telefono Requerido
+                                        </div>
+                                        <div *ngIf="telefonoM.errors.pattern" class=" tError text text-danger">
+                                            Telefono solo puede contener numeros
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Telefono Invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control {{emlEsValido}}" id="staticEmailM"
+                                        placeholder="email@example.com" name="emailM" [(ngModel)]="email"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #emailM="ngModel" required>
+                                    <div *ngIf="emailM.touched && !emailM.valid">
+                                        <div *ngIf="emailM.errors.required" class=" tError text text-danger">
+                                            Email Requerido
+                                        </div>
+                                        <div *ngIf="emailM.errors.pattern" class=" tError text text-danger">
+                                            el Email debe ser de formato email@example.com
+                                        </div>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Email Invalido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="foto2" class="col-sm-4 col-form-label">Foto</label>
+                                <div class="col-sm-8">
+                                    <div class="custom-file" style="z-index: 0 !important">
+                                        <input type="file" class="custom-file-input" id="customFileLang" lang="es"
+                                            alife-file-to-base64 multiple (onFileChanged)="onFileChanges($event)">
+                                        <label class="custom-file-label" for="customFileLang">Seleccionar
+                                            Archivo</label>
+                                        <div class="row justify-content-center mt-1" *ngIf="foto">
+                                            <img src="{{foto}}" class="rounded-sm" style="width: 100px; height: 100px;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label [htmlFor]="nombreUs" class="col-sm-4 col-form-label">Nombre de Usuario</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="usernameUsavM" #nombreUs placeholder=""
+                                        name="usernameUsavM" [(ngModel)]="username" required #usernameUsavM="ngModel"
+                                        pattern="[A-Za-z0-9]+" minlength="4" maxlength="20">
+                                    <div *ngIf="usernameUsavM.touched && !usernameUsavM.valid">
+                                        <div *ngIf="usernameUsavM.errors.required" class=" tError text text-danger">
+                                            Nombre de usuario Requerido
+                                        </div>
+                                        <div *ngIf="usernameUsavM.errors.minLength" class=" tError text text-danger">
+                                            Nombre de Usuario debe tener minimo 4 caracteres
+                                        </div>
+                                        <div *ngIf="usernameUsavM.errors.pattern" class=" tError text text-danger">
+                                            Nombre de Usuario no puede contener espacios ni simbolos
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="Pass1M" class="col-sm-4 col-form-label">Contraseña</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control {{pssEsValido}}" id="Pass1M"
+                                        placeholder="*********" name="Pass1M" [(ngModel)]="password" #Pass1M="ngModel"
+                                        required>
+                                    <div *ngIf="Pass1M.touched && !Pass1M.valid">
+                                        <div *ngIf="Pass1M.errors.required" class=" tError text text-danger">
+                                            Contraseña requerida
+                                        </div>
+                                        <!--  <div *ngIf="Pass1.errors.minLength" class=" tError text text-danger">
                                                     contraseña debe tener minimo 8 caracteres
                                                 </div> -->
-                                </div>
-                                <div class="invalid-feedback">
-                                    Contraseñas deben ser iguales
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Contraseñas deben ser iguales
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita
-                                Contraseña</label>
-                            <div class="col-sm-8">
-                                <input type="password" class="form-control" id="inputPasswordM" placeholder="*********"
-                                    name="passIgualM" [(ngModel)]="passIgual" required>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-4 col-form-label {{pssEsValido}}">Repita
+                                    Contraseña</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control" id="inputPasswordM"
+                                        placeholder="*********" name="passIgualM" [(ngModel)]="passIgual" required>
+                                </div>
                             </div>
-                        </div>
-                      
-                    </form>
-                </div>
+                            <div class="form-group row">
+                                <label for="exampleFormControlSelect1" class="col-sm-4 col-form-label">Tipo
+                                    Usuario</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" #tipo (change)="tipoUsuario=$event.target.value"
+                                        name="tipoUsuarioM" [(ngModel)]="tipoUsuario">
+                                        <option value="administrativo">Administrativo</option>
+                                        <!-- <option value="socio">Socio</option> -->
+                                        <option value="administrador">Administrador</option>
+                                        <option value="gerente">Gerente</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-                <hr>
-                <!--  <div *ngIf="tipoUsuario=='socio'">
+                    <hr>
+                    <!--  <div *ngIf="tipoUsuario=='socio'">
                             
                         </div> -->
 
-                <!-- Modal footer -->
+                    <!-- Modal footer -->
 
-                <div class="modal-footer">
-                    <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
-                        (click)="actualizarUsuario()">Guardar</button>
-                    <button *ngIf="usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
-                        baja</button>
-                    <button *ngIf="!usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar de
-                        Alta</button>
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                    <div class="modal-footer">
+                        <button *ngIf="usuario.estado" type="button" class="btn btn-info" data-dismiss="modal"
+                            (click)="actualizarUsuario()">Guardar</button>
+                        <button *ngIf="usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar
+                            de
+                            baja</button>
+                        <button *ngIf="!usuario.estado" type="button " class="btn btn-info" (click)="bajaUsuario()">Dar
+                            de
+                            Alta</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                    </div>
+
                 </div>
-
             </div>
         </div>
+
+        <!-- FIN MODAL -->
+
     </div>
-
-    <!-- FIN MODAL -->
-
 </div>
